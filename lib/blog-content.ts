@@ -46,7 +46,7 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
     ],
     sources: [
       { label: 'Nextbridge: Top 10 IT Companies in Pakistan in 2026', href: 'https://nextbridge.com/top-it-companies-pakistan/' },
-      { label: 'ListPak companies directory', href: 'https://www.listpak.com/companies' },
+      { label: 'ListPak companies directory', href: '/companies/' },
       { label: 'Google guidance on people-first content', href: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' }
     ]
   },
@@ -170,7 +170,7 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
     sources: [
       { label: 'Rozee accountant job search', href: 'https://www.rozee.pk/job/jsearch/q/Accountant' },
       { label: 'Indeed Pakistan job search', href: 'https://pk.indeed.com/' },
-      { label: 'ListPak finance and banking category', href: 'https://www.listpak.com/category/finance-banking' }
+      { label: 'ListPak finance and banking category', href: '/category/finance/' }
     ]
   },
   'local-services-pakistan-by-city': {
@@ -210,7 +210,7 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
     sources: [
       { label: 'BusinessList.pk Lahore SEO category example', href: 'https://www.businesslist.pk/category/seo/city:lahore' },
       { label: 'Google helpful, reliable, people-first content', href: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' },
-      { label: 'ListPak business search', href: 'https://www.listpak.com/search' }
+      { label: 'ListPak business search', href: '/search/' }
     ]
   },
   'how-to-find-trusted-professionals-pakistan': {
@@ -248,8 +248,8 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
       }
     ],
     sources: [
-      { label: 'ListPak professional directory', href: 'https://www.listpak.com/professionals' },
-      { label: 'ListPak verification policy', href: 'https://www.listpak.com/verification-policy' },
+      { label: 'ListPak professional directory', href: '/professionals/' },
+      { label: 'ListPak verification policy', href: '/verification-policy/' },
       { label: 'Google people-first content guidance', href: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' }
     ]
   },
@@ -320,7 +320,7 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
     ],
     sources: [
       { label: 'BusinessList.pk Lahore SEO category page', href: 'https://www.businesslist.pk/category/seo/city:lahore' },
-      { label: 'ListPak city index', href: 'https://www.listpak.com/cities' },
+      { label: 'ListPak city index', href: '/cities/' },
       { label: 'Google structured-data guidance', href: 'https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data' }
     ]
   },
@@ -393,8 +393,8 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
       }
     ],
     sources: [
-      { label: 'ListPak professional directory', href: 'https://www.listpak.com/professionals' },
-      { label: 'ListPak verification policy', href: 'https://www.listpak.com/verification-policy' },
+      { label: 'ListPak professional directory', href: '/professionals/' },
+      { label: 'ListPak verification policy', href: '/verification-policy/' },
       { label: 'Google author markup guidance', href: 'https://developers.google.com/search/docs/appearance/structured-data/article' }
     ]
   },
@@ -433,7 +433,7 @@ export const NEW_BLOG_CONTENT: Record<string, BlogContentDocument> = {
       }
     ],
     sources: [
-      { label: 'ListPak business listing guide', href: 'https://www.listpak.com/blog/how-to-list-business-free-listpak-guide' },
+      { label: 'ListPak business listing guide', href: '/blog/how-to-list-business-free-listpak-guide/' },
       { label: 'Google helpful content guidance', href: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' },
       { label: 'Google structured-data guidance', href: 'https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data' }
     ]

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | ListPak Pakistan Business Directory',
   description: 'Read the ListPak privacy policy. Learn how we collect, store, and protect your data, including Google AdSense advertising cookie disclosures and GDPR compliance.',
   alternates: {
-    canonical: 'https://www.listpak.com/privacy',
+    canonical: 'https://listpak.com/privacy/',
   },
   robots: { index: true, follow: true },
 }
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
 
         <div className="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-6">
           <p>
-            At <strong>ListPak</strong> (accessible via <a href="https://www.listpak.com" className="text-blue-600 hover:underline">https://www.listpak.com</a>), the privacy and protection of our users, business owners, professionals, and visitors is of paramount importance. This Privacy Policy describes the types of personal and business information collected, recorded, and utilized by ListPak, as well as the safeguards and rights available to you.
+            At <strong>ListPak</strong> (accessible via <a href="https://listpak.com/" className="text-blue-600 hover:underline">https://listpak.com/</a>), the privacy and protection of our users, business owners, professionals, and visitors is of paramount importance. This Privacy Policy describes the types of personal and business information collected, recorded, and utilized by ListPak, as well as the safeguards and rights available to you.
           </p>
           <p>
             If you have questions or require more information about our Privacy Policy, please contact our administrative team at <a href="mailto:admin@listpak.com" className="text-blue-600 hover:underline">admin@listpak.com</a>.

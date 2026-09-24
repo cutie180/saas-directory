@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Cookie Policy | ListPak - Pakistan Business Directory',
   description: 'Understand how ListPak uses cookies, web analytics, and Google AdSense advertising tracking technologies to provide a secure and customized experience.',
   alternates: {
-    canonical: 'https://www.listpak.com/cookie-policy',
+    canonical: 'https://listpak.com/cookie-policy/',
   },
   robots: { index: true, follow: true },
 }
@@ -27,7 +27,7 @@ export default function CookiePolicyPage() {
 
           <div className="space-y-6 text-sm text-slate-600 leading-relaxed">
             <p>
-              This Cookie Policy explains how <strong>ListPak</strong> (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) uses cookies, web beacons, and similar tracking technologies when you visit our website at <a href="https://www.listpak.com" className="text-blue-600 underline">https://www.listpak.com</a>. It outlines the specific types of cookies used, why they are deployed, and how you can manage your preferences at any time.
+              This Cookie Policy explains how <strong>ListPak</strong> (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) uses cookies, web beacons, and similar tracking technologies when you visit our website at <a href="https://listpak.com/" className="text-blue-600 underline">https://listpak.com/</a>. It outlines the specific types of cookies used, why they are deployed, and how you can manage your preferences at any time.
             </p>
 
             <h2 className="text-xl font-bold text-slate-900 pt-4">1. What Are Cookies?</h2>

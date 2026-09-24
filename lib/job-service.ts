@@ -9,7 +9,7 @@ import { sanitizeText, sanitizeUrl } from './sanitizer'
 
 let memoryJobsCache: JobItem[] = [...MOCK_JOBS]
 
-function isExpiredJob(job: JobItem): boolean {
+export function isExpiredJob(job: JobItem): boolean {
   if (!job.deadline || /open until filled/i.test(job.deadline)) return false
   const deadline = new Date(job.deadline)
   return !Number.isNaN(deadline.getTime()) && deadline.getTime() < Date.now()
@@ -132,7 +132,7 @@ export function normalizeJobDoc(docId: string, data: any): JobItem {
   }
 }
 
-export const getJobBySlug = cache(async function getJobBySlug(idOrSlug: string): Promise<JobItem | null> {
+export const getJobBySlug = cache(async function getJobBySlug(idOrSlug: string, allowExpired: boolean = false): Promise<JobItem | null> {
   const raw = decodeURIComponent(idOrSlug || '').trim()
   const normalized = raw.toLowerCase()
   if (!normalized) return null
@@ -144,7 +144,7 @@ export const getJobBySlug = cache(async function getJobBySlug(idOrSlug: string):
     if (!snap.empty) {
       const docSnap = snap.docs[0]
       const item = normalizeJobDoc(docSnap.id, docSnap.data())
-      if (item.status === 'approved' && !isExpiredJob(item)) {
+      if (item.status === 'approved' && (allowExpired || !isExpiredJob(item))) {
         memoryJobsCache = [
           item,
           ...memoryJobsCache.filter(j => j.slug?.toLowerCase() !== normalized && j.id !== item.id)
@@ -158,7 +158,7 @@ export const getJobBySlug = cache(async function getJobBySlug(idOrSlug: string):
       const direct = await getDocs(query(collection(db, 'jobs'), where('id', '==', raw), limit(1)))
       if (!direct.empty) {
         const item = normalizeJobDoc(direct.docs[0].id, direct.docs[0].data())
-        if (item.status === 'approved' && !isExpiredJob(item)) return item
+        if (item.status === 'approved' && (allowExpired || !isExpiredJob(item))) return item
       }
     } catch (_) {}
   } catch (err) {
@@ -167,7 +167,7 @@ export const getJobBySlug = cache(async function getJobBySlug(idOrSlug: string):
 
   // 2. Memory cache check
   const cached = memoryJobsCache.find(j => j.id === raw || j.slug?.toLowerCase() === normalized)
-  if (cached && (cached.status || 'approved') === 'approved' && !isExpiredJob(cached)) {
+  if (cached && (cached.status || 'approved') === 'approved' && (allowExpired || !isExpiredJob(cached))) {
     return cached
   }
 

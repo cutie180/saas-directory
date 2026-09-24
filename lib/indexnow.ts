@@ -4,7 +4,7 @@
  */
 
 export const INDEXNOW_API_KEY = '43b9d5f2de814afe8a49c2551466070d'
-export const INDEXNOW_HOST = 'www.listpak.com'
+export const INDEXNOW_HOST = 'listpak.com'
 export const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_API_KEY}.txt`
 
 export async function submitToIndexNow(urls: string | string[]): Promise<{ success: boolean; status: number; message: string }> {

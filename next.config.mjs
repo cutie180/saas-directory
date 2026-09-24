@@ -49,6 +49,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.imrandigitals.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'imrandigitals.com',
+      },
     ],
   },
 
@@ -82,6 +90,22 @@ const nextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
         ],
+      },
+    ]
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.listpak.com',
+          },
+        ],
+        destination: 'https://listpak.com/:path*',
+        permanent: true,
       },
     ]
   },

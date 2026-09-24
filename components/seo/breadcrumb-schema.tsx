@@ -9,14 +9,15 @@ interface BreadcrumbItem {
 
 export function generateBreadcrumbs(pathname: string): BreadcrumbItem[] {
   const breadcrumbs: BreadcrumbItem[] = [
-    { name: 'Home', url: 'https://www.listpak.com' }
+    { name: 'Home', url: 'https://listpak.com/' }
   ]
 
   const pathSegments = pathname.split('/').filter(segment => segment)
-  let currentUrl = 'https://www.listpak.com'
+  let currentUrl = 'https://listpak.com'
 
-  pathSegments.forEach((segment, index) => {
+  pathSegments.forEach((segment) => {
     currentUrl += `/${segment}`
+    const finalUrl = `${currentUrl}/`
     
     let name = segment
       .split('-')
@@ -32,7 +33,7 @@ export function generateBreadcrumbs(pathname: string): BreadcrumbItem[] {
     if (segment === 'locations') name = 'Locations'
     if (segment === 'cities') name = 'Cities'
 
-    breadcrumbs.push({ name, url: currentUrl })
+    breadcrumbs.push({ name, url: finalUrl })
   })
 
   return breadcrumbs

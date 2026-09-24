@@ -204,7 +204,7 @@ export default function ProfessionalDashboardPage() {
 
   const handleCopyUrl = () => {
     if (!profile) return
-    const url = `https://www.listpak.com/professionals/${profile.username}`
+    const url = `https://listpak.com/professionals/${profile.username}/`
     navigator.clipboard.writeText(url)
     setCopiedLink(true)
     toast.success('Public profile URL copied to clipboard!')

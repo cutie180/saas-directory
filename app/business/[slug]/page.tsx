@@ -3,12 +3,18 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Phone, Mail, MapPin, MessageCircle, ShieldCheck, Star, Clock, CheckCircle2, Building2, Briefcase, Award, Sparkles, Globe, ExternalLink } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle, ShieldCheck, Star, Clock, CheckCircle2, Building2, Briefcase, Award, Sparkles, Globe, ExternalLink, ArrowRight } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import { getAllBusinesses, getBusinessBySlug } from '@/lib/db-service'
 import LazyMap from '@/components/business/lazy-map'
 import { BusinessHeroActions, BusinessReviewsSection } from './business-interactive-actions'
+import {
+  toCanonicalUrl,
+  normalizeBusinessCategoryId,
+  normalizeCitySlug,
+  VERIFICATION_DISCLAIMER
+} from '@/lib/directory-helpers'
 
 export const dynamicParams = true
 export const revalidate = 0
@@ -30,9 +36,9 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 
-  const title = biz?.metaTitle || `${businessName}${biz?.category ? ` – ${biz.category}` : ''}${biz?.city ? ` in ${biz.city}` : ''} | ListPak Pakistan`
-  const description = biz?.metaDescription || (biz ? `${biz.description.slice(0, 160)}... Review category, services, location, and verified contact details.` : `View business details, phone number, location, and contact information for ${businessName} on the ListPak business directory.`)
-  const canonicalUrl = biz?.canonical || `https://www.listpak.com/business/${slug}`
+  const title = biz?.metaTitle || `${businessName}${biz?.category ? ` – ${biz.category}` : ''}${biz?.city ? ` in ${biz.city}` : ''} | ListPak`
+  const description = biz?.metaDescription || (biz ? `${biz.name} is a verified ${biz.category} listing in ${biz.city}, Pakistan. Find location address, phone number, operating hours, and services on ListPak.` : `View business details, phone number, location, and contact information for ${businessName} on the ListPak business directory.`)
+  const canonicalUrl = toCanonicalUrl(`business/${slug}`)
 
   return {
     title,
@@ -53,6 +59,11 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
       type: 'website',
       images: biz?.coverImage ? [{ url: biz.coverImage, alt: businessName }] : undefined,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   }
 }
 
@@ -65,6 +76,16 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
   if (!biz) {
     notFound()
   }
+
+  const allBiz = await getAllBusinesses(false)
+  const catId = normalizeBusinessCategoryId(biz)
+  const citySlug = normalizeCitySlug(biz.city)
+  const canonicalUrl = toCanonicalUrl(`business/${slug}`)
+
+  // Related businesses in same category or city
+  const relatedBusinesses = allBiz
+    .filter(b => b.slug !== biz.slug && (normalizeBusinessCategoryId(b) === catId || normalizeCitySlug(b.city) === citySlug))
+    .slice(0, 4)
 
   const reviewsList = biz.reviews || []
 
@@ -81,8 +102,8 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
     '@type': biz.schemaType || 'LocalBusiness',
     name: biz.name,
     description: biz.metaDescription || biz.description,
-    url: biz.canonical || `https://www.listpak.com/business/${slug}`,
-    sameAs: biz.website && biz.website !== 'https://www.listpak.com' ? [biz.website] : undefined,
+    url: canonicalUrl,
+    sameAs: biz.website && biz.website !== 'https://listpak.com' && biz.website !== 'https://www.listpak.com' ? [biz.website] : undefined,
     telephone: intlPhone,
     email: biz.email,
     image: biz.coverImage || biz.logo,
@@ -158,19 +179,31 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.listpak.com/',
+        item: 'https://listpak.com/',
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: biz.category || 'Business Directory',
-        item: `https://www.listpak.com/category/${biz.categoryId || 'services'}`,
+        name: 'Categories',
+        item: 'https://listpak.com/categories/',
       },
       {
         '@type': 'ListItem',
         position: 3,
+        name: biz.category || 'Business Directory',
+        item: toCanonicalUrl(`category/${catId}`),
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: biz.city,
+        item: toCanonicalUrl(`city/${citySlug}`),
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
         name: biz.name,
-        item: biz.canonical || `https://www.listpak.com/business/${slug}`,
+        item: canonicalUrl,
       },
     ],
   }
@@ -178,11 +211,15 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans">
       <Navbar />
-      <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500">
+      <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500 flex items-center flex-wrap gap-1.5">
         <Link href="/" className="hover:text-blue-700 underline">Home</Link>
-        <span className="mx-2">/</span>
-        <Link href={`/category/${biz.categoryId || 'services'}`} className="hover:text-blue-700 underline">{biz.category || 'Business Directory'}</Link>
-        <span className="mx-2">/</span>
+        <span>/</span>
+        <Link href="/categories" className="hover:text-blue-700 underline">Categories</Link>
+        <span>/</span>
+        <Link href={`/category/${catId}`} className="hover:text-blue-700 underline">{biz.category || 'Directory'}</Link>
+        <span>/</span>
+        <Link href={`/city/${citySlug}`} className="hover:text-blue-700 underline">{biz.city}</Link>
+        <span>/</span>
         <span className="text-slate-800 font-medium">{biz.name}</span>
       </nav>
 
@@ -299,6 +336,16 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
 
       {/* Main Profile Body */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-8">
+        
+        {/* Verification Info Callout */}
+        {biz.verified && (
+          <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3 text-xs text-emerald-900 shadow-2xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong>Verified Profile:</strong> {VERIFICATION_DISCLAIMER}
+            </p>
+          </div>
+        )}
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
@@ -545,9 +592,103 @@ export default async function BusinessPage(props: { params: Promise<{ slug: stri
                 ))}
               </div>
             </div>
+
+            {/* Directory Navigation Links */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-3">
+              <h2 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
+                <Building2 className="w-4 h-4 text-blue-600" />
+                <span>Explore Directory</span>
+              </h2>
+              <div className="space-y-2 text-xs">
+                <Link
+                  href={`/category/${catId}/${citySlug}`}
+                  className="p-2.5 rounded-xl bg-blue-50/70 border border-blue-100 text-blue-700 font-bold hover:bg-blue-100 transition-colors flex items-center justify-between"
+                >
+                  <span>{biz.category} in {biz.city}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href={`/city/${citySlug}`}
+                  className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 font-semibold hover:bg-slate-100 transition-colors flex items-center justify-between"
+                >
+                  <span>All Businesses in {biz.city}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href={`/category/${catId}`}
+                  className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 font-semibold hover:bg-slate-100 transition-colors flex items-center justify-between"
+                >
+                  <span>All {biz.category} in Pakistan</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
           </div>
 
         </div>
+
+        {/* Related Businesses Section */}
+        {relatedBusinesses.length > 0 && (
+          <section className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 space-y-4 shadow-xs">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-blue-600" />
+                <span>Related Businesses in {biz.city} & {biz.category}</span>
+              </h2>
+              <Link href={`/category/${catId}/${citySlug}`} className="text-xs font-bold text-blue-600 hover:underline">
+                View All in {biz.city} &rarr;
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+              {relatedBusinesses.map((rel) => (
+                <div
+                  key={rel.id}
+                  className="p-4 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:shadow-xs transition-all flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2.5">
+                      <Image
+                        src={rel.logo}
+                        alt={rel.name}
+                        width={36}
+                        height={36}
+                        loading="lazy"
+                        sizes="36px"
+                        className="w-9 h-9 rounded-lg object-cover border border-slate-100 shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <Link
+                          href={`/business/${rel.slug}`}
+                          className="font-bold text-slate-900 text-xs hover:text-blue-600 truncate block"
+                        >
+                          {rel.name}
+                        </Link>
+                        <p className="text-[11px] text-slate-500">{rel.city}</p>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-slate-600 line-clamp-2 leading-relaxed">
+                      {rel.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                    <span className="text-amber-600 font-bold">
+                      {rel.reviewCount > 0 && rel.rating > 0 ? `★ ${rel.rating}` : 'Active'}
+                    </span>
+                    <Link
+                      href={`/business/${rel.slug}`}
+                      className="font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5"
+                    >
+                      <span>View</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Database Customer Reviews */}
         <BusinessReviewsSection

@@ -1,11 +1,15 @@
 import { MetadataRoute } from 'next'
-import { CATEGORIES, CITIES, BusinessItem, ProfessionalItem, CompanyItem, JobItem } from '@/lib/data'
+import { CATEGORIES, CITIES, TOP_CITIES, BusinessItem, ProfessionalItem, CompanyItem, JobItem } from '@/lib/data'
 import { getAllBusinesses } from '@/lib/db-service'
 import { getAllProfessionals } from '@/lib/professional-service'
 import { getAllCompanies } from '@/lib/company-service'
 import { getAllJobs } from '@/lib/job-service'
 import { getPublicJobPath } from '@/lib/job-url'
 import { BLOG_POSTS } from '@/lib/blog-data'
+import {
+  getPopulatedCategoryCityPairs,
+  normalizeCitySlug
+} from '@/lib/directory-helpers'
 
 export const revalidate = 3600 // Revalidate sitemap XML every hour
 
@@ -16,7 +20,7 @@ function safeDate(input?: string | null, fallback: Date = new Date()): Date {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.listpak.com'
+  const baseUrl = 'https://listpak.com'
   const currentDate = new Date()
   const canonicalUrl = (path: string) => path === '/' ? `${baseUrl}/` : `${baseUrl}/${path.replace(/^\/+|\/+$/g, '')}/`
 
@@ -28,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1.0,
   }
 
-  // 2. Core Portal Pages (Excludes /search as internal search is noindexed)
+  // 2. Core Portal Hubs
   const corePages = [
     '/categories',
     '/cities',
@@ -56,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // 3. Policy Pages
+  // 3. Policy & Trust Pages
   const policyPages = [
     '/privacy',
     '/terms',
@@ -77,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.3,
   }))
 
-  // 4. Industry Categories
+  // 4. Industry Categories (All 26)
   const categoryRoutes = CATEGORIES.map((cat) => ({
     url: canonicalUrl(`/category/${cat.id}`),
     lastModified: currentDate,
@@ -85,15 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  // 5. City Hub Pages
-  const cityRoutes = CITIES.map((city) => ({
-    url: canonicalUrl(`/city/${encodeURIComponent(city.toLowerCase().trim().replace(/\s+/g, '-'))}`),
-    lastModified: currentDate,
-    changeFrequency: 'daily' as const,
-    priority: 0.9,
-  }))
-
-  // 6. All Approved Business Pages
+  // Fetch approved entities
   let rawBusinesses: BusinessItem[] = []
   try {
     rawBusinesses = await getAllBusinesses(false)
@@ -101,6 +97,59 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching businesses for sitemap:', err)
   }
 
+  let rawJobs: JobItem[] = []
+  try {
+    rawJobs = await getAllJobs(false)
+  } catch (err) {
+    console.error('Error fetching jobs for sitemap:', err)
+  }
+
+  let rawProfessionals: ProfessionalItem[] = []
+  try {
+    rawProfessionals = await getAllProfessionals(false)
+  } catch (err) {
+    console.error('Error fetching professionals for sitemap:', err)
+  }
+
+  let rawCompanies: CompanyItem[] = []
+  try {
+    rawCompanies = await getAllCompanies(false)
+  } catch (err) {
+    console.error('Error fetching companies for sitemap:', err)
+  }
+
+  // 5. Active Cities (Only index cities that have real businesses, jobs, or professionals)
+  const activeCitySlugs = new Set<string>()
+  rawBusinesses.forEach(b => {
+    if (b.city) activeCitySlugs.add(normalizeCitySlug(b.city))
+    if (b.cities) b.cities.forEach(c => activeCitySlugs.add(normalizeCitySlug(c)))
+  })
+  rawJobs.forEach(j => {
+    if (j.city) activeCitySlugs.add(normalizeCitySlug(j.city))
+  })
+  rawProfessionals.forEach(p => {
+    if (p.city) activeCitySlugs.add(normalizeCitySlug(p.city))
+  })
+  activeCitySlugs.delete('pakistan')
+  activeCitySlugs.delete('remote')
+
+  const cityRoutes = Array.from(activeCitySlugs).map((citySlug) => ({
+    url: canonicalUrl(`/city/${citySlug}`),
+    lastModified: currentDate,
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
+  }))
+
+  // 6. Populated Category + City Landing Pages (Only combinations with real listings)
+  const populatedCategoryCityPairs = getPopulatedCategoryCityPairs(rawBusinesses)
+  const categoryCityRoutes = populatedCategoryCityPairs.map((pair) => ({
+    url: canonicalUrl(`/category/${pair.categorySlug}/${pair.citySlug}`),
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
+
+  // 7. Approved Business Pages
   const approvedBusinesses = rawBusinesses.filter(b => 
     (b.status || 'approved') === 'approved' && 
     Boolean(b.slug && b.slug.trim())
@@ -112,13 +161,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  // 7. All Approved Job Openings
-  let rawJobs: JobItem[] = []
-  try {
-    rawJobs = await getAllJobs(false)
-  } catch (err) {
-    console.error('Error fetching jobs for sitemap:', err)
-  }
+  // 8. Active Approved Job Openings (Excludes expired vacancies)
   const approvedJobs = rawJobs.filter((job) => 
     (job.status || 'approved') === 'approved' && 
     Boolean(job.slug || job.id)
@@ -130,13 +173,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  // 8. All Approved Companies
-  let rawCompanies: CompanyItem[] = []
-  try {
-    rawCompanies = await getAllCompanies(false)
-  } catch (err) {
-    console.error('Error fetching companies for sitemap:', err)
-  }
+  // 9. Approved Companies
   const approvedCompanies = rawCompanies.filter((comp) => 
     (comp.status || 'approved') === 'approved' && 
     Boolean(comp.slug && comp.slug.trim())
@@ -148,13 +185,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  // 9. All Approved Professional Profiles
-  let rawProfessionals: ProfessionalItem[] = []
-  try {
-    rawProfessionals = await getAllProfessionals(false)
-  } catch (err) {
-    console.error('Error fetching professionals for sitemap:', err)
-  }
+  // 10. Approved Professional Profiles
   const approvedPros = rawProfessionals.filter((pro) => 
     (pro.status || 'approved') === 'approved' && 
     (pro.profileStatus || 'APPROVED') === 'APPROVED' && 
@@ -167,7 +198,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  // 10. Blog Post Pages
+  // 11. Blog Post Pages
   const rawPostsList = Object.values(BLOG_POSTS)
   const blogPostsBySlug = new Map<string, { slug: string; date: string }>()
   for (const post of rawPostsList) {
@@ -183,12 +214,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // 11. City Prayer Times Pages (SEO Target)
-  const prayerCityRoutes = CITIES.map((city) => ({
+  // 12. City Prayer Times Pages for Top Pakistani Cities
+  const prayerCityRoutes = TOP_CITIES.map((city) => ({
     url: canonicalUrl(`/prayer-times-${city.toLowerCase().replace(/\s+/g, '-')}-today`),
     lastModified: currentDate,
     changeFrequency: 'daily' as const,
-    priority: 0.8,
+    priority: 0.7,
   }))
 
   // Combine all routes
@@ -198,6 +229,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...policyPages,
     ...categoryRoutes,
     ...cityRoutes,
+    ...categoryCityRoutes,
     ...prayerCityRoutes,
     ...businessRoutes,
     ...jobRoutes,

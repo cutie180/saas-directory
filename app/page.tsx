@@ -15,18 +15,23 @@ import { getPublicJobPath } from '@/lib/job-url'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "ListPak: Pakistan Digital Business and Enterprise Ecosystem",
-  description: "Discover businesses, services, companies, jobs, and professionals across Pakistan by category and city.",
+  title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+  description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
   alternates: {
-    canonical: 'https://www.listpak.com/',
+    canonical: 'https://listpak.com/',
   },
   openGraph: {
-    title: "ListPak: Pakistan Digital Business Ecosystem",
-    description: "Discover businesses, local services, companies, active jobs, and professional profiles across Pakistan.",
-    url: 'https://www.listpak.com/',
+    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    url: 'https://listpak.com/',
     siteName: 'ListPak',
     locale: 'en_PK',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
   },
 }
 
@@ -116,10 +121,10 @@ export default async function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'ListPak',
-    url: 'https://www.listpak.com/',
+    url: 'https://listpak.com/',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://www.listpak.com/search?q={search_term_string}',
+      target: 'https://listpak.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     },
     description: 'Pakistan digital business platform for local businesses, job listings, and verified professionals'

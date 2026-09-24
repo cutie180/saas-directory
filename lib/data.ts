@@ -459,7 +459,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "name": "Crust & Crave",
     "metaTitle": "Crust & Crave – Fast Food & Chinese Restaurant in Bahria Town Karachi | ListPak",
     "metaDescription": "Crust & Crave is a top fast food and Chinese restaurant in Precinct 10A, Bahria Town Karachi. Dine-in, takeaway, and fast home delivery available.",
-    "canonical": "https://www.listpak.com/business/crust-crave-karachi/",
+    "canonical": "https://listpak.com/business/crust-crave-karachi/",
     "introduction": "Crust & Crave is a premier fast food and casual dining restaurant located in Precinct 10A, Bahria Town Karachi. Serving gourmet burgers, thin-crust pizza, crispy fried specialties, flavorful Chinese dishes, and continental cuisine.",
     "category": "Restaurants & Food",
     "categoryId": "restaurants",
@@ -520,7 +520,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "name": "Shadab Group Real Estate & Builders",
     "metaTitle": "Shadab Group Real Estate & Builders | Real Estate in Sargodha",
     "metaDescription": "Real estate and construction services in Sargodha, including property consultancy, investment guidance, home renovation and commercial construction.",
-    "canonical": "https://www.listpak.com/business/shadab-group-real-estate-builders/",
+    "canonical": "https://listpak.com/business/shadab-group-real-estate-builders/",
     "introduction": "Shadab Group Real Estate & Builders is a real estate and construction company in Sargodha, Pakistan, providing real estate advisory and consultancy, construction services, commercial construction, and property investment consultancy. Established in 1990, the business serves customers looking for property and construction solutions in the Sargodha area.",
     "category": "Real Estate",
     "categoryId": "real-estate",
@@ -547,7 +547,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 305 7860084",
     "whatsapp": "923057860084",
     "email": "shadabgrouprealestate@gmail.com",
-    "website": "https://www.listpak.com/business/shadab-group-real-estate-builders/",
+    "website": "https://listpak.com/business/shadab-group-real-estate-builders/",
     "address": "Shop #10–11, Shadab Real Estate, Opposite Community Office, Gulberg City, Sargodha, Pakistan",
     "locations": [
       {
@@ -658,7 +658,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 61 4581234",
     "whatsapp": "+92 301 7776655",
     "email": "artisan@multanbluepottery.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Gulgasht Colony Commercial Area",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -790,7 +790,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 81 2824321",
     "whatsapp": "+92 321 4443322",
     "email": "wholesale@quettadryfruits.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Jinnah Road near Cantt",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -1104,7 +1104,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 22 2785566",
     "whatsapp": "+92 300 9334455",
     "email": "rabri@hyderabadsweets.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Latifabad Block 2",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -1329,7 +1329,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "03038548545",
     "whatsapp": "03038548545",
     "email": "contact@business.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "State Bank of Pakistan Islamabad",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -1488,7 +1488,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "03038548545",
     "whatsapp": "03038548545",
     "email": "contact@business.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "State Bank of Pakistan Islamabad",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -5681,7 +5681,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 55 3841122",
     "whatsapp": "+92 333 8889900",
     "email": "sales@gujranwalamachinery.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "G.T. Road Industrial Zone",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -5764,7 +5764,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 41 8543210",
     "whatsapp": "+92 345 6789012",
     "email": "sales@faisalabadtextile.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "D-Ground Commercial Plaza",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -5802,7 +5802,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 91 2598765",
     "whatsapp": "+92 312 3456789",
     "email": "orders@peshawarichappal.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Khyber Bazaar",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -5840,7 +5840,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "+92 51 5731122",
     "whatsapp": "+92 300 8556677",
     "email": "deal@pindirealtors.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Phase 4, Bahria Town",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -5878,7 +5878,7 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "phone": "0307-5553045",
     "whatsapp": "+92-42-37521777",
     "email": "contact@business.pk",
-    "website": "https://www.listpak.com",
+    "website": "https://listpak.com",
     "address": "Band Road East, Dholanwal Nagra Town, Lahore, Punjab, Pakistan",
     "locations": [],
     "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
@@ -6057,7 +6057,7 @@ export const MOCK_JOBS: JobItem[] = [
     "applicationMethod": "both",
     "applicationEmail": "careers@listpak.com",
     "applicationWhatsapp": "+923345636230",
-    "applicationWebsite": "https://www.listpak.com/jobs/remote-seo-internship"
+    "applicationWebsite": "https://listpak.com/jobs/remote-seo-internship"
   },
   {
     "id": "CJhXp8M0QIa6Ava9bO02",
@@ -6086,7 +6086,7 @@ export const MOCK_JOBS: JobItem[] = [
     "isFeatured": false,
     "applicationEmail": "jobs@listpak.com",
     "applicationWhatsapp": "+923000000000",
-    "applicationWebsite": "https://www.listpak.com"
+    "applicationWebsite": "https://listpak.com"
   },
   {
     "id": "b29Lp34auuEqNNoyNHOK",
@@ -6115,7 +6115,7 @@ export const MOCK_JOBS: JobItem[] = [
     "isFeatured": false,
     "applicationEmail": "jobs@listpak.com",
     "applicationWhatsapp": "+923000000000",
-    "applicationWebsite": "https://www.listpak.com"
+    "applicationWebsite": "https://listpak.com"
   },
   {
     "id": "job-accountant-barlas-sale-service",
@@ -7247,7 +7247,7 @@ export const MOCK_JOBS: JobItem[] = [
     "isFeatured": false,
     "applicationEmail": "jobs@listpak.com",
     "applicationWhatsapp": "+923000000000",
-    "applicationWebsite": "https://www.listpak.com"
+    "applicationWebsite": "https://listpak.com"
   },
   {
     "id": "umfFJXlDQrEkZyxNtdpl",
@@ -7276,11 +7276,87 @@ export const MOCK_JOBS: JobItem[] = [
     "isFeatured": false,
     "applicationEmail": "jobs@listpak.com",
     "applicationWhatsapp": "+923000000000",
-    "applicationWebsite": "https://www.listpak.com"
+    "applicationWebsite": "https://listpak.com"
   }
 ]
 
 export const MOCK_PROFESSIONALS: ProfessionalItem[] = [
+  {
+    "id": "pro-muhammad-imran",
+    "username": "muhammad-imran-multan",
+    "slug": "muhammad-imran-multan",
+    "name": "Muhammad Imran",
+    "fullName": "Muhammad Imran",
+    "title": "Founder & CEO, ListPak | Full-Stack Web & AI Developer",
+    "profession": "Software Engineer & Tech Entrepreneur",
+    "category": "Technology & IT Services",
+    "specialization": "Next.js, Full-Stack Architecture, AI Integration & Technical SEO",
+    "city": "Multan",
+    "province": "Punjab",
+    "country": "Pakistan",
+    "address": "Multan, Punjab, Pakistan",
+    "googleMapUrl": "",
+    "rating": 5,
+    "reviewCount": 12,
+    "hourlyRate": "Custom Architecture & Advisory",
+    "availability": "Available for High-Scale Enterprise & Advisory",
+    "gender": "Male",
+    "avatar": "https://www.imrandigitals.com/opengraph.jpg",
+    "coverImage": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+    "bio": "Muhammad Imran is the Founder and CEO of ListPak (https://listpak.com) and Imran Digitals (https://www.imrandigitals.com/). He is a seasoned full-stack web and AI developer specializing in Next.js, React, Node.js, and technical SEO.",
+    "about": "Muhammad Imran is an accomplished Pakistani software engineer, full-stack web application architect, and technology entrepreneur. As the Founder and Chief Executive Officer (CEO) of ListPak (https://listpak.com), he conceptualized and engineered Pakistan's leading 100% free business directory and local discovery platform, helping thousands of Pakistani small and medium businesses connect with consumers without subscription fees or registration barriers.\n\nMuhammad Imran also leads Imran Digitals (https://www.imrandigitals.com/), a boutique software engineering and technical SEO agency that builds high-performance Next.js platforms, generative AI automation tools, and scalable web applications for domestic and international clients.\n\n### Core Technical Expertise\n- Next.js 16, React & TypeScript Full-Stack Development\n- Node.js, Express & MERN Stack Engineering\n- Generative Engine Optimization (GEO) & Technical SEO\n- Artificial Intelligence, LLM Integrations & Agentic Automation\n- Cloud Architecture, Firebase, PostgreSQL & Real-Time Data Systems\n- Directory, Marketplace & High-Traffic Web Platforms\n\n### Executive Leadership & Ventures\nAs the CEO of ListPak, Muhammad Imran oversees technical product strategy, search engine performance, and community-first features that serve businesses across 150+ Pakistani cities. To explore his portfolio or discuss technical collaborations, visit his official website at https://www.imrandigitals.com/ or connect via LinkedIn at https://www.linkedin.com/in/muhammad-imran-972364373/.",
+    "skills": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "TypeScript",
+      "MERN Stack",
+      "Technical SEO",
+      "Generative Engine Optimization",
+      "Artificial Intelligence",
+      "Firebase",
+      "PostgreSQL"
+    ],
+    "experienceYears": 6,
+    "verified": true,
+    "isFeatured": true,
+    "status": "approved",
+    "profileStatus": "APPROVED",
+    "verificationStatus": "VERIFIED",
+    "phone": "+923019316123",
+    "whatsapp": "923019316123",
+    "email": "mi6062610@gmail.com",
+    "website": "https://www.imrandigitals.com/",
+    "linkedin": "https://www.linkedin.com/in/muhammad-imran-972364373/",
+    "github": "https://github.com/muhammadimran9",
+    "twitter": "",
+    "servicesOffered": [
+      "Full-Stack Web App Development",
+      "Enterprise Next.js Architecture",
+      "Technical SEO & GEO Optimization",
+      "AI & Automation Engineering",
+      "Business Directory Development"
+    ],
+    "reviews": [
+      {
+        "rating": 5,
+        "date": "1 week ago",
+        "comment": "Visionary engineer and founder of ListPak. Exceptional expertise in Next.js, MERN stack, and local SEO in Pakistan.",
+        "userName": "Kamran Siddiqui",
+        "id": "rev-mi-1"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Who is Muhammad Imran?",
+        "answer": "Muhammad Imran is the Founder and CEO of ListPak (https://listpak.com) and the founder of Imran Digitals (https://www.imrandigitals.com/). He is a Pakistani full-stack web and AI developer."
+      },
+      {
+        "question": "What is Muhammad Imran's official website?",
+        "answer": "Muhammad Imran's official portfolio website is https://www.imrandigitals.com/."
+      }
+    ]
+  },
   {
     "id": "pro-arif-habib",
     "username": "arif-habib-karachi",

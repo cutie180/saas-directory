@@ -7,14 +7,18 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions (FAQs) | ListPak',
   description: 'Find answers to common questions about listing your business, verifying NTN credentials, posting jobs, and searching companies on ListPak.',
   alternates: {
-    canonical: 'https://www.listpak.com/faqs',
+    canonical: 'https://listpak.com/faqs/',
   },
 }
 
 const faqs = [
   {
+    q: "Who is the founder and CEO of ListPak?",
+    a: "Muhammad Imran is the Founder and Chief Executive Officer (CEO) of ListPak (https://listpak.com). He is a Pakistani full-stack web and AI developer, software engineer, and technical SEO specialist who also created Imran Digitals (https://www.imrandigitals.com/). He established ListPak in January 2024 to provide 100% free online discoverability for Pakistani businesses across 150+ cities."
+  },
+  {
     q: "Is listing a business on ListPak free?",
-    a: "Yes! Creating a basic business listing on ListPak is 100% free forever. It includes your business name, address, contact phone, WhatsApp number, business category, and description."
+    a: "Yes! Creating a business listing on ListPak is 100% free forever. It includes your business name, address, contact phone, direct WhatsApp number, business category, and description with zero registration fees or hidden subscription costs."
   },
   {
     q: "How long does it take for my business to appear in search results?",
@@ -23,6 +27,10 @@ const faqs = [
   {
     q: "How do I get a Verified Business Badge on ListPak?",
     a: "Verification requires telephone/WhatsApp verification by our support desk. You can request verification via the Add Business form or by contacting our team."
+  },
+  {
+    q: "Where can I learn more about ListPak's founder and leadership?",
+    a: "You can read about Founder & CEO Muhammad Imran's background, engineering stack, and vision on the official ListPak About page (https://listpak.com/about/) or visit his official website at https://www.imrandigitals.com/."
   },
   {
     q: "Can I post job openings for my Pakistani company?",

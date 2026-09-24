@@ -37,13 +37,13 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     title,
     description,
     alternates: {
-      canonical: `https://www.listpak.com/companies/${slug}`,
+      canonical: `https://listpak.com/companies/${slug}/`,
     },
     openGraph: {
       title,
       description,
       siteName: 'ListPak',
-      url: `https://www.listpak.com/companies/${slug}`,
+      url: `https://listpak.com/companies/${slug}/`,
       locale: 'en_PK',
       type: 'website',
       images: company?.logo ? [{ url: company.logo, alt: name }] : undefined,
@@ -74,7 +74,7 @@ export default async function CompanyDetailPage(props: { params: Promise<{ slug:
     '@type': 'Organization',
     name: company.name,
     description: company.description,
-    url: company.website || `https://www.listpak.com/companies/${company.slug}`,
+    url: company.website || `https://listpak.com/companies/${company.slug}/`,
     logo: company.logo,
     address: {
       '@type': 'PostalAddress',

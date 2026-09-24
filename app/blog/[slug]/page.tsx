@@ -30,13 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description,
     keywords: post ? [post.focusKeyword, 'Business Directory Pakistan', 'Pakistan Business Directory', 'Local Business Directory', 'Company Directory Pakistan'] : [],
     alternates: {
-      canonical: `https://www.listpak.com/blog/${slug}`,
+      canonical: `https://listpak.com/blog/${slug}/`,
     },
-    authors: post?.authorName ? [{ name: post.authorName, url: post.authorUrl }] : [{ name: 'ListPak Editorial Team', url: 'https://www.listpak.com/about' }],
+    authors: post?.authorName ? [{ name: post.authorName, url: post.authorUrl }] : [{ name: 'ListPak Editorial Team', url: 'https://listpak.com/about/' }],
     openGraph: {
       title: `${cleanTitle} | ListPak`,
       description,
-      url: `https://www.listpak.com/blog/${slug}`,
+      url: `https://listpak.com/blog/${slug}/`,
       siteName: 'ListPak',
       locale: 'en_PK',
       type: 'article',
@@ -73,17 +73,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     author: {
       '@type': post.authorName ? 'Person' : 'Organization',
       name: post.authorName || 'ListPak Editorial Team',
-      url: post.authorUrl || 'https://www.listpak.com/about',
+      url: post.authorUrl || 'https://listpak.com/about/',
     },
     publisher: {
       '@type': 'Organization',
       name: 'ListPak',
-      logo: 'https://www.listpak.com/logo.png',
+      logo: 'https://listpak.com/logo.png',
     },
     datePublished: publishedDate,
     dateModified: modifiedDate,
-    image: post.image ? [post.image] : ['https://www.listpak.com/logo.png'],
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.listpak.com/blog/${slug}` },
+    image: post.image ? [post.image] : ['https://listpak.com/logo.png'],
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://listpak.com/blog/${slug}/` },
     inLanguage: 'en-PK',
   }
 

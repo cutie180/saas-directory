@@ -6,14 +6,15 @@ import { notFound, redirect } from 'next/navigation'
 import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
-import { getJobBySlug, getAllJobs, getMatchingCandidatesForJob } from '@/lib/job-service'
+import { getJobBySlug, getAllJobs, getMatchingCandidatesForJob, isExpiredJob } from '@/lib/job-service'
 import { 
   Briefcase, MapPin, Building2, Calendar, CheckCircle2, ExternalLink, Mail, 
-  ArrowLeft, ShieldCheck, Globe, Info, Users, Sparkles, UserCheck, Check,
+  ArrowLeft, ArrowRight, ShieldCheck, Globe, Info, Users, Sparkles, UserCheck, Check,
   MessageCircle, Clock, Award, FileText, AlertTriangle
 } from 'lucide-react'
 import JobInteractiveApply from './job-interactive-apply'
 import { getPublicJobPath, getPublicJobSlug } from '@/lib/job-url'
+import { toCanonicalUrl, normalizeCitySlug, VERIFICATION_DISCLAIMER } from '@/lib/directory-helpers'
 
 export const dynamicParams = true
 export const revalidate = 0
@@ -30,28 +31,39 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const params = await props.params
   const idOrSlug = params.id
-  const job = await getJobBySlug(idOrSlug)
+  const job = await getJobBySlug(idOrSlug, true)
 
-  const jobTitle = job ? job.title : 'job openings'
+  const isExpired = job ? isExpiredJob(job) : false
+  const jobTitle = job ? job.title : 'Job Opening'
   const jobCity = job ? job.city : 'Pakistan'
-  const publicPath = job ? getPublicJobPath(job) : `/jobs/${idOrSlug}`
-  const title = job ? `${job.title} at ${job.company} (${job.city}) | ListPak Jobs` : 'Job Vacancy | ListPak Pakistan'
-  const description = job ? `${job.description} Confirm the employer, location, deadline, and application route before applying.` : `Review ${jobTitle} opportunities in ${jobCity} on the ListPak jobs directory.`
+  const publicSlug = job ? getPublicJobSlug(job) : idOrSlug
+  const canonicalUrl = toCanonicalUrl(`jobs/${publicSlug}`)
+  const title = job ? `${job.title} at ${job.company} in ${job.city} | ListPak Jobs` : 'Job Vacancy | ListPak'
+  const description = job ? `${job.description.slice(0, 160)}... Review role details, qualifications, salary, and application routes on ListPak.` : `Review current job opportunities in Pakistan on the ListPak jobs directory.`
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://www.listpak.com${publicPath}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title,
       description,
       siteName: 'ListPak',
-      url: `https://www.listpak.com${publicPath}`,
+      url: canonicalUrl,
       locale: 'en_PK',
       type: 'article',
       images: job?.companyLogo ? [{ url: job.companyLogo, alt: job.company }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+    robots: {
+      index: !isExpired,
+      follow: true,
     },
   }
 }
@@ -60,12 +72,13 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
   const params = await props.params
   const idOrSlug = params.id
 
-  const job = await getJobBySlug(idOrSlug)
+  const job = await getJobBySlug(idOrSlug, true)
 
   if (!job) {
     return notFound()
   }
 
+  const isExpired = isExpiredJob(job)
   const storedSlug = (job.slug || job.id).toLowerCase()
   const publicJobSlug = getPublicJobSlug(job)
   const publicJobPath = getPublicJobPath(job)
@@ -80,6 +93,11 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
 
   const whatsappApplicationUrl = `https://wa.me/923345636230?text=${encodeURIComponent("Hello ListPak HR, I am applying for one of the 10 Remote SEO Internship positions (On-Page & Off-Page). I have attached my CV and Cover Letter. Looking forward to your response!")}`
 
+  const allJobs = await getAllJobs(false)
+  const relatedJobs = allJobs
+    .filter(j => j.id !== job.id && (j.category === job.category || j.city === job.city))
+    .slice(0, 3)
+
   const matchingCandidatesRaw = await getMatchingCandidatesForJob(job)
   const matchingCandidates = matchingCandidatesRaw.slice(0, 4)
 
@@ -89,6 +107,9 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
   const validThrough = validThroughDate && !Number.isNaN(validThroughDate.getTime())
     ? validThroughDate.toISOString()
     : undefined
+
+  const canonicalUrl = toCanonicalUrl(`jobs/${publicJobSlug}`)
+  const citySlug = normalizeCitySlug(job.city)
 
   const jobLocations = (job.cities && job.cities.length > 0)
     ? job.cities.map(c => ({
@@ -108,7 +129,7 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
         }
       }
 
-  const jobSchema = {
+  const jobSchema = !isExpired ? {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: job.title,
@@ -129,21 +150,64 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
       logo: job.companyLogo
     },
     jobLocation: jobLocations,
-    url: `https://www.listpak.com${publicJobPath}`,
+    url: canonicalUrl,
+  } : null
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://listpak.com/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Jobs',
+        item: 'https://listpak.com/jobs/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: job.city,
+        item: toCanonicalUrl(`city/${citySlug}`),
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: job.title,
+        item: canonicalUrl,
+      },
+    ],
   }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans">
       <Navbar />
       <BreadcrumbSchema pathname={publicJobPath} />
-      <nav aria-label="Breadcrumb" className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500"><Link href="/" className="hover:text-blue-700 underline">Home</Link><span className="mx-2">/</span><Link href="/jobs" className="hover:text-blue-700 underline">Jobs</Link><span className="mx-2">/</span><span>{job.title}</span></nav>
+      <nav aria-label="Breadcrumb" className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500 flex items-center flex-wrap gap-1.5">
+        <Link href="/" className="hover:text-blue-700 underline">Home</Link>
+        <span>/</span>
+        <Link href="/jobs" className="hover:text-blue-700 underline">Jobs</Link>
+        <span>/</span>
+        <Link href={`/city/${citySlug}`} className="hover:text-blue-700 underline">{job.city}</Link>
+        <span>/</span>
+        <span className="text-slate-800 font-medium">{job.title}</span>
+      </nav>
 
-      {datePosted && (
+      {jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Header Banner */}
       <section className="bg-slate-900 text-white pt-8 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
@@ -195,28 +259,37 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
 
             {/* Application CTA */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
-              <JobInteractiveApply
-                jobId={job.id}
-                jobTitle={job.title}
-                companyName={job.company}
-                companyLogo={job.companyLogo}
-                city={job.city}
-                salary={job.salary}
-                type={job.type}
-                applicationWebsite={websiteUrl}
-                publicJobPath={publicJobPath}
-              />
+              {isExpired ? (
+                <div className="px-5 py-2.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  <span>Application Deadline Passed</span>
+                </div>
+              ) : (
+                <>
+                  <JobInteractiveApply
+                    jobId={job.id}
+                    jobTitle={job.title}
+                    companyName={job.company}
+                    companyLogo={job.companyLogo}
+                    city={job.city}
+                    salary={job.salary}
+                    type={job.type}
+                    applicationWebsite={websiteUrl}
+                    publicJobPath={publicJobPath}
+                  />
 
-              {websiteUrl && (
-                <a
-                  href={websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-                >
-                  <span>Careers Site</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                  {websiteUrl && (
+                    <a
+                      href={websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                    >
+                      <span>Careers Site</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -225,6 +298,27 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
 
       {/* Main Content */}
       <main className={`mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full ${isRemoteSeoInternship ? 'max-w-7xl' : 'max-w-5xl space-y-8'}`}>
+        {isExpired && (
+          <div className="bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl p-5 space-y-2 shadow-xs">
+            <div className="flex items-center gap-2 text-sm font-bold text-amber-800">
+              <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+              <span>This job opening has expired</span>
+            </div>
+            <p className="text-xs text-amber-700 leading-relaxed">
+              The application deadline or hiring window for <strong>{job.title}</strong> at <strong>{job.company}</strong> has passed. Browse related active vacancies below or explore open positions across Pakistan.
+            </p>
+          </div>
+        )}
+
+        {/* Verification Info Callout */}
+        {job.verified && (
+          <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3 text-xs text-emerald-900 shadow-2xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong>Verified Employer Listing:</strong> {VERIFICATION_DISCLAIMER}
+            </p>
+          </div>
+        )}
         {isRemoteSeoInternship ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Content Column */}
@@ -710,6 +804,49 @@ export default async function JobDetailPage(props: { params: Promise<{ id: strin
               )}
             </div>
           </>
+        )}
+
+        {/* Related Active Jobs */}
+        {relatedJobs.length > 0 && (
+          <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-4 mt-8">
+            <div className="flex justify-between items-center">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-emerald-600" />
+                <span>Related Active Jobs in Pakistan</span>
+              </h2>
+              <Link href="/jobs" className="text-xs font-bold text-blue-600 hover:underline">
+                View All Jobs &rarr;
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+              {relatedJobs.map((rj) => (
+                <div
+                  key={rj.id}
+                  className="p-4 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:shadow-xs transition-all flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      {rj.type}
+                    </span>
+                    <Link
+                      href={getPublicJobPath(rj)}
+                      className="font-bold text-slate-900 text-sm hover:text-blue-600 block line-clamp-1 transition-colors"
+                    >
+                      {rj.title}
+                    </Link>
+                    <p className="text-xs text-slate-500">{rj.company} • {rj.city}</p>
+                  </div>
+                  <Link
+                    href={getPublicJobPath(rj)}
+                    className="text-xs font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1 self-start pt-1"
+                  >
+                    <span>View Opening</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
         )}
       </main>
 

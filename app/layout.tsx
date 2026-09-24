@@ -19,9 +19,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "ListPak — Pakistan Business Directory, Jobs & Professionals",
-  description: "Find Pakistani businesses, jobs, professionals, and companies by category and city on ListPak.",
-  metadataBase: new URL('https://www.listpak.com'),
+  title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+  description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+  metadataBase: new URL('https://listpak.com'),
   keywords: [
     'ListPak Pakistan',
     'Pakistan business directory',
@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
-    title: "ListPak — Pakistan Business Directory, Jobs & Professionals",
-    description: "Find Pakistani businesses, jobs, professionals, and companies by category and city on ListPak.",
-    url: 'https://www.listpak.com/',
+    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    url: 'https://listpak.com/',
     siteName: 'ListPak',
     locale: 'en_PK',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "ListPak — Pakistan Business Directory, Jobs & Professionals",
-    description: "Find Pakistani businesses, jobs, professionals, and companies by category and city on ListPak.",
+    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
   },
   robots: {
     index: true,
@@ -68,10 +68,10 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'ListPak',
-    url: 'https://www.listpak.com',
+    url: 'https://listpak.com/',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://www.listpak.com/search?q={search_term_string}',
+      target: 'https://listpak.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   }
@@ -80,8 +80,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'ListPak',
-    url: 'https://www.listpak.com',
-    logo: 'https://www.listpak.com/logo.png',
+    url: 'https://listpak.com/',
+    logo: 'https://listpak.com/logo.png',
     telephone: '+92 334 5636230',
     email: 'admin@listpak.com',
     address: {

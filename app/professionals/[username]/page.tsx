@@ -13,6 +13,8 @@ import {
 } from 'lucide-react'
 import { ProfessionalHeroActions, ProfessionalReviewsSection, ProfessionalFaqsSection } from './professional-interactive-actions'
 
+import { toCanonicalUrl, normalizeCitySlug, VERIFICATION_DISCLAIMER } from '@/lib/directory-helpers'
+
 export const dynamicParams = true
 export const revalidate = 0
 
@@ -29,23 +31,35 @@ export async function generateMetadata(props: { params: Promise<{ username: stri
   const pro = await getProfessionalByUsername(username)
 
   const name = pro ? pro.name : username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-  const title = `${name} (${pro?.title || 'Professional'})${pro?.verified ? ' - Verified Profile' : ''} | ListPak`
-  const description = pro ? `${pro.bio} Explore this ${pro.title || 'professional'} profile${pro.city ? ` in ${pro.city}` : ''} and confirm credentials through the linked public sources.` : `View the profile, skills, credentials, and contact details for ${name} on the ListPak professional directory.`
+  const profession = pro?.profession || pro?.title || 'Professional'
+  const city = pro?.city || 'Pakistan'
+  const title = `${name} – ${profession} in ${city} | ListPak`
+  const description = pro ? `${pro.bio.slice(0, 160)}... Review verified credentials, portfolio, and contact details for ${name} on ListPak.` : `View the profile, skills, credentials, and contact details for ${name} on the ListPak professional directory.`
+  const canonicalUrl = toCanonicalUrl(`professionals/${username}`)
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://www.listpak.com/professionals/${username}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title,
       description,
       siteName: 'ListPak',
-      url: `https://www.listpak.com/professionals/${username}`,
+      url: canonicalUrl,
       locale: 'en_PK',
       type: 'profile',
       images: pro?.avatar ? [{ url: pro.avatar, alt: name }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   }
 }
@@ -63,6 +77,8 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
   const allPros = await getAllProfessionals(false)
   const similarPros = allPros.filter(p => p.username !== pro.username).slice(0, 3)
   const reviewsList = pro.reviews || []
+  const canonicalUrl = toCanonicalUrl(`professionals/${username}`)
+  const citySlug = normalizeCitySlug(pro.city)
 
   const socialLinks = [
     { label: 'LinkedIn (Primary Profile)', url: pro.linkedin, icon: Linkedin, color: 'text-blue-700 bg-blue-50 border-blue-300 font-extrabold ring-2 ring-blue-500/20' },
@@ -83,6 +99,7 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
     name: pro.name,
     jobTitle: pro.title,
     description: pro.bio,
+    url: canonicalUrl,
     address: {
       '@type': 'PostalAddress',
       addressLocality: pro.city,
@@ -97,6 +114,7 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
   const jsonLdProfilePage = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
+    url: canonicalUrl,
     mainEntity: jsonLdPerson
   }
 
@@ -104,16 +122,25 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.listpak.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Professionals', item: 'https://www.listpak.com/professionals' },
-      { '@type': 'ListItem', position: 3, name: pro.name, item: `https://www.listpak.com/professionals/${pro.username}` }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://listpak.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Professionals', item: 'https://listpak.com/professionals/' },
+      { '@type': 'ListItem', position: 3, name: pro.city, item: toCanonicalUrl(`city/${citySlug}`) },
+      { '@type': 'ListItem', position: 4, name: pro.name, item: canonicalUrl }
     ]
   }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans">
       <Navbar />
-      <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500"><Link href="/" className="hover:text-blue-700 underline">Home</Link><span className="mx-2">/</span><Link href="/professionals" className="hover:text-blue-700 underline">Professionals</Link><span className="mx-2">/</span><span>{pro.name}</span></nav>
+      <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-5 text-xs text-slate-500 flex items-center flex-wrap gap-1.5">
+        <Link href="/" className="hover:text-blue-700 underline">Home</Link>
+        <span>/</span>
+        <Link href="/professionals" className="hover:text-blue-700 underline">Professionals</Link>
+        <span>/</span>
+        <Link href={`/city/${citySlug}`} className="hover:text-blue-700 underline">{pro.city}</Link>
+        <span>/</span>
+        <span className="text-slate-800 font-medium">{pro.name}</span>
+      </nav>
 
       <script
         type="application/ld+json"
@@ -152,17 +179,19 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
                 <div className="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
                   <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">{pro.name}</h1>
                   {pro.verified || pro.verificationStatus === 'VERIFIED' ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-extrabold border border-emerald-200 shadow-2xs">
+                    <span 
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-extrabold border border-emerald-200 shadow-2xs"
+                      title={VERIFICATION_DISCLAIMER}
+                    >
                       <ShieldCheck className="w-4 h-4 text-emerald-600" />
                       <span>✓ Verified Professional</span>
                     </span>
                   ) : (
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-800 text-xs font-extrabold border border-red-300 shadow-2xs"
-                      title="This profile has not completed ListPak verification (Verification: Rs. 50)."
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold border border-slate-200 shadow-2xs"
+                      title="This profile has not completed ListPak verification."
                     >
-                      <span className="text-sm">🚩</span>
-                      <span>Unverified Profile</span>
+                      <span>Public Listing</span>
                     </span>
                   )}
                 </div>
@@ -217,6 +246,14 @@ export default async function ProfessionalDetailPage(props: { params: Promise<{ 
 
       {/* Main Body */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-8">
+        {(pro.verified || pro.verificationStatus === 'VERIFIED') && (
+          <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3 text-xs text-emerald-900 shadow-2xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong>Verified Profile:</strong> {VERIFICATION_DISCLAIMER}
+            </p>
+          </div>
+        )}
         {/* UNVERIFIED RED FLAG ALERT & INSTANT VERIFICATION PAYMENT CTA */}
         {(!pro.verified && pro.verificationStatus !== 'VERIFIED') && (
           <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-red-50 via-amber-50 to-orange-50 border-2 border-red-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in-50">
