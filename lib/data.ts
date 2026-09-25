@@ -83,22 +83,22 @@ export const TOP_CITIES = [
 ]
 
 export const CATEGORIES = [
-  { id: 'professional-job-seeker', name: 'Professional / Job Seeker', icon: 'users', count: 1450, color: '#2563eb', desc: 'Verified personal profiles for professionals, freelancers, doctors, engineers, skilled workers & job seekers' },
-  { id: 'hiring-company-hr', name: 'Hiring Company / HR', icon: 'briefcase', count: 980, color: '#0284c7', desc: 'Verified company hiring profiles, recruitment agencies, HR departments & job vacancy postings across United States' },
-  { id: 'restaurants', name: 'Restaurants & Food', icon: 'restaurant', count: 8420, color: '#f59e0b', desc: 'Find local cafes, fine dining, fast food, and food caterers' },
-  { id: 'real-estate', name: 'Real Estate & Property', icon: 'real-estate', count: 5210, color: '#10b981', desc: 'Verified property dealers, builders, and real estate consultants' },
-  { id: 'technology', name: 'Technology & IT', icon: 'technology', count: 4890, color: '#3b82f6', desc: 'Software houses, web developers, mobile apps, and IT agencies' },
-  { id: 'healthcare', name: 'Healthcare & Medical', icon: 'healthcare', count: 6320, color: '#ef4444', desc: 'Hospitals, specialist doctors, diagnostic labs, and pharmacies' },
-  { id: 'education', name: 'Education & Training', icon: 'education', count: 3780, color: '#8b5cf6', desc: 'Schools, universities, academies, and professional institutes' },
-  { id: 'retail', name: 'Retail & Shopping', icon: 'retail', count: 9100, color: '#ec4899', desc: 'Boutiques, wholesale stores, electronic shops, and markets' },
-  { id: 'construction', name: 'Construction & Building', icon: 'construction', count: 2340, color: '#f97316', desc: 'Architects, civil engineers, building contractors, and materials' },
-  { id: 'automotive', name: 'Automotive & Vehicles', icon: 'automotive', count: 3560, color: '#14b8a6', desc: 'Auto showrooms, workshops, car rental, and spare parts' },
-  { id: 'finance', name: 'Finance & Banking', icon: 'finance', count: 1890, color: '#6366f1', desc: 'Chartered accountants, tax consultants, and financial advisors' },
-  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 2670, color: '#0ea5e9', desc: 'Travel agencies, Umrah tour operators, and visa consultants' },
-  { id: 'beauty', name: 'Beauty & Wellness', icon: 'beauty', count: 4120, color: '#d946ef', desc: 'Beauty salons, spas, fitness gyms, and skincare clinics' },
+  { id: 'professional-job-seeker', name: 'Professional / Job Seeker', icon: 'users', count: 0, color: '#2563eb', desc: 'Verified personal profiles for professionals, freelancers, doctors, engineers, skilled workers & job seekers' },
+  { id: 'hiring-company-hr', name: 'Hiring Company / HR', icon: 'briefcase', count: 0, color: '#0284c7', desc: 'Verified company hiring profiles, recruitment agencies, HR departments & job vacancy postings across United States' },
+  { id: 'restaurants', name: 'Restaurants & Food', icon: 'restaurant', count: 0, color: '#f59e0b', desc: 'Find local cafes, fine dining, fast food, and food caterers' },
+  { id: 'real-estate', name: 'Real Estate & Property', icon: 'real-estate', count: 0, color: '#10b981', desc: 'Verified property dealers, builders, and real estate consultants' },
+  { id: 'technology', name: 'Technology & IT', icon: 'technology', count: 0, color: '#3b82f6', desc: 'Software houses, web developers, mobile apps, and IT agencies' },
+  { id: 'healthcare', name: 'Healthcare & Medical', icon: 'healthcare', count: 0, color: '#ef4444', desc: 'Hospitals, specialist doctors, diagnostic labs, and pharmacies' },
+  { id: 'education', name: 'Education & Training', icon: 'education', count: 0, color: '#8b5cf6', desc: 'Schools, universities, academies, and professional institutes' },
+  { id: 'retail', name: 'Retail & Shopping', icon: 'retail', count: 0, color: '#ec4899', desc: 'Boutiques, wholesale stores, electronic shops, and markets' },
+  { id: 'construction', name: 'Construction & Building', icon: 'construction', count: 0, color: '#f97316', desc: 'Architects, civil engineers, building contractors, and materials' },
+  { id: 'automotive', name: 'Automotive & Vehicles', icon: 'automotive', count: 0, color: '#14b8a6', desc: 'Auto showrooms, workshops, car rental, and spare parts' },
+  { id: 'finance', name: 'Finance & Banking', icon: 'finance', count: 0, color: '#6366f1', desc: 'Chartered accountants, tax consultants, and financial advisors' },
+  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 0, color: '#0ea5e9', desc: 'Travel agencies, Umrah tour operators, and visa consultants' },
+  { id: 'beauty', name: 'Beauty & Wellness', icon: 'beauty', count: 0, color: '#d946ef', desc: 'Beauty salons, spas, fitness gyms, and skincare clinics' },
   { id: 'logistics', name: 'Logistics & Courier', icon: 'logistics', count: 1950, color: '#84cc16', desc: 'Goods transport, freight forwarders, and logistics services' },
-  { id: 'home-services', name: 'Home Services & Repairs', icon: 'home-services', count: 3410, color: '#0284c7', desc: 'Plumbers, electricians, AC technicians, painters, and handymen' },
-  { id: 'legal', name: 'Legal & Law Consultants', icon: 'legal', count: 1540, color: '#4f46e5', desc: 'Advocates, corporate lawyers, tax attorneys, and legal firms' },
+  { id: 'home-services', name: 'Home Services & Repairs', icon: 'home-services', count: 0, color: '#0284c7', desc: 'Plumbers, electricians, AC technicians, painters, and handymen' },
+  { id: 'legal', name: 'Legal & Law Consultants', icon: 'legal', count: 0, color: '#4f46e5', desc: 'Advocates, corporate lawyers, tax attorneys, and legal firms' },
   { id: 'solar-energy', name: 'Solar & Renewable Energy', icon: 'solar-energy', count: 2180, color: '#eab308', desc: 'Solar panel installers, inverter suppliers, and green energy firms' },
   { id: 'events', name: 'Event Management & Wedding', icon: 'events', count: 2890, color: '#f43f5e', desc: 'Marquees, wedding planners, catering, photography, and sound' },
   { id: 'manufacturing', name: 'Manufacturing & Industrial', icon: 'manufacturing', count: 1760, color: '#64748b', desc: 'Factories, industrial machinery, textile mills, and suppliers' },
@@ -108,7 +108,7 @@ export const CATEGORIES = [
   { id: 'furniture', name: 'Furniture & Interior Decor', icon: 'furniture', count: 2310, color: '#b45309', desc: 'Home furniture, office tables, interior designers, and decor' },
   { id: 'media', name: 'Media, PR & Advertising', icon: 'media', count: 1290, color: '#06b6d4', desc: 'Digital marketing agencies, billboards, PR, and video production' },
   { id: 'sports', name: 'Sports & Fitness Gyms', icon: 'sports', count: 1850, color: '#dc2626', desc: 'Fitness centers, sports gear, martial arts, and swimming pools' },
-  { id: 'pets', name: 'Pets & Veterinary Clinics', icon: 'pets', count: 980, color: '#d97706', desc: 'Vet doctors, pet shops, animal food, and grooming salons' },
+  { id: 'pets', name: 'Pets & Veterinary Clinics', icon: 'pets', count: 0, color: '#d97706', desc: 'Vet doctors, pet shops, animal food, and grooming salons' },
   { id: 'other', name: 'Other', icon: 'other', count: 0, color: '#64748b', desc: 'Add a business that does not fit the listed categories' },
 ]
 
@@ -199,7 +199,7 @@ export interface BusinessItem {
   features: string[]
   paymentDetails?: BusinessPaymentDetails
   paymentScreenshot?: string
-  paymentStatus?: 'UNPAID' | 'PENDING' | 'VERIFIED' | 'REJECTED'
+  paymentStatus?: 'FREE' | 'UNPAID' | 'PENDING' | 'VERIFIED' | 'REJECTED'
   reviews: {
     id: string
     userName: string

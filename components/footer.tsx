@@ -31,11 +31,11 @@ export default function Footer() {
             <div className="pt-2 space-y-1 text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span><strong>Official HQ Address:</strong> Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, United States</span>
+                <span><strong>Serving:</strong> Businesses, professionals, and job seekers across the United States</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span><strong>Phone Contact:</strong> +92 334 5636230</span>
+                <Globe className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span><strong>Coverage:</strong> All 50 states and Washington, D.C.</span>
               </div>
             </div>
           </div>
@@ -71,8 +71,7 @@ export default function Footer() {
               <li><Link href="/search" className="hover:text-blue-400 transition-colors">Business Search</Link></li>
               <li><Link href="/add-business" className="hover:text-blue-400 transition-colors">Add Business</Link></li>
               <li><Link href="/professionals" className="hover:text-blue-400 transition-colors">Professional Profiles</Link></li>
-              <li><Link href="/jobs" className="hover:text-blue-400 transition-colors">United States Jobs</Link></li>
-              <li><Link href="/prayer-times-pakistan" className="hover:text-blue-400 transition-colors">Prayer Times United States</Link></li>
+              <li><Link href="/jobs" className="hover:text-blue-400 transition-colors">Jobs across the USA</Link></li>
               <li><Link href="/post-job" className="hover:text-blue-400 transition-colors">Post Job Opening</Link></li>
             </ul>
           </div>
@@ -84,13 +83,13 @@ export default function Footer() {
               <span>Top Hubs</span>
             </h3>
             <ul className="space-y-2 text-xs text-slate-300">
-              <li><Link href="/city/karachi" className="hover:text-emerald-400 transition-colors">Karachi Directory</Link></li>
-              <li><Link href="/city/lahore" className="hover:text-emerald-400 transition-colors">Lahore Directory</Link></li>
-              <li><Link href="/city/islamabad" className="hover:text-emerald-400 transition-colors">Islamabad Directory</Link></li>
-              <li><Link href="/city/rawalpindi" className="hover:text-emerald-400 transition-colors">Rawalpindi Directory</Link></li>
-              <li><Link href="/city/faisalabad" className="hover:text-emerald-400 transition-colors">Faisalabad Directory</Link></li>
-              <li><Link href="/city/multan" className="hover:text-emerald-400 transition-colors">Multan Directory</Link></li>
-              <li><Link href="/city/peshawar" className="hover:text-emerald-400 transition-colors">Peshawar Directory</Link></li>
+              <li><Link href="/city/new-york" className="hover:text-emerald-400 transition-colors">New York Directory</Link></li>
+              <li><Link href="/city/los-angeles" className="hover:text-emerald-400 transition-colors">Los Angeles Directory</Link></li>
+              <li><Link href="/city/chicago" className="hover:text-emerald-400 transition-colors">Chicago Directory</Link></li>
+              <li><Link href="/city/houston" className="hover:text-emerald-400 transition-colors">Houston Directory</Link></li>
+              <li><Link href="/city/phoenix" className="hover:text-emerald-400 transition-colors">Phoenix Directory</Link></li>
+              <li><Link href="/city/miami" className="hover:text-emerald-400 transition-colors">Miami Directory</Link></li>
+              <li><Link href="/city/seattle" className="hover:text-emerald-400 transition-colors">Seattle Directory</Link></li>
             </ul>
           </div>
 
@@ -150,7 +149,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
           <p className="text-center md:text-left">
-            © 2026 ListPak Enterprise Ecosystem. All rights reserved. Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, United States.
+            © 2026 ListPak. A USA directory for businesses, professionals, and jobs. All rights reserved.
           </p>
           <div className="flex items-center gap-3 text-slate-400 flex-wrap justify-center">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>

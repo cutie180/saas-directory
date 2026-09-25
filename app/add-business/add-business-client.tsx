@@ -44,27 +44,19 @@ const SUB_CATEGORIES: Record<string, string[]> = {
   'construction': ['Civil Contractors', 'Building Materials', 'Interior Decor', 'Architecture'],
   'automotive': ['Auto Showrooms', 'Mechanics & Repair', 'Car Spare Parts', 'Car Rental'],
   'finance': ['Chartered Accountants', 'Tax Advisory', 'Corporate Audit', 'Banking & Loans'],
-  'travel': ['Umrah & Hajj Tours', 'Travel Agencies', 'Airline Ticketing', 'Visa Services'],
+  'travel': ['Travel Agency', 'Tour Operator', 'Airport Shuttle', 'Cruise Travel'],
   'beauty': ['Salons & Parlors', 'Spas & Wellness', 'Gyms & Fitness', 'Skincare Clinics'],
   'logistics': ['Cargo & Transport', 'Courier Services', 'Freight Forwarding', 'Warehousing'],
 }
 
 const FAQS = [
   {
-    q: 'What is the free US listing standard listing fee for?',
-    a: 'The nominal free US listing fee covers secure cloud database hosting, multi-location storage, manual anti-spam verification by our compliance officers, and automated Google search indexing submission.'
+    q: 'Is it free to submit a business?',
+    a: 'Yes. Business submissions are reviewed for completeness and spam before they can appear publicly. There is no payment required to submit a listing.'
   },
   {
-    q: 'How can I pay the free US listing listing fee?',
-    a: 'You can easily transfer Rs. 50 via Easypaisa (03105694507 - Mutahira Nisa) or Mashreq Bank (089200179683 - Muhammad Imran) and upload a payment screenshot directly in this portal.'
-  },
-  {
-    q: 'How long does it take for my business to be approved after payment?',
-    a: 'Once your payment proof is uploaded, our administrative team verifies and approves your listing within 1 to 2 hours. Once approved, your business profile goes live immediately on ListPak and is queued for Google indexing.'
-  },
-  {
-    q: 'What happens if I do not pay the free US listing fee?',
-    a: 'Unpaid draft listings that remain without payment verification will be automatically cleaned up and removed from your dashboard after 7 days.'
+    q: 'How long does review take?',
+    a: 'Review timing depends on the submission queue. You can track the status of your listing from your account dashboard.'
   },
   {
     q: 'Can I submit multiple businesses under one account?',
@@ -615,11 +607,12 @@ export default function AddBusinessClient() {
         description: formData.description,
         services: formData.services ? formData.services.split(',').map(s => s.trim()) : ['General Services'],
         status: 'pending',
-        paymentStatus: 'UNPAID'
+        paymentStatus: 'FREE'
       })
 
       setIsSubmitting(false)
-      setActivePaymentBiz(saved)
+      setSubmittedSlug(saved.slug)
+      setSubmittedBizName(saved.name)
       
       // Refresh user businesses
       const targetEmail = formData.email || currentUser?.email || ''
@@ -627,7 +620,7 @@ export default function AddBusinessClient() {
         fetchUserBusinesses(targetEmail || resolvedUserId)
       }
 
-      toast.success('Listing registered! Please upload free US listing payment proof to complete verification.')
+      toast.success('Listing submitted! Our team will review it before publishing.')
       window.scrollTo({ top: 200, behavior: 'smooth' })
     } catch (err) {
       console.error(err)
@@ -865,10 +858,10 @@ export default function AddBusinessClient() {
 
           <div className="pt-2 flex items-center justify-center gap-6 text-xs text-slate-600 font-semibold flex-wrap">
             <span className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 font-bold">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Listing Verification: Rs. 50 Only
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Free listing review
             </span>
             <span className="flex items-center gap-1.5 text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200 font-bold">
-              <Clock className="w-4 h-4 text-blue-600" /> Fast 1-2 Hour Approval
+              <Clock className="w-4 h-4 text-blue-600" /> Fast review queue
             </span>
             <span className="flex items-center gap-1.5 text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200 font-bold">
               <TrendingUp className="w-4 h-4 text-purple-600" /> Rapid Google Indexing
@@ -948,7 +941,7 @@ export default function AddBusinessClient() {
                       required
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
-                      placeholder="e.g. contact@mybusiness.pk"
+                      placeholder="e.g. hello@mybusiness.com"
                       className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
                   </div>
@@ -1388,7 +1381,7 @@ export default function AddBusinessClient() {
             ) : (
               /* TAB CONTENT: ADD BUSINESS WIZARD, PAYMENT SCREEN, OR SUCCESS CONFIRMATION */
               <div>
-                {/* 1. free US listing PAYMENT SCREEN (OPENS DIRECTLY AFTER STEP 4 OR FROM DASHBOARD) */}
+                {/* 1. Optional legacy payment screen retained for existing records; new US submissions skip it. */}
                 {activePaymentBiz ? (
                   <div className="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl space-y-6 animate-in zoom-in-95">
                     <div className="flex justify-between items-start border-b border-slate-100 pb-4">
@@ -1418,7 +1411,7 @@ export default function AddBusinessClient() {
                     <div className="space-y-4">
                       <label className="block text-xs font-bold text-slate-700">Select Payment Account:</label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {/* Easypaisa Option */}
+                        {/* Legacy payment option hidden for new free US listings */}
                         <div 
                           onClick={() => setSelectedPaymentMethod('online')}
                           className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
@@ -2396,7 +2389,7 @@ const availableCities = loc.state ? (STATE_CITIES[loc.state] || []) : []
                         <div className="pt-2 space-y-2 text-xs text-slate-600">
                           <div className="flex items-center gap-2">
                             <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                            <span>Fast 1-2 Hour Approval</span>
+                            <span>Fast review queue</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
@@ -2643,9 +2636,9 @@ const availableCities = loc.state ? (STATE_CITIES[loc.state] || []) : []
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
                 <Award className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Nominal free US listing Fee</h3>
+              <h3 className="font-bold text-slate-900 text-base">Free business listing</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Zero commission per lead and zero monthly subscriptions. One nominal Rs. 50 fee for permanent database hosting.
+                Zero commission per lead and zero monthly subscriptions. Submit your business at no cost.
               </p>
             </div>
 
@@ -2655,7 +2648,7 @@ const availableCities = loc.state ? (STATE_CITIES[loc.state] || []) : []
               </div>
               <h3 className="font-bold text-slate-900 text-base">Verified Trust Badge</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Build instant trust with the United Statesi customers through our CNIC and commercial verification seal.
+                Build trust with United States customers through clear business details and review moderation.
               </p>
             </div>
           </div>
