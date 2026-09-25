@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
-import { CATEGORIES, CITIES, BusinessItem } from '@/lib/data'
+import { CATEGORIES, CITIES, US_STATES, BusinessItem } from '@/lib/data'
 import { saveBusinessToDatabase, getUserBusinesses, updateBusinessPaymentProof, normalizeSlug } from '@/lib/db-service'
 import StickyWebsiteBanner from '@/components/business/sticky-website-banner'
 import { auth } from '@/lib/firebase'
@@ -26,17 +26,11 @@ import {
 import { toast } from 'sonner'
 
 const PAYMENT_ACCOUNTS = {
-  easypaisa: {
-    name: 'Easypaisa',
-    accountNumber: '03105694507',
-    accountTitle: 'Mutahira Nisa',
-    amount: 50
-  },
-  mashreq: {
-    name: 'Mashreq Bank',
-    accountNumber: '089200179683',
-    accountTitle: 'Muhammad Imran',
-    amount: 50
+  online: {
+    name: 'Online listing review',
+    accountNumber: 'No payment required',
+    accountTitle: 'Free US business listing',
+    amount: 0
   }
 }
 
@@ -57,11 +51,11 @@ const SUB_CATEGORIES: Record<string, string[]> = {
 
 const FAQS = [
   {
-    q: 'What is the PKR 50 standard listing fee for?',
-    a: 'The nominal PKR 50 fee covers secure cloud database hosting, multi-location storage, manual anti-spam verification by our compliance officers, and automated Google search indexing submission.'
+    q: 'What is the free US listing standard listing fee for?',
+    a: 'The nominal free US listing fee covers secure cloud database hosting, multi-location storage, manual anti-spam verification by our compliance officers, and automated Google search indexing submission.'
   },
   {
-    q: 'How can I pay the PKR 50 listing fee?',
+    q: 'How can I pay the free US listing listing fee?',
     a: 'You can easily transfer Rs. 50 via Easypaisa (03105694507 - Mutahira Nisa) or Mashreq Bank (089200179683 - Muhammad Imran) and upload a payment screenshot directly in this portal.'
   },
   {
@@ -69,7 +63,7 @@ const FAQS = [
     a: 'Once your payment proof is uploaded, our administrative team verifies and approves your listing within 1 to 2 hours. Once approved, your business profile goes live immediately on ListPak and is queued for Google indexing.'
   },
   {
-    q: 'What happens if I do not pay the PKR 50 fee?',
+    q: 'What happens if I do not pay the free US listing fee?',
     a: 'Unpaid draft listings that remain without payment verification will be automatically cleaned up and removed from your dashboard after 7 days.'
   },
   {
@@ -80,6 +74,7 @@ const FAQS = [
 
 export interface FormLocation {
   city: string
+  state: string
   address: string
   isPrimary: boolean
   citySearchQuery?: string
@@ -126,7 +121,7 @@ export default function AddBusinessClient() {
 
   // Payment Screen & "Why Fee" Modal State
   const [activePaymentBiz, setActivePaymentBiz] = useState<BusinessItem | null>(null)
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'easypaisa' | 'mashreq'>('easypaisa')
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'online'>('online')
   const [paymentRefNumber, setPaymentRefNumber] = useState('')
   const [paymentScreenshotBase64, setPaymentScreenshotBase64] = useState<string | null>(null)
   const [isUploadingPayment, setIsUploadingPayment] = useState(false)
@@ -148,7 +143,7 @@ export default function AddBusinessClient() {
     subcategory: '',
     logo: '',
     locations: [
-      { city: '', address: '', isPrimary: true, citySearchQuery: '', isCityDropdownOpen: false }
+      { city: '', state: '', address: '', isPrimary: true, citySearchQuery: '', isCityDropdownOpen: false }
     ] as FormLocation[],
     ownerName: '',
     phone: '',
@@ -379,7 +374,7 @@ export default function AddBusinessClient() {
       ...prev,
       locations: [
         ...prev.locations,
-        { city: '', address: '', isPrimary: prev.locations.length === 0, citySearchQuery: '', isCityDropdownOpen: false }
+        { city: '', state: '', address: '', isPrimary: prev.locations.length === 0, citySearchQuery: '', isCityDropdownOpen: false }
       ]
     }))
   }
@@ -554,7 +549,7 @@ export default function AddBusinessClient() {
     window.scrollTo({ top: 400, behavior: 'smooth' })
   }
 
-  // Handle Form Submission: Saves Business Draft and Opens PKR 50 Payment Screen
+  // Handle Form Submission: Saves Business Draft and Opens free US listing Payment Screen
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validateStep(3)) {
@@ -594,18 +589,19 @@ export default function AddBusinessClient() {
         }
       }
 
-      const primaryLoc = formData.locations.find(l => l.isPrimary) || formData.locations[0] || { city: 'Karachi', address: 'Pakistan' }
+      const primaryLoc = formData.locations.find(l => l.isPrimary) || formData.locations[0] || { city: 'New York', address: 'the United States' }
 
       const saved = await saveBusinessToDatabase({
         name: formData.businessName,
         category: formData.category,
         categoryId: formData.category.toLowerCase().split(' ')[0],
         logo: formData.logo || logoPreview || undefined,
-        city: primaryLoc.city || 'Karachi',
-        address: primaryLoc.address || 'Pakistan',
-        locations: formData.locations.map(l => ({
-          city: l.city,
-          address: l.address,
+        city: primaryLoc.city || 'New York',
+        address: primaryLoc.address || 'the United States',
+  locations: formData.locations.map(l => ({
+  city: l.city,
+  state: l.state,
+  address: l.address,
           isPrimary: l.isPrimary
         })),
         cities: Array.from(new Set(formData.locations.map(l => l.city))),
@@ -630,7 +626,7 @@ export default function AddBusinessClient() {
         fetchUserBusinesses(targetEmail || resolvedUserId)
       }
 
-      toast.success('Listing registered! Please upload PKR 50 payment proof to complete verification.')
+      toast.success('Listing registered! Please upload free US listing payment proof to complete verification.')
       window.scrollTo({ top: 200, behavior: 'smooth' })
     } catch (err) {
       console.error(err)
@@ -828,7 +824,7 @@ export default function AddBusinessClient() {
       subcategory: '',
       logo: '',
       locations: [
-        { city: '', address: '', isPrimary: true, citySearchQuery: '', isCityDropdownOpen: false }
+        { city: '', state: '', address: '', isPrimary: true, citySearchQuery: '', isCityDropdownOpen: false }
       ],
       ownerName: currentUser?.name || '',
       phone: currentUser?.phone || '',
@@ -859,11 +855,11 @@ export default function AddBusinessClient() {
           </span>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Add Your Business to Pakistan&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">Digital Ecosystem</span>
+            Add Your Business to the United States&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">Digital Ecosystem</span>
           </h1>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
-            Connect with millions of Pakistani consumers, gain fast Google indexing, and receive direct phone & WhatsApp inquiries across Pakistan.
+            Connect with millions of the United Statesi consumers, gain fast Google indexing, and receive direct phone & WhatsApp inquiries across the United States.
           </p>
 
           <div className="pt-2 flex items-center justify-center gap-6 text-xs text-slate-600 font-semibold flex-wrap">
@@ -1035,7 +1031,7 @@ export default function AddBusinessClient() {
                       required
                       value={signupPhone}
                       onChange={(e) => setSignupPhone(e.target.value)}
-                      placeholder="e.g. +92 300 1234567"
+                      placeholder="e.g. +1 (555) 123-4567"
                       className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </div>
@@ -1176,7 +1172,7 @@ export default function AddBusinessClient() {
                   <div>
                     <h2 className="text-xl font-extrabold text-slate-900">Your Submitted Listings & Status</h2>
                     <p className="text-xs text-slate-600 mt-1">
-                      Track your business submissions. Once PKR 50 payment is verified, your listing is approved by our team within 1–2 hours and goes live immediately.
+                      Track your business submissions. Once free US listing payment is verified, your listing is approved by our team within 1–2 hours and goes live immediately.
                     </p>
                   </div>
 
@@ -1294,7 +1290,7 @@ export default function AddBusinessClient() {
                                   </button>
                                 </div>
                                 <p className="text-[11px] text-amber-800 leading-relaxed">
-                                  Submit your PKR 50 payment transfer screenshot to put your listing at the top of the admin approval queue.
+                                  Submit your free US listing payment transfer screenshot to put your listing at the top of the admin approval queue.
                                 </p>
                                 <button
                                   type="button"
@@ -1332,7 +1328,7 @@ export default function AddBusinessClient() {
                               <div className="flex items-center gap-1.5">
                                 <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                 <span className="truncate">
-                                  {biz.city || 'Pakistan'}
+                                  {biz.city || 'the United States'}
                                   {biz.locations && biz.locations.length > 1 && ` (+${biz.locations.length - 1} branches)`}
                                 </span>
                               </div>
@@ -1391,7 +1387,7 @@ export default function AddBusinessClient() {
             ) : (
               /* TAB CONTENT: ADD BUSINESS WIZARD, PAYMENT SCREEN, OR SUCCESS CONFIRMATION */
               <div>
-                {/* 1. PKR 50 PAYMENT SCREEN (OPENS DIRECTLY AFTER STEP 4 OR FROM DASHBOARD) */}
+                {/* 1. free US listing PAYMENT SCREEN (OPENS DIRECTLY AFTER STEP 4 OR FROM DASHBOARD) */}
                 {activePaymentBiz ? (
                   <div className="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl space-y-6 animate-in zoom-in-95">
                     <div className="flex justify-between items-start border-b border-slate-100 pb-4">
@@ -1400,7 +1396,7 @@ export default function AddBusinessClient() {
                           Step 5: Request Approval &amp; Payment Proof
                         </span>
                         <h2 className="text-2xl font-extrabold text-slate-900 mt-2">
-                          Request Approval: PKR 50 Listing Fee
+                          Request Approval: free US listing Listing Fee
                         </h2>
                         <p className="text-xs text-slate-500 mt-0.5">
                           Listing: <strong className="text-slate-900">{activePaymentBiz.name}</strong> • Submitting proof places your listing at the top of the admin approval queue.
@@ -1423,9 +1419,9 @@ export default function AddBusinessClient() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {/* Easypaisa Option */}
                         <div 
-                          onClick={() => setSelectedPaymentMethod('easypaisa')}
+                          onClick={() => setSelectedPaymentMethod('online')}
                           className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
-                            selectedPaymentMethod === 'easypaisa'
+                            selectedPaymentMethod === 'online'
                               ? 'border-emerald-600 bg-emerald-50/40 shadow-sm'
                               : 'border-slate-200 hover:border-slate-300 bg-slate-50/50'
                           }`}
@@ -1458,9 +1454,9 @@ export default function AddBusinessClient() {
 
                         {/* Mashreq Bank Option */}
                         <div 
-                          onClick={() => setSelectedPaymentMethod('mashreq')}
+                          onClick={() => setSelectedPaymentMethod('online')}
                           className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
-                            selectedPaymentMethod === 'mashreq'
+                            selectedPaymentMethod === 'online'
                               ? 'border-blue-600 bg-blue-50/40 shadow-sm'
                               : 'border-slate-200 hover:border-slate-300 bg-slate-50/50'
                           }`}
@@ -1519,7 +1515,7 @@ export default function AddBusinessClient() {
                       </div>
                       <div className="flex justify-between items-center text-emerald-800 font-extrabold">
                         <span>Total Payable Amount:</span>
-                        <span className="text-sm">PKR 50 Only</span>
+                        <span className="text-sm">free US listing Only</span>
                       </div>
                     </div>
 
@@ -1623,7 +1619,7 @@ export default function AddBusinessClient() {
                       </h2>
 
                       <p className="text-sm text-slate-700 max-w-xl mx-auto leading-relaxed font-medium">
-                        Your listing for <strong className="text-slate-900 text-base">{submittedBizName || formData.businessName}</strong> and PKR 50 payment proof have been received and registered under your account.
+                        Your listing for <strong className="text-slate-900 text-base">{submittedBizName || formData.businessName}</strong> and free US listing payment proof have been received and registered under your account.
                       </p>
 
                       <div className="p-5 bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-2xl border border-blue-200 text-left max-w-xl mx-auto space-y-2.5 text-xs text-slate-700">
@@ -1761,7 +1757,7 @@ export default function AddBusinessClient() {
                                 type="text"
                                 value={formData.businessName}
                                 onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                                placeholder="e.g. Al-Rehman Traders / Tech Solutions Pakistan"
+                                placeholder="e.g. Al-Rehman Traders / Tech Solutions the United States"
                                 className={`w-full px-4 py-3 bg-slate-50/80 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
                                   errors.businessName ? 'border-red-500 bg-red-50/30' : 'border-slate-200'
                                 }`}
@@ -1937,7 +1933,18 @@ export default function AddBusinessClient() {
                                     )}
                                   </div>
 
-                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <div>
+                                      <label className="block text-xs font-bold text-slate-700 mb-1.5">State *</label>
+                                      <select
+                                        value={loc.state}
+                                        onChange={(e) => setFormData(prev => ({ ...prev, locations: prev.locations.map((item, i) => i === index ? { ...item, state: e.target.value } : item) }))}
+                                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                                      >
+                                        <option value="">Search or select a state</option>
+                                        {US_STATES.map((state) => <option key={state} value={state}>{state}</option>)}
+                                      </select>
+                                    </div>
                                     {/* City Selector for Location Block */}
                                     <div className="relative">
                                       <label className="block text-xs font-bold text-slate-700 mb-1.5">
@@ -2050,7 +2057,7 @@ export default function AddBusinessClient() {
                                   type="text"
                                   value={formData.phone}
                                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                  placeholder="+92 300 1234567"
+                                  placeholder="+1 (555) 123-4567"
                                   className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
                                     errors.phone ? 'border-red-500 bg-red-50/30' : 'border-slate-200'
                                   }`}
@@ -2069,7 +2076,7 @@ export default function AddBusinessClient() {
                                   type="text"
                                   value={formData.whatsapp}
                                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                                  placeholder="+92 300 1234567"
+                                  placeholder="+1 (555) 123-4567"
                                   className="w-full pl-10 pr-4 py-3 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                 />
                               </div>
@@ -2195,7 +2202,7 @@ export default function AddBusinessClient() {
                                 rows={6}
                                 value={formData.description}
                                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                placeholder="Describe your business background, offerings, why customers in Pakistan should choose you, years of experience, unique features, and customer guarantees..."
+                                placeholder="Describe your business background, offerings, why customers in the United States should choose you, years of experience, unique features, and customer guarantees..."
                                 className={`w-full p-4 bg-slate-50/80 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 leading-relaxed ${
                                   errors.description ? 'border-red-500 bg-red-50/30' : 'border-slate-200'
                                 }`}
@@ -2241,7 +2248,7 @@ export default function AddBusinessClient() {
                             <div className="flex justify-between border-b border-slate-200/60 pb-2">
                               <span className="font-bold text-slate-500">Category & Locations:</span>
                               <span className="font-semibold text-slate-800 text-right">
-                                {formData.category || 'General'} in {formData.locations[0]?.city || 'Pakistan'}
+                                {formData.category || 'General'} in {formData.locations[0]?.city || 'the United States'}
                                 {formData.locations.length > 1 && ` (+${formData.locations.length - 1} more)`}
                               </span>
                             </div>
@@ -2315,7 +2322,7 @@ export default function AddBusinessClient() {
                             className="px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm rounded-xl shadow-xl shadow-emerald-500/20 transition-all inline-flex items-center gap-2 cursor-pointer"
                           >
                             <CheckCircle2 className="w-5 h-5" />
-                            <span>{isSubmitting ? 'Registering...' : 'Submit & Proceed to Payment (PKR 50)'}</span>
+                            <span>{isSubmitting ? 'Registering...' : 'Submit & Proceed to Payment (free US listing)'}</span>
                           </button>
                         )}
                       </div>
@@ -2365,7 +2372,7 @@ export default function AddBusinessClient() {
                           <div className="pt-2 border-t border-slate-200/60 flex justify-between items-center text-[11px] text-slate-500">
                             <span className="flex items-center gap-1">
                               <MapPin className="w-3 h-3 text-slate-400" />
-                              {formData.locations[0]?.city || 'Pakistan'}
+                              {formData.locations[0]?.city || 'the United States'}
                               {formData.locations.length > 1 && ` (+${formData.locations.length - 1} branches)`}
                             </span>
                             <span className="font-bold text-blue-600">{formData.phone || '+92 300 0000000'}</span>
@@ -2441,7 +2448,7 @@ export default function AddBusinessClient() {
                     <Info className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-extrabold text-slate-900">Why Pay the PKR 50 Listing Fee?</h3>
+                    <h3 className="text-lg font-extrabold text-slate-900">Why Pay the free US listing Listing Fee?</h3>
                     <p className="text-xs text-slate-500">Transparent & Secure Ecosystem Operations</p>
                   </div>
                 </div>
@@ -2461,7 +2468,7 @@ export default function AddBusinessClient() {
                     <span>Dedicated Cloud Database & Platform Hosting</span>
                   </h4>
                   <p className="text-[11px] leading-relaxed">
-                    This modest nominal fee of <strong>PKR 50</strong> directly supports our enterprise-grade cloud database infrastructure, maintaining fast uptime, high-speed multi-city searches, and data storage for your business profile.
+                    This modest nominal fee of <strong>free US listing</strong> directly supports our enterprise-grade cloud database infrastructure, maintaining fast uptime, high-speed multi-city searches, and data storage for your business profile.
                   </p>
                 </div>
 
@@ -2471,7 +2478,7 @@ export default function AddBusinessClient() {
                     <span>Manual Anti-Spam & Fraud Prevention</span>
                   </h4>
                   <p className="text-[11px] leading-relaxed">
-                    Our compliance team manually reviews and authenticates every listing within <strong>1 to 2 hours</strong> to eliminate duplicate spam and ensure consumers only connect with authentic Pakistani businesses.
+                    Our compliance team manually reviews and authenticates every listing within <strong>1 to 2 hours</strong> to eliminate duplicate spam and ensure consumers only connect with authentic the United Statesi businesses.
                   </p>
                 </div>
 
@@ -2481,7 +2488,7 @@ export default function AddBusinessClient() {
                     <span>7-Day Inactive Clean-Up Policy</span>
                   </h4>
                   <p className="text-[11px] leading-relaxed">
-                    Please note: Unverified draft listings that remain without PKR 50 payment proof will be automatically cleaned up and removed from your dashboard after <strong>7 days</strong> from submission.
+                    Please note: Unverified draft listings that remain without free US listing payment proof will be automatically cleaned up and removed from your dashboard after <strong>7 days</strong> from submission.
                   </p>
                 </div>
               </div>
@@ -2594,7 +2601,7 @@ export default function AddBusinessClient() {
               Why List Your Business on ListPak?
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm">
-              ListPak provides Pakistani businesses with the digital infrastructure needed to grow.
+              ListPak provides the United Statesi businesses with the digital infrastructure needed to grow.
             </p>
           </div>
 
@@ -2623,7 +2630,7 @@ export default function AddBusinessClient() {
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
                 <Award className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-slate-900 text-base">Nominal PKR 50 Fee</h3>
+              <h3 className="font-bold text-slate-900 text-base">Nominal free US listing Fee</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Zero commission per lead and zero monthly subscriptions. One nominal Rs. 50 fee for permanent database hosting.
               </p>
@@ -2635,7 +2642,7 @@ export default function AddBusinessClient() {
               </div>
               <h3 className="font-bold text-slate-900 text-base">Verified Trust Badge</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Build instant trust with Pakistani customers through our CNIC and commercial verification seal.
+                Build instant trust with the United Statesi customers through our CNIC and commercial verification seal.
               </p>
             </div>
           </div>

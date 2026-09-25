@@ -10,6 +10,17 @@ export const CITIES = Array.from(new Set([
   'Richmond', 'Salt Lake City', 'Boise', 'Charleston', 'Savannah', 'Birmingham'
 ]))
 
+export const US_STATES = [
+  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+  'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',
+  'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan',
+  'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+  'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
+  'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia',
+  'Wisconsin', 'Wyoming', 'District of Columbia'
+] as const
+
 export const TOP_CITIES = [
   'New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix',
   'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose',
@@ -44,6 +55,7 @@ export const CATEGORIES = [
   { id: 'media', name: 'Media, PR & Advertising', icon: 'media', count: 1290, color: '#06b6d4', desc: 'Digital marketing agencies, billboards, PR, and video production' },
   { id: 'sports', name: 'Sports & Fitness Gyms', icon: 'sports', count: 1850, color: '#dc2626', desc: 'Fitness centers, sports gear, martial arts, and swimming pools' },
   { id: 'pets', name: 'Pets & Veterinary Clinics', icon: 'pets', count: 980, color: '#d97706', desc: 'Vet doctors, pet shops, animal food, and grooming salons' },
+  { id: 'other', name: 'Other', icon: 'other', count: 0, color: '#64748b', desc: 'Add a business that does not fit the listed categories' },
 ]
 
 export interface BusinessLocation {
