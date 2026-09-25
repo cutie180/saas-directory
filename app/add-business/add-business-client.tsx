@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
-import { CATEGORIES, CITIES, US_STATES, BusinessItem } from '@/lib/data'
+import { CATEGORIES, STATE_CITIES, US_STATES, BusinessItem } from '@/lib/data'
 import { saveBusinessToDatabase, getUserBusinesses, updateBusinessPaymentProof, normalizeSlug } from '@/lib/db-service'
 import StickyWebsiteBanner from '@/components/business/sticky-website-banner'
 import { auth } from '@/lib/firebase'
@@ -437,6 +437,7 @@ export default function AddBusinessClient() {
   const toggleLocationCityDropdown = (index: number) => {
     setFormData(prev => {
       const updated = [...prev.locations]
+      if (!updated[index].state) return prev
       updated[index] = {
         ...updated[index],
         isCityDropdownOpen: !updated[index].isCityDropdownOpen
@@ -1886,9 +1887,10 @@ export default function AddBusinessClient() {
                             </div>
 
                             {formData.locations.map((loc, index) => {
-                              const filteredCities = CITIES.filter(c =>
-                                c.toLowerCase().includes((loc.citySearchQuery || '').toLowerCase().trim())
-                              )
+const availableCities = loc.state ? (STATE_CITIES[loc.state] || []) : []
+                                      const filteredCities = availableCities.filter(c =>
+                                        c.toLowerCase().includes((loc.citySearchQuery || '').toLowerCase().trim())
+                                      )
 
                               return (
                                 <div 
@@ -1938,7 +1940,16 @@ export default function AddBusinessClient() {
                                       <label className="block text-xs font-bold text-slate-700 mb-1.5">State *</label>
                                       <select
                                         value={loc.state}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, locations: prev.locations.map((item, i) => i === index ? { ...item, state: e.target.value } : item) }))}
+                                        onChange={(e) => setFormData(prev => ({
+                                          ...prev,
+                                          locations: prev.locations.map((item, i) => i === index ? {
+                                            ...item,
+                                            state: e.target.value,
+                                            city: '',
+                                            citySearchQuery: '',
+                                            isCityDropdownOpen: false
+                                          } : item)
+                                        }))}
                                         className="w-full px-4 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                       >
                                         <option value="">Search or select a state</option>
@@ -1955,12 +1966,14 @@ export default function AddBusinessClient() {
                                           type="button"
                                           id={`city-dropdown-btn-${index}`}
                                           onClick={() => toggleLocationCityDropdown(index)}
-                                          className={`w-full px-4 py-3 bg-white border rounded-2xl text-sm flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition ${
+                                          disabled={!loc.state}
+                                          aria-disabled={!loc.state}
+                                          className={`w-full px-4 py-3 bg-white border rounded-2xl text-sm flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition disabled:cursor-not-allowed disabled:bg-slate-50 ${
                                             errors[`location_${index}_city`] ? 'border-red-500 bg-red-50/30' : 'border-slate-200 hover:border-slate-300'
                                           }`}
                                         >
                                           <span className={loc.city ? 'font-semibold text-slate-900' : 'text-slate-400'}>
-                                            {loc.city ? loc.city : `-- Select City (${CITIES.length} Cities) --`}
+                                            {loc.city ? loc.city : loc.state ? `-- Select City (${availableCities.length} Cities) --` : '-- Select a state first --'}
                                           </span>
                                           <ChevronDown className={`w-4 h-4 text-slate-400 flex-shrink-0 ml-2 transition-transform duration-200 ${loc.isCityDropdownOpen ? 'rotate-180' : ''}`} />
                                         </button>
