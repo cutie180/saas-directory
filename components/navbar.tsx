@@ -26,7 +26,7 @@ export default function Navbar() {
           <Link href="/" aria-label="ListPak Home Page" className="flex items-center group py-1">
             <Image
               src="/logo.png"
-              alt="ListPak - Pakistan Business Directory"
+              alt="ListPak - USA Business Directory"
               width={160}
               height={48}
               priority

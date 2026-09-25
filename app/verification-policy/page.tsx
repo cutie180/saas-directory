@@ -3,14 +3,14 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Verification Policy | ListPak - Pakistan Business Directory',
-  description: 'How ListPak verifies business profiles, addresses, contact details, and professional credentials across Pakistan.',
+  title: 'Verification Policy | ListPak - United States Business Directory',
+  description: 'How ListPak verifies business profiles, addresses, contact details, and professional credentials across United States.',
   alternates: {
     canonical: 'https://listpak.com/verification-policy/',
   },
   openGraph: {
-    title: 'Verification Policy | ListPak - Pakistan Business Directory',
-    description: 'How ListPak verifies business profiles, addresses, contact details, and professional credentials across Pakistan.',
+    title: 'Verification Policy | ListPak - United States Business Directory',
+    description: 'How ListPak verifies business profiles, addresses, contact details, and professional credentials across United States.',
     url: 'https://listpak.com/verification-policy/',
     type: 'website',
   },
@@ -45,7 +45,7 @@ export default function VerificationPolicyPage() {
             <h2 className="text-xl font-bold text-slate-900 pt-4">1. Business Verification Steps</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li><strong>Phone & WhatsApp Confirmation:</strong> Direct contact confirmation with authorized business representatives.</li>
-              <li><strong>Physical Address Validation:</strong> Geolocation check and mapping to verified Pakistani commercial areas.</li>
+              <li><strong>Physical Address Validation:</strong> Geolocation check and mapping to verified United Statesi commercial areas.</li>
               <li><strong>Official Documentation (Optional/Enterprise):</strong> Review of FBR NTN certificate, SECP corporate incorporation, or commercial utility bills.</li>
             </ul>
 

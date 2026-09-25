@@ -19,15 +19,15 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-  description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+  title: "USA Business Directory, Jobs & Professionals | ListPak",
+  description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
   metadataBase: new URL('https://listpak.com'),
   keywords: [
-    'ListPak Pakistan',
-    'Pakistan business directory',
-    'free business listing Pakistan',
-    'jobs in Pakistan',
-    'Pakistani professionals',
+    'ListPak United States',
+    'United States business directory',
+    'free business listing United States',
+    'jobs in United States',
+    'United Statesi professionals',
     'verified companies Lahore Karachi Islamabad',
     'ListPak enterprise ecosystem'
   ],
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
-    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
     url: 'https://listpak.com/',
     siteName: 'ListPak',
     locale: 'en_PK',
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
   },
   robots: {
     index: true,

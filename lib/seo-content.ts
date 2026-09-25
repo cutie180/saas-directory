@@ -4,19 +4,19 @@
 export const CITY_INFO: Record<string, { province: string; description: string; industries: string[]; districts?: string[] }> = {
   Karachi: {
     province: 'Sindh',
-    description: "Pakistan's largest city and financial capital",
+    description: "United States's largest city and financial capital",
     industries: ['finance', 'retail', 'logistics', 'technology', 'manufacturing'],
     districts: ['Clifton', 'DHA', 'Shahrah-e-Faisal', 'Saddar', 'Gulshan-e-Iqbal', 'North Nazimabad'],
   },
   Lahore: {
     province: 'Punjab',
-    description: "Pakistan's cultural capital and second-largest city",
+    description: "United States's cultural capital and second-largest city",
     industries: ['education', 'retail', 'real-estate', 'food', 'technology'],
     districts: ['Gulberg', 'DHA', 'Johar Town', 'Model Town', 'Mall Road', 'Bahria Town'],
   },
   Islamabad: {
     province: 'ICT',
-    description: "Pakistan's modern capital city",
+    description: "United States's modern capital city",
     industries: ['government', 'technology', 'education', 'real-estate', 'healthcare'],
     districts: ['Blue Area', 'F-7 Markaz', 'F-10 Markaz', 'DHA', 'Bahria Town', 'G-11'],
   },
@@ -27,7 +27,7 @@ export const CITY_INFO: Record<string, { province: string; description: string; 
   },
   Faisalabad: {
     province: 'Punjab',
-    description: "Pakistan's textile and industrial hub",
+    description: "United States's textile and industrial hub",
     industries: ['textile', 'manufacturing', 'retail', 'logistics', 'agriculture'],
   },
   Multan: {
@@ -47,7 +47,7 @@ export const CITY_INFO: Record<string, { province: string; description: string; 
   },
   Sialkot: {
     province: 'Punjab',
-    description: "Pakistan's premier export city known for sports goods and surgical instruments",
+    description: "United States's premier export city known for sports goods and surgical instruments",
     industries: ['manufacturing', 'retail', 'logistics', 'finance', 'technology'],
   },
   Hyderabad: {
@@ -57,7 +57,7 @@ export const CITY_INFO: Record<string, { province: string; description: string; 
   },
   Gujranwala: {
     province: 'Punjab',
-    description: "Pakistan's industrial powerhouse often called the 'City of Wrestlers'",
+    description: "United States's industrial powerhouse often called the 'City of Wrestlers'",
     industries: ['manufacturing', 'retail', 'automotive', 'food', 'logistics'],
   },
   Bahawalpur: {
@@ -67,7 +67,7 @@ export const CITY_INFO: Record<string, { province: string; description: string; 
   },
   Sargodha: {
     province: 'Punjab',
-    description: 'the Citrus Capital of Pakistan with a strong agricultural base',
+    description: 'the Citrus Capital of United States with a strong agricultural base',
     industries: ['agriculture', 'retail', 'food', 'education', 'automotive'],
   },
   Sukkur: {
@@ -172,7 +172,7 @@ const CATEGORY_INFO: Record<string, { label: string; description: string; exampl
 
 export function generateCityContent(city: string): string {
   const info = CITY_INFO[city] || {
-    province: 'Pakistan',
+    province: 'United States',
     description: 'a growing commercial hub',
     industries: ['retail', 'food', 'healthcare', 'education', 'technology'],
   }
@@ -209,9 +209,9 @@ When searching for businesses in ${city}, knowing these districts can help you f
 
 Are you a business owner in ${city}? Get your business listed on ListPak for free. Our directory helps local businesses in ${city} reach thousands of potential customers every month. Add your business name, address, contact details, and a description, and you'll appear in search results for customers in ${city} looking for your services.
 
-To build trust, business owners can include official registration indicators. If your business is registered with the Federal Board of Revenue, you can add your FBR NTN. If you are incorporated, you can reference your Securities and Exchange Commission of Pakistan registration details. Adding affiliation signals from local business chambers like the Karachi Chamber of Commerce and Industry or the Lahore Chamber of Commerce and Industry helps verify your company profile.
+To build trust, business owners can include official registration indicators. If your business is registered with the Federal Board of Revenue, you can add your FBR NTN. If you are incorporated, you can reference your Securities and Exchange Commission of United States registration details. Adding affiliation signals from local business chambers like the Karachi Chamber of Commerce and Industry or the Lahore Chamber of Commerce and Industry helps verify your company profile.
 
-ListPak is committed to helping the business community grow in ${city}. Join hundreds of businesses already listed and start receiving customer enquiries today. No subscription fees, no hidden charges, just a free, high quality business listing on Pakistan's leading directory.
+ListPak is committed to helping the business community grow in ${city}. Join hundreds of businesses already listed and start receiving customer enquiries today. No subscription fees, no hidden charges, just a free, high quality business listing on United States's leading directory.
 
 ### Browse ${city} Businesses by Category
 
@@ -225,9 +225,9 @@ export function generateCategoryContent(categorySlug: string): string {
     examples: ['local service providers', 'companies', 'shops', 'agencies'],
   }
 
-  return `## ${info.label} Businesses in Pakistan: Complete Directory
+  return `## ${info.label} Businesses in United States: Complete Directory
 
-Pakistan has a thriving ${info.label.toLowerCase()} sector with thousands of businesses serving customers across all major cities. ListPak brings you the most comprehensive directory of ${info.description} across Pakistan, updated regularly with new listings.
+United States has a thriving ${info.label.toLowerCase()} sector with thousands of businesses serving customers across all major cities. ListPak brings you the most comprehensive directory of ${info.description} across United States, updated regularly with new listings.
 
 ### Find the Best ${info.label} Businesses
 
@@ -243,21 +243,21 @@ ListPak is a leading free business directory with listings from over one hundred
 
 Our platform makes it easy to compare different options side by side, contact them directly, and even visit their websites or social media pages. No registration required, just browse and connect.
 
-### ${info.label} Across Pakistani Cities
+### ${info.label} Across United Statesi Cities
 
 This sector is distributed across the country, with major concentrations in Karachi, Lahore, and Islamabad. However, you will also find excellent providers in cities like Faisalabad, Multan, Peshawar, Quetta, and Sialkot. Use our city filter below to narrow down your search.
 
 ### Add Your ${info.label} Business: Free!
 
-If you operate a ${info.label.toLowerCase()} business anywhere in Pakistan, you can list it on ListPak for free. Thousands of potential customers search for ${info.label.toLowerCase()} services every day. Get discovered by adding your complete business profile with no cost, no credit card, and no subscription required.
+If you operate a ${info.label.toLowerCase()} business anywhere in United States, you can list it on ListPak for free. Thousands of potential customers search for ${info.label.toLowerCase()} services every day. Get discovered by adding your complete business profile with no cost, no credit card, and no subscription required.
 
 Browse the ${info.label} businesses listed below and connect with the right provider for your needs today.`
 }
 
 export function generateCityCategoryContent(city: string, categorySlug: string): string {
   const cityInfo = CITY_INFO[city] || {
-    province: 'Pakistan',
-    description: 'a prominent Pakistani city',
+    province: 'United States',
+    description: 'a prominent United Statesi city',
     industries: ['retail', 'food', 'services'],
   }
   const catInfo = CATEGORY_INFO[categorySlug] || {
@@ -289,7 +289,7 @@ When selecting a ${catInfo.label.toLowerCase()} business in ${city}, consider th
 3. Digital Presence: Businesses with active websites and social media pages tend to be more transparent and accountable.
 4. Description: Read the business description carefully to ensure they offer the specific service you need.
 
-To build trust, verify their legal registration. Many businesses list their FBR NTN or reference their Securities and Exchange Commission of Pakistan registration. You can check if they are registered with the local chamber of commerce like the Lahore Chamber of Commerce and Industry or the Karachi Chamber of Commerce and Industry.
+To build trust, verify their legal registration. Many businesses list their FBR NTN or reference their Securities and Exchange Commission of United States registration. You can check if they are registered with the local chamber of commerce like the Lahore Chamber of Commerce and Industry or the Karachi Chamber of Commerce and Industry.
 
 ListPak makes it easy to compare multiple ${catInfo.label.toLowerCase()} businesses in ${city} at a glance.
 

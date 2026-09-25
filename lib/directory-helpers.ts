@@ -120,7 +120,7 @@ export function getPopulatedCategoryCityPairs(businesses: BusinessItem[]): Popul
 
     for (const rawCity of cityList) {
       const citySlug = normalizeCitySlug(rawCity)
-      if (!citySlug || citySlug === 'pakistan' || citySlug === 'nationwide' || citySlug === 'all-pakistan') continue
+      if (!citySlug || citySlug === 'usa' || citySlug === 'united-states' || citySlug === 'nationwide' || citySlug === 'all-usa') continue
       const key = `${catSlug}:::${citySlug}`
       const existing = map.get(key)
       if (existing) {
