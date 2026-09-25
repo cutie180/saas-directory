@@ -4,8 +4,8 @@ import { Metadata } from 'next'
 import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | ListPak Pakistan Business Directory',
-  description: 'Read the ListPak terms of service. Learn the rules and guidelines for listing and searching businesses on our free Pakistan directory.',
+  title: 'Terms of Service | ListPak United States Business Directory',
+  description: 'Read the ListPak terms of service. Learn the rules and guidelines for listing and searching businesses on our free United States directory.',
   alternates: {
     canonical: 'https://listpak.com/terms/',
   },
@@ -63,7 +63,7 @@ export default function TermsPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] mt-8 mb-4">7. Governing Law</h2>
           <p className="mb-4">
-            These Terms of Service and your use of the Site are governed by and construed in accordance with the laws of Pakistan.
+            These Terms of Service and your use of the Site are governed by and construed in accordance with the laws of United States.
           </p>
 
           <h2 className="text-xl font-bold text-[#0f2b3d] mt-8 mb-4">8. Contact Us</h2>
@@ -73,7 +73,7 @@ export default function TermsPage() {
           <p className="font-medium text-gray-900">
             ListPak Support<br />
             Email: admin@listpak.com<br />
-            Address: Evacuee Trust Complex, F-5/1, Islamabad, Pakistan
+            Address: Evacuee Trust Complex, F-5/1, Islamabad, United States
           </p>
         </div>
       </main>

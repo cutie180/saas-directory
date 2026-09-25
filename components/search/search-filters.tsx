@@ -73,7 +73,7 @@ export default function SearchFilters({
           onChange={(e) => onCityChange(e.target.value)}
           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
         >
-          <option value="">All Cities in Pakistan</option>
+          <option value="">All Cities in United States</option>
           {TOP_CITIES.map((city) => (
             <option key={city} value={city}>
               {city}

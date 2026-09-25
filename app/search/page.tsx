@@ -124,7 +124,7 @@ function SearchContent() {
                 Enterprise Search & Discovery
               </h1>
               <p className="text-slate-400 text-sm mt-1">
-                Explore verified businesses, active job openings, and expert professionals across Pakistan.
+                Explore verified businesses, active job openings, and expert professionals across United States.
               </p>
             </div>
 
@@ -269,7 +269,7 @@ function SearchContent() {
                   </div>
                   <h3 className="text-lg font-bold text-slate-900">No businesses match your search filters</h3>
                   <p className="text-slate-500 text-sm max-w-md mx-auto">
-                    Try clearing some search filters or changing your city/category parameters to discover more Pakistani businesses.
+                    Try clearing some search filters or changing your city/category parameters to discover more United Statesi businesses.
                   </p>
                   <button onClick={handleReset} className="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 transition-colors">
                     Reset All Filters
@@ -343,7 +343,7 @@ function SearchContent() {
                   </div>
                   <h3 className="text-lg font-bold text-slate-900">No job openings found</h3>
                   <p className="text-slate-500 text-sm max-w-md mx-auto">
-                    Try adjusting your title or city parameters to discover available job opportunities in Pakistan.
+                    Try adjusting your title or city parameters to discover available job opportunities in United States.
                   </p>
                 </div>
               ) : (

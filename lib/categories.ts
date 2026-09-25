@@ -32,6 +32,7 @@ export const CATEGORY_ICONS = {
   'professionals': Users,
   'hiring-company-hr': Briefcase,
   'companies': Briefcase,
+  'other': Briefcase,
 }
 
 export const CATEGORY_GRADIENTS = {

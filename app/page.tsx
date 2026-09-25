@@ -15,14 +15,14 @@ import { getPublicJobPath } from '@/lib/job-url'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-  description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+  title: "USA Business Directory, Jobs & Professionals | ListPak",
+  description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
   alternates: {
     canonical: 'https://listpak.com/',
   },
   openGraph: {
-    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
     url: 'https://listpak.com/',
     siteName: 'ListPak',
     locale: 'en_PK',
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pakistan Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across Pakistan. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | ListPak",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
   },
 }
 
 const FAQS = [
   {
     question: 'What is ListPak Ecosystem?',
-    answer: 'ListPak is a Pakistan-focused discovery platform connecting businesses, employers, job seekers, and professionals through category and city-based pages.'
+    answer: 'ListPak is a United States-focused discovery platform connecting businesses, employers, job seekers, and professionals through category and city-based pages.'
   },
   {
     question: 'Is listing a business on ListPak free?',
@@ -82,7 +82,7 @@ const RESOURCE_HIGHLIGHTS = [
     slug: 'how-to-list-business-free-listpak-guide'
   },
   {
-    title: 'How to improve local visibility in Pakistan',
+    title: 'How to improve local visibility for US businesses',
     metrics: 'Local SEO guidance',
     category: 'Local search',
     slug: 'local-seo-pakistan-businesses-google-ranking'
@@ -97,13 +97,13 @@ const BUSINESS_RESOURCES = [
     slug: 'how-to-list-business-free-listpak-guide'
   },
   {
-    title: 'Local SEO for Pakistani Businesses: Improve Visibility in Your City',
+    title: 'Local SEO for US Businesses: Improve Visibility in Your City',
     date: 'July 28, 2026',
     category: 'Local SEO',
     slug: 'local-seo-pakistan-businesses-google-ranking'
   },
   {
-    title: 'Free Job Posting in Pakistan – How to Hire Employees Without Spending Money',
+    title: 'Free Job Posting in United States – How to Hire Employees Without Spending Money',
     date: 'July 25, 2026',
     category: 'Recruitment',
     slug: 'free-job-posting-pakistan-hire-employees'
@@ -127,7 +127,7 @@ export default async function HomePage() {
       target: 'https://listpak.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     },
-    description: 'Pakistan digital business platform for local businesses, job listings, and verified professionals'
+    description: 'United States digital business platform for local businesses, job listings, and verified professionals'
   }
 
   const faqSchema = {
@@ -166,15 +166,15 @@ export default async function HomePage() {
             <div className="max-w-3xl mx-auto space-y-4">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 text-blue-700 border border-blue-200 text-xs font-bold tracking-wide uppercase">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                <span>Pakistan Flagship Enterprise Ecosystem</span>
+                <span>America&apos;s Local Business Ecosystem</span>
               </span>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Discover Businesses, Jobs & Professionals in <span className="text-blue-700">Pakistan</span>
+                Discover Businesses, Jobs & Professionals in <span className="text-blue-700">the USA</span>
               </h1>
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-                Discover businesses, companies, jobs, professionals, and local services across Pakistan by category and city.
+                Discover businesses, companies, jobs, professionals, and local services across the United States by category and city.
               </p>
             </div>
 
@@ -201,7 +201,7 @@ export default async function HomePage() {
                     name="city"
                     className="w-full bg-transparent text-slate-900 text-sm focus:outline-none cursor-pointer"
                   >
-                    <option value="">All Cities in Pakistan</option>
+                    <option value="">All Cities in the USA</option>
                     {TOP_CITIES.map(city => (
                       <option key={city} value={city}>{city}</option>
                     ))}
@@ -245,7 +245,7 @@ export default async function HomePage() {
                 <p className="text-xs font-semibold text-slate-500 mt-1">Search by category and city</p>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <span className="text-3xl font-extrabold text-emerald-600">Pakistan-wide</span>
+                <span className="text-3xl font-extrabold text-emerald-600">United States-wide</span>
                 <p className="text-xs font-semibold text-slate-500 mt-1">City-based local discovery</p>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
@@ -305,7 +305,7 @@ export default async function HomePage() {
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                   Browse Businesses by City
                 </h2>
-                <p className="text-xs text-slate-400 mt-1">Explore businesses and services by city across Pakistan.</p>
+                <p className="text-xs text-slate-400 mt-1">Explore businesses and services by city across United States.</p>
               </div>
               <Link href="/cities" className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
                 <span>Explore All Cities</span>
@@ -340,7 +340,7 @@ export default async function HomePage() {
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                   Featured Businesses
                 </h2>
-                <p className="text-slate-500 text-xs mt-1">Premier verified companies and institutions across Pakistan.</p>
+                <p className="text-slate-500 text-xs mt-1">Premier verified companies and institutions across United States.</p>
               </div>
               <Link href="/search" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
                 <span>Explore Directory</span>
@@ -375,7 +375,7 @@ export default async function HomePage() {
 
                     <div className="flex items-center gap-2 text-xs text-slate-500">
                       <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{biz.city}, Pakistan</span>
+                      <span>{biz.city}, United States</span>
                     </div>
                   </div>
 
@@ -400,7 +400,7 @@ export default async function HomePage() {
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Recently Added Businesses
               </h2>
-              <p className="text-xs text-slate-500 mt-1">Newly registered and validated companies in Pakistan.</p>
+              <p className="text-xs text-slate-500 mt-1">Newly registered and validated companies in United States.</p>
             </div>
             <Link href="/search" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
               <span>View All Additions</span>
@@ -528,7 +528,7 @@ export default async function HomePage() {
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Why Choose ListPak Ecosystem?
               </h2>
-              <p className="text-slate-500 text-xs sm:text-sm">Built to empower Pakistani companies, job seekers, and local customers.</p>
+              <p className="text-slate-500 text-xs sm:text-sm">Built to empower United Statesi companies, job seekers, and local customers.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -631,14 +631,14 @@ export default async function HomePage() {
 
         {/* 13. POPULAR SEARCHES */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
-          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Popular Searches in Pakistan</h2>
+          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Popular Searches in United States</h2>
           <div className="flex flex-wrap gap-2.5 text-xs">
-            <Link href="/search?q=Banks" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Banks in Pakistan</Link>
+            <Link href="/search?q=Banks" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Banks in United States</Link>
             <Link href="/search?q=Restaurants" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Restaurants in Lahore</Link>
             <Link href="/search?q=Software" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Software Houses Islamabad</Link>
             <Link href="/search?q=Hospitals" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Doctors in Karachi</Link>
             <Link href="/search?q=Real+Estate" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-blue-500 font-medium">Real Estate Rawalpindi</Link>
-            <Link href="/jobs" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 font-bold text-emerald-700">Jobs in Pakistan</Link>
+            <Link href="/jobs" className="px-3.5 py-2 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 font-bold text-emerald-700">Jobs in United States</Link>
           </div>
         </section>
 
@@ -776,10 +776,10 @@ export default async function HomePage() {
           <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8">
             <div className="space-y-3 max-w-2xl text-center lg:text-left">
               <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                Ready to Grow Your Business or Hire Top Talent in Pakistan?
+                Ready to Grow Your Business or Hire Top Talent in United States?
               </h2>
               <p className="text-blue-100 text-xs sm:text-sm leading-relaxed">
-                Share accurate business information and help people discover services, companies, jobs, and professionals across Pakistan.
+                Share accurate business information and help people discover services, companies, jobs, and professionals across United States.
               </p>
             </div>
 

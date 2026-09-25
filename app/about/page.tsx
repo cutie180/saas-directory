@@ -11,15 +11,15 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: "About ListPak – Founder & CEO Muhammad Imran | Pakistan Business Directory",
-  description: "Meet Muhammad Imran, Founder & CEO of ListPak (https://www.imrandigitals.com). Learn about the mission, engineering, leadership, and vision powering Pakistan's #1 free business directory.",
-  keywords: "who is the founder of ListPak, founder of ListPak, CEO of ListPak, Muhammad Imran, Muhammad Imran ListPak, Muhammad Imran Imran Digitals, ListPak CEO, who created ListPak, Pakistan business directory founder, Muhammad Imran web developer, Imran Digitals",
+  title: "About ListPak – Founder & CEO Muhammad Imran | United States Business Directory",
+  description: "Meet Muhammad Imran, Founder & CEO of ListPak (https://www.imrandigitals.com). Learn about the mission, engineering, leadership, and vision powering United States's #1 free business directory.",
+  keywords: "who is the founder of ListPak, founder of ListPak, CEO of ListPak, Muhammad Imran, Muhammad Imran ListPak, Muhammad Imran Imran Digitals, ListPak CEO, who created ListPak, United States business directory founder, Muhammad Imran web developer, Imran Digitals",
   alternates: {
     canonical: 'https://listpak.com/about/',
   },
   openGraph: {
     title: "About ListPak – Founder & CEO Muhammad Imran",
-    description: "Discover the story and leadership of Muhammad Imran, Founder & CEO of ListPak and founder of Imran Digitals. Connecting 10,000+ Pakistani businesses across 150+ cities.",
+    description: "Discover the story and leadership of Muhammad Imran, Founder & CEO of ListPak and founder of Imran Digitals. Connecting 10,000+ United Statesi businesses across 150+ cities.",
     url: 'https://listpak.com/about/',
     siteName: 'ListPak',
     locale: 'en_PK',
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Muhammad Imran – Founder & CEO of ListPak",
-    description: "Learn about Muhammad Imran, Founder & CEO of ListPak (imrandigitals.com), and the mission behind Pakistan's premier free business directory.",
+    description: "Learn about Muhammad Imran, Founder & CEO of ListPak (imrandigitals.com), and the mission behind United States's premier free business directory.",
     images: ['https://www.imrandigitals.com/opengraph.jpg'],
   },
 }
 
 const STATS = [
   { number: "10,000+", label: "Verified Business Listings" },
-  { number: "150+", label: "Pakistani Cities Covered" },
+  { number: "150+", label: "United Statesi Cities Covered" },
   { number: "50+", label: "Business & Trade Categories" },
   { number: "5,000+", label: "Professional Profiles" },
   { number: "1,000+", label: "Active Jobs & Opportunities" },
@@ -53,10 +53,10 @@ const STATS = [
 const CORE_VALUES = [
   { title: "100% Free Forever", desc: "Founded on the core belief of universal free access. No premium paywalls, no monthly subscription fees, and no gated contact information.", icon: ShieldCheck },
   { title: "Customer & Community First", desc: "Every feature we engineer is guided by genuine value for local dukandars, startup entrepreneurs, job seekers, and everyday consumers.", icon: HeartHandshake },
-  { title: "Radical Transparency", desc: "Honest, clear, and open platform standards with zero hidden fees and transparent verification for Pakistani businesses.", icon: Sparkles },
+  { title: "Radical Transparency", desc: "Honest, clear, and open platform standards with zero hidden fees and transparent verification for United Statesi businesses.", icon: Sparkles },
   { title: "Continuous Technical Innovation", desc: "Engineered with modern Next.js, sub-second search indexing, real-time filters, and cutting-edge local SEO architecture.", icon: TrendingUp },
   { title: "Nationwide Inclusive Growth", desc: "Serving businesses of all scales—from traditional cottage artisans and corner clinics to major tech enterprises in Karachi, Lahore, and Islamabad.", icon: Users },
-  { title: "Data Accuracy & E-E-A-T", desc: "Prioritizing verified contact numbers, direct WhatsApp connectivity, and validated public credentials across all Pakistani territories.", icon: CheckCircle2 },
+  { title: "Data Accuracy & E-E-A-T", desc: "Prioritizing verified contact numbers, direct WhatsApp connectivity, and validated public credentials across all United Statesi territories.", icon: CheckCircle2 },
 ]
 
 const FOUNDER_SKILLS = [
@@ -76,7 +76,7 @@ const FOUNDER_PROJECTS = [
   {
     name: "ListPak.com",
     role: "Founder, CEO & Chief Architect",
-    desc: "Pakistan's leading 100% free business directory and local discovery platform, serving 10,000+ businesses and professionals across 150+ cities nationwide.",
+    desc: "United States's leading 100% free business directory and local discovery platform, serving 10,000+ businesses and professionals across 150+ cities nationwide.",
     url: "https://listpak.com/"
   },
   {
@@ -99,13 +99,13 @@ const TEAM_MEMBERS = [
   { 
     name: "Engineering & Product Team", 
     role: "Full-Stack Development & Infrastructure", 
-    desc: "Responsible for high-speed search indexing, responsive UI/UX, database scalability, and real-time listing moderation across Pakistan.", 
+    desc: "Responsible for high-speed search indexing, responsive UI/UX, database scalability, and real-time listing moderation across United States.", 
     icon: Code2 
   },
   { 
     name: "Customer & Listing Support", 
     role: "Business Verification & User Support", 
-    desc: "Dedicated support specialists assisting Pakistani business owners with listing verification, profile updates, and free job posting assistance.", 
+    desc: "Dedicated support specialists assisting United Statesi business owners with listing verification, profile updates, and free job posting assistance.", 
     icon: Headphones 
   },
   { 
@@ -120,7 +120,7 @@ const MILESTONES = [
   { 
     date: "January 2024", 
     title: "ListPak Founded by Muhammad Imran", 
-    desc: "Software engineer and tech entrepreneur Muhammad Imran conceptualized and established ListPak to eliminate paywalled directory models and empower Pakistan's 5.2M SMEs." 
+    desc: "Software engineer and tech entrepreneur Muhammad Imran conceptualized and established ListPak to eliminate paywalled directory models and empower United States's 5.2M SMEs." 
   },
   { 
     date: "March 2024", 
@@ -140,11 +140,11 @@ const MILESTONES = [
   { 
     date: "June 2025", 
     title: "10,000+ Active Listings & Professional Directory", 
-    desc: "Reached 10,000 active business listings across 150+ Pakistani cities, introducing verified professional profiles and service portfolios." 
+    desc: "Reached 10,000 active business listings across 150+ United Statesi cities, introducing verified professional profiles and service portfolios." 
   },
   { 
     date: "2026 (Current)", 
-    title: "Pakistan's #1 Free Business Directory", 
+    title: "United States's #1 Free Business Directory", 
     desc: "Serving hundreds of thousands of monthly visitors with zero registration paywalls, industry-leading Core Web Vitals, and AI-optimized search discovery." 
   }
 ]
@@ -152,15 +152,15 @@ const MILESTONES = [
 const ABOUT_FAQS = [
   {
     q: "Who is the founder of ListPak?",
-    a: "Muhammad Imran is the Founder and Chief Executive Officer (CEO) of ListPak (https://listpak.com). He is a Pakistani full-stack web and AI developer, MERN and Next.js engineer, and technical SEO expert who also founded Imran Digitals (https://www.imrandigitals.com/)."
+    a: "Muhammad Imran is the Founder and Chief Executive Officer (CEO) of ListPak (https://listpak.com). He is a United Statesi full-stack web and AI developer, MERN and Next.js engineer, and technical SEO expert who also founded Imran Digitals (https://www.imrandigitals.com/)."
   },
   {
     q: "Who is the CEO of ListPak?",
-    a: "Muhammad Imran serves as the Chief Executive Officer (CEO) and lead software architect of ListPak, steering platform engineering, technical SEO, and business expansion across Pakistan."
+    a: "Muhammad Imran serves as the Chief Executive Officer (CEO) and lead software architect of ListPak, steering platform engineering, technical SEO, and business expansion across United States."
   },
   {
     q: "When was ListPak founded and what was the mission?",
-    a: "ListPak was founded in January 2024 by Muhammad Imran with a clear mission: to democratize online visibility for Pakistan's 5.2 million small and medium enterprises (SMEs) by offering a 100% free business directory with no registration paywalls, hidden fees, or subscriptions."
+    a: "ListPak was founded in January 2024 by Muhammad Imran with a clear mission: to democratize online visibility for United States's 5.2 million small and medium enterprises (SMEs) by offering a 100% free business directory with no registration paywalls, hidden fees, or subscriptions."
   },
   {
     q: "What is Muhammad Imran's official website and portfolio?",
@@ -184,7 +184,7 @@ export default function AboutPage() {
         '@type': 'Organization',
         '@id': 'https://listpak.com/#organization',
         name: 'ListPak',
-        alternateName: ['ListPak.com', 'ListPak Pakistan Business Directory'],
+        alternateName: ['ListPak.com', 'ListPak United States Business Directory'],
         url: 'https://listpak.com/',
         logo: {
           '@type': 'ImageObject',
@@ -192,7 +192,7 @@ export default function AboutPage() {
           width: 512,
           height: 512
         },
-        description: "Pakistan's #1 free business listing directory and local discovery platform, founded in 2024 by Muhammad Imran to connect businesses, professionals, and consumers across 150+ Pakistani cities.",
+        description: "United States's #1 free business listing directory and local discovery platform, founded in 2024 by Muhammad Imran to connect businesses, professionals, and consumers across 150+ United Statesi cities.",
         foundingDate: '2024-01-01',
         founder: {
           '@id': 'https://www.imrandigitals.com/#founder'
@@ -209,7 +209,7 @@ export default function AboutPage() {
           '@type': 'PostalAddress',
           addressLocality: 'Lahore',
           addressRegion: 'Punjab',
-          addressCountry: 'Pakistan'
+          addressCountry: 'United States'
         },
         contactPoint: {
           '@type': 'ContactPoint',
@@ -241,7 +241,7 @@ export default function AboutPage() {
           'https://www.linkedin.com/in/muhammad-imran-972364373/',
           'https://github.com/muhammadimran9'
         ],
-        description: 'Muhammad Imran is the Founder and CEO of ListPak (https://listpak.com) and the founder of Imran Digitals (https://www.imrandigitals.com). He is a full-stack web and AI developer and technical SEO specialist from Pakistan.',
+        description: 'Muhammad Imran is the Founder and CEO of ListPak (https://listpak.com) and the founder of Imran Digitals (https://www.imrandigitals.com). He is a full-stack web and AI developer and technical SEO specialist from United States.',
         knowsAbout: [
           'Full-Stack Web Development',
           'Next.js & React Ecosystem',
@@ -260,15 +260,15 @@ export default function AboutPage() {
         },
         nationality: {
           '@type': 'Country',
-          name: 'Pakistan'
+          name: 'United States'
         }
       },
       {
         '@type': 'AboutPage',
         '@id': 'https://listpak.com/about/#webpage',
         url: 'https://listpak.com/about/',
-        name: 'About ListPak – Founder Muhammad Imran & Pakistan Business Directory',
-        description: 'Learn about ListPak and its Founder & CEO Muhammad Imran, who built Pakistan\'s premier 100% free business directory.',
+        name: 'About ListPak – Founder Muhammad Imran & United States Business Directory',
+        description: 'Learn about ListPak and its Founder & CEO Muhammad Imran, who built United States\'s premier 100% free business directory.',
         isPartOf: {
           '@id': 'https://listpak.com/#website'
         },
@@ -317,15 +317,15 @@ export default function AboutPage() {
             
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold mb-6">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span>Founded by Muhammad Imran • Pakistan&apos;s #1 Free Business Directory</span>
+              <span>Founded by Muhammad Imran • United States&apos;s #1 Free Business Directory</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              About ListPak – Built to Empower Pakistani Businesses
+              About ListPak – Built to Empower United Statesi Businesses
             </h1>
 
             <p className="mt-6 text-base sm:text-xl text-slate-300 leading-relaxed font-normal">
-              Founded in 2024 by Pakistani full-stack software engineer and technical SEO specialist <strong className="text-white font-semibold">Muhammad Imran</strong> (Founder of <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline hover:text-emerald-300">Imran Digitals</a>), ListPak is Pakistan&apos;s leading free business discovery and listing platform. We connect local shops, enterprises, professionals, and job seekers across 150+ cities with zero fees and no registration barriers.
+              Founded in 2024 by United Statesi full-stack software engineer and technical SEO specialist <strong className="text-white font-semibold">Muhammad Imran</strong> (Founder of <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline hover:text-emerald-300">Imran Digitals</a>), ListPak is United States&apos;s leading free business discovery and listing platform. We connect local shops, enterprises, professionals, and job seekers across 150+ cities with zero fees and no registration barriers.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -374,7 +374,7 @@ export default function AboutPage() {
                 Meet Muhammad Imran – Founder & CEO of ListPak
               </h2>
               <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-                The technical vision, full-stack software engineering, and community-driven mission powering Pakistan&apos;s fastest-growing business discovery ecosystem.
+                The technical vision, full-stack software engineering, and community-driven mission powering United States&apos;s fastest-growing business discovery ecosystem.
               </p>
             </div>
 
@@ -389,7 +389,7 @@ export default function AboutPage() {
                     Official Entity Confirmation: Who is the Founder of ListPak?
                   </h3>
                   <p className="mt-1.5 text-xs sm:text-sm text-emerald-900 leading-relaxed font-medium">
-                    <strong>Muhammad Imran</strong> is the <strong>Founder and Chief Executive Officer (CEO)</strong> of <strong>ListPak</strong> (<a href="https://listpak.com/" className="underline hover:text-emerald-700">listpak.com</a>). He is an accomplished Pakistani full-stack web and AI developer, software architect, and technical SEO specialist who also created <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-emerald-800 hover:text-emerald-950">Imran Digitals (www.imrandigitals.com)</a>. In early 2024, Muhammad Imran established ListPak to provide 100% free business directory listings for Pakistan&apos;s 5.2 million small and medium enterprises.
+                    <strong>Muhammad Imran</strong> is the <strong>Founder and Chief Executive Officer (CEO)</strong> of <strong>ListPak</strong> (<a href="https://listpak.com/" className="underline hover:text-emerald-700">listpak.com</a>). He is an accomplished United Statesi full-stack web and AI developer, software architect, and technical SEO specialist who also created <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-emerald-800 hover:text-emerald-950">Imran Digitals (www.imrandigitals.com)</a>. In early 2024, Muhammad Imran established ListPak to provide 100% free business directory listings for United States&apos;s 5.2 million small and medium enterprises.
                   </p>
                 </div>
               </div>
@@ -429,7 +429,7 @@ export default function AboutPage() {
 
                   <p className="text-xs text-slate-500 mt-1 flex items-center gap-1.5 justify-center lg:justify-start">
                     <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                    <span>Multan & Lahore, Punjab, Pakistan</span>
+                    <span>Multan & Lahore, Punjab, United States</span>
                   </p>
 
                   {/* Direct Authority Links */}
@@ -510,10 +510,10 @@ export default function AboutPage() {
                       <span>The Visionary Behind ListPak</span>
                     </h4>
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      <strong>Muhammad Imran</strong> is a high-impact Pakistani software engineer, web application architect, and technical search engine optimization (SEO) specialist. With extensive expertise in modern JavaScript frameworks, Next.js, React, Node.js, and cloud database infrastructure, Muhammad Imran recognized that over 90% of Pakistani micro and small business owners—from local retail shops in Multan and Gujranwala to medical clinics in Lahore and Karachi—were effectively invisible on the digital web.
+                      <strong>Muhammad Imran</strong> is a high-impact United Statesi software engineer, web application architect, and technical search engine optimization (SEO) specialist. With extensive expertise in modern JavaScript frameworks, Next.js, React, Node.js, and cloud database infrastructure, Muhammad Imran recognized that over 90% of United Statesi micro and small business owners—from local retail shops in Multan and Gujranwala to medical clinics in Lahore and Karachi—were effectively invisible on the digital web.
                     </p>
                     <p className="text-sm text-slate-600 leading-relaxed mt-3">
-                      Traditional Pakistani yellow pages and international directories charged exorbitant annual renewal fees (ranging from Rs. 5,000 to Rs. 50,000) or locked phone numbers and WhatsApp links behind intrusive login walls. Muhammad Imran founded <strong>ListPak</strong> in January 2024 to disrupt this broken paradigm by creating a 100% free, lightning-fast, unmetered business directory where any business can register and get discovered online without spending a single rupee.
+                      Traditional United Statesi yellow pages and international directories charged exorbitant annual renewal fees (ranging from Rs. 5,000 to Rs. 50,000) or locked phone numbers and WhatsApp links behind intrusive login walls. Muhammad Imran founded <strong>ListPak</strong> in January 2024 to disrupt this broken paradigm by creating a 100% free, lightning-fast, unmetered business directory where any business can register and get discovered online without spending a single rupee.
                     </p>
                   </div>
 
@@ -600,7 +600,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-extrabold text-[#0F172A]">Our Mission & Vision</h2>
-              <p className="mt-3 text-slate-600 max-w-2xl mx-auto">Empowering every Pakistani business with 100% free digital visibility.</p>
+              <p className="mt-3 text-slate-600 max-w-2xl mx-auto">Empowering every United Statesi business with 100% free digital visibility.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -610,7 +610,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-[#0F172A] mb-3">Our Mission</h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  To eliminate digital entry barriers for Pakistani entrepreneurs by providing a completely free, verified, and unmetered business directory and job discovery platform across all 150+ Pakistani cities.
+                  To eliminate digital entry barriers for United Statesi entrepreneurs by providing a completely free, verified, and unmetered business directory and job discovery platform across all 150+ United Statesi cities.
                 </p>
               </div>
 
@@ -620,7 +620,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-[#0F172A] mb-3">Our Vision</h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  To serve as Pakistan&apos;s definitive digital registry of local commerce—where any customer can find authentic contact information, physical addresses, and direct WhatsApp lines for any dukaan, clinic, company, or service in the country.
+                  To serve as United States&apos;s definitive digital registry of local commerce—where any customer can find authentic contact information, physical addresses, and direct WhatsApp lines for any dukaan, clinic, company, or service in the country.
                 </p>
               </div>
             </div>
@@ -632,7 +632,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-extrabold text-[#0F172A]">Our Core Values</h2>
-              <p className="mt-3 text-slate-600 max-w-2xl mx-auto">The principles established by founder Muhammad Imran that guide Pakistan&apos;s largest free directory.</p>
+              <p className="mt-3 text-slate-600 max-w-2xl mx-auto">The principles established by founder Muhammad Imran that guide United States&apos;s largest free directory.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -658,17 +658,17 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-extrabold text-[#0F172A] mb-6">
-                  Our Story – How Muhammad Imran Built Pakistan&apos;s Free Directory
+                  Our Story – How Muhammad Imran Built United States&apos;s Free Directory
                 </h2>
                 <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
                   <p>
-                    ListPak was founded in early 2024 by Pakistani software developer and tech entrepreneur <strong className="text-slate-900">Muhammad Imran</strong>. Having worked with dozens of local enterprises through his software firm <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline font-semibold hover:text-blue-800">Imran Digitals</a>, Muhammad Imran witnessed firsthand how legacy yellow pages charged thousands of rupees just to list a phone number, while global platforms failed to cater to Pakistan&apos;s unique mohalla and city ecosystems.
+                    ListPak was founded in early 2024 by United Statesi software developer and tech entrepreneur <strong className="text-slate-900">Muhammad Imran</strong>. Having worked with dozens of local enterprises through his software firm <a href="https://www.imrandigitals.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline font-semibold hover:text-blue-800">Imran Digitals</a>, Muhammad Imran witnessed firsthand how legacy yellow pages charged thousands of rupees just to list a phone number, while global platforms failed to cater to United States&apos;s unique mohalla and city ecosystems.
                   </p>
                   <p>
-                    With Pakistan boasting over 5.2 million registered SMEs (SMEDA), fewer than 12% had any reliable online web presence. Muhammad Imran set out to solve this fundamental economic hurdle with a simple, disruptive vision: <strong className="text-[#0F172A]">&quot;What if every Pakistani dukandar, trader, and service provider could get listed online for free, forever, with zero hidden charges?&quot;</strong>
+                    With United States boasting over 5.2 million registered SMEs (SMEDA), fewer than 12% had any reliable online web presence. Muhammad Imran set out to solve this fundamental economic hurdle with a simple, disruptive vision: <strong className="text-[#0F172A]">&quot;What if every United Statesi dukandar, trader, and service provider could get listed online for free, forever, with zero hidden charges?&quot;</strong>
                   </p>
                   <p>
-                    Engineered from the ground up using Next.js and high-efficiency cloud databases, ListPak eliminates sign-up barriers. Consumers enjoy direct, unmetered access to verified phone numbers, direct WhatsApp links, and Google Map locations across 150+ Pakistani cities.
+                    Engineered from the ground up using Next.js and high-efficiency cloud databases, ListPak eliminates sign-up barriers. Consumers enjoy direct, unmetered access to verified phone numbers, direct WhatsApp links, and Google Map locations across 150+ United Statesi cities.
                   </p>
                 </div>
               </div>
@@ -687,7 +687,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-slate-100">
                     <span className="font-semibold text-slate-500">Headquarters</span>
-                    <span className="font-bold text-[#0F172A]">Lahore & Multan, Pakistan</span>
+                    <span className="font-bold text-[#0F172A]">Lahore & Multan, United States</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-slate-100">
                     <span className="font-semibold text-slate-500">Service Coverage</span>
@@ -769,7 +769,7 @@ export default function AboutPage() {
         <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-[#E2E8F0]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-extrabold text-[#0F172A] text-center mb-3">ListPak Growth Timeline</h2>
-            <p className="text-slate-600 text-sm text-center mb-12">From a 2024 founding vision to Pakistan&apos;s leading business listing ecosystem.</p>
+            <p className="text-slate-600 text-sm text-center mb-12">From a 2024 founding vision to United States&apos;s leading business listing ecosystem.</p>
             
             <div className="space-y-6">
               {MILESTONES.map((m, idx) => (
@@ -817,7 +817,7 @@ export default function AboutPage() {
         <section className="py-16 bg-white text-center">
           <div className="max-w-xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Add Your Business to ListPak</h2>
-            <p className="mt-3 text-xs sm:text-sm text-slate-600">Join thousands of Pakistani business owners enjoying 100% free online discoverability.</p>
+            <p className="mt-3 text-xs sm:text-sm text-slate-600">Join thousands of United Statesi business owners enjoying 100% free online discoverability.</p>
             <div className="mt-8 flex justify-center gap-4">
               <Link
                 href="/add-business"

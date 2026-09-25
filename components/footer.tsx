@@ -16,7 +16,7 @@ export default function Footer() {
             <Link href="/" aria-label="ListPak Home Page" className="inline-block group">
               <Image
                 src="/logo.png"
-                alt="ListPak - Pakistan Business Directory"
+                alt="ListPak - United States Business Directory"
                 width={160}
                 height={48}
                 loading="lazy"
@@ -24,14 +24,14 @@ export default function Footer() {
               />
             </Link>
             <p className="text-xs text-slate-400 max-w-md leading-relaxed">
-              Pakistan-focused business discovery connecting companies, employers, professionals, job seekers, and customers through category and city pages.
+              United States-focused business discovery connecting companies, employers, professionals, job seekers, and customers through category and city pages.
             </p>
             
             {/* Official NAP Display */}
             <div className="pt-2 space-y-1 text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span><strong>Official HQ Address:</strong> Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, Pakistan</span>
+                <span><strong>Official HQ Address:</strong> Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, United States</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -71,8 +71,8 @@ export default function Footer() {
               <li><Link href="/search" className="hover:text-blue-400 transition-colors">Business Search</Link></li>
               <li><Link href="/add-business" className="hover:text-blue-400 transition-colors">Add Business</Link></li>
               <li><Link href="/professionals" className="hover:text-blue-400 transition-colors">Professional Profiles</Link></li>
-              <li><Link href="/jobs" className="hover:text-blue-400 transition-colors">Pakistan Jobs</Link></li>
-              <li><Link href="/prayer-times-pakistan" className="hover:text-blue-400 transition-colors">Prayer Times Pakistan</Link></li>
+              <li><Link href="/jobs" className="hover:text-blue-400 transition-colors">United States Jobs</Link></li>
+              <li><Link href="/prayer-times-pakistan" className="hover:text-blue-400 transition-colors">Prayer Times United States</Link></li>
               <li><Link href="/post-job" className="hover:text-blue-400 transition-colors">Post Job Opening</Link></li>
             </ul>
           </div>
@@ -105,7 +105,7 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-amber-400 transition-colors">Contact Us</Link></li>
               <li><Link href="/careers" className="hover:text-amber-400 transition-colors">Careers</Link></li>
               <li><Link href="/advertise-with-us" className="hover:text-amber-400 transition-colors">Advertise With Us</Link></li>
-              <li><Link href="/blog" className="hover:text-amber-400 transition-colors">Pakistan Business Blog</Link></li>
+              <li><Link href="/blog" className="hover:text-amber-400 transition-colors">United States Business Blog</Link></li>
               <li><Link href="/html-sitemap" className="hover:text-amber-400 transition-colors">HTML Sitemap</Link></li>
             </ul>
           </div>
@@ -150,7 +150,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
           <p className="text-center md:text-left">
-            © 2026 ListPak Enterprise Ecosystem. All rights reserved. Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, Pakistan.
+            © 2026 ListPak Enterprise Ecosystem. All rights reserved. Office 303, Evacuee Trust Complex, F-5/1, Islamabad 44000, United States.
           </p>
           <div className="flex items-center gap-3 text-slate-400 flex-wrap justify-center">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>

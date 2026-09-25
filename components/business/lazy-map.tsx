@@ -33,7 +33,7 @@ export default function LazyMap({ address, city, name }: LazyMapProps) {
     return () => observer.disconnect()
   }, [shouldLoadMap])
 
-  const mapQuery = encodeURIComponent(`${address}, ${city}, Pakistan`)
+  const mapQuery = encodeURIComponent(`${address}, ${city}, United States`)
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&output=embed`
   const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
 
@@ -57,7 +57,7 @@ export default function LazyMap({ address, city, name }: LazyMapProps) {
 
       <p className="text-xs text-slate-600 font-medium flex items-center gap-1.5">
         <Navigation className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-        <span>{address || `${name}, ${city}`}, Pakistan</span>
+        <span>{address || `${name}, ${city}`}, United States</span>
       </p>
 
       <div className="relative w-full h-[280px] rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
