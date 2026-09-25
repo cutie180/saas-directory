@@ -32,7 +32,7 @@ export default function CookiePolicyPage() {
 
             <h2 className="text-xl font-bold text-slate-900 pt-4">1. What Are Cookies?</h2>
             <p>
-              Cookies are small data files stored on your browser, device, or computer by web servers when you browse a website. They serve critical functional purposes, such as keeping you authenticated, remembering your chosen city or language preferences, analyzing web traffic, and enabling advertising partners like <strong>Google AdSense</strong> to deliver relevant advertisements.
+              Cookies are small data files stored on your browser, device, or computer by web servers when you browse a website. They serve critical functional purposes, such as keeping you authenticated and remembering your chosen location or language preferences.
             </p>
 
             <h2 className="text-xl font-bold text-slate-900 pt-4">2. Categories of Cookies We Use</h2>
@@ -45,25 +45,12 @@ export default function CookiePolicyPage() {
               </div>
 
               <div className="border border-slate-200 rounded-xl p-4 bg-slate-50">
-                <h3 className="font-bold text-slate-900 mb-1">B. Performance &amp; Analytics Cookies</h3>
+                <h3 className="font-bold text-slate-900 mb-1">B. Functionality &amp; Preference Cookies</h3>
                 <p className="text-xs text-slate-600">
-                  We utilize analytics tools, including <strong>Google Analytics</strong> (tag: <code>G-N09JN0NJ2R</code>), Google Tag Manager (<code>GTM-KNK59XWQ</code>), and Microsoft Clarity (<code>y0jpwahv9h</code>), to measure user engagement, monitor page speed, and detect technical errors. These cookies collect aggregated, anonymous diagnostic metrics without directly identifying individual visitors.
+                  These cookies allow our website to remember choices you make during your visit, such as your selected state or city filter, category search query, bookmarked businesses, and display preferences.
                 </p>
               </div>
 
-              <div className="border border-slate-200 rounded-xl p-4 bg-slate-50">
-                <h3 className="font-bold text-slate-900 mb-1">C. Functionality &amp; Preference Cookies</h3>
-                <p className="text-xs text-slate-600">
-                  These cookies allow our website to remember choices you make during your visit, such as your selected Pakistani city filter, category search query, bookmarked businesses, and display preferences.
-                </p>
-              </div>
-
-              <div className="border border-slate-200 rounded-xl p-4 bg-slate-50">
-                <h3 className="font-bold text-slate-900 mb-1">D. Advertising &amp; Google AdSense Cookies</h3>
-                <p className="text-xs text-slate-600">
-                  ListPak works with third-party vendors and ad networks, including <strong>Google AdSense</strong>, to display commercial advertisements. Third-party vendors, including Google, use cookies (such as DoubleClick cookies) to serve ads based on a user&apos;s prior visits to this website or other websites across the internet. Google&apos;s use of advertising cookies enables it and its partners to serve ads based on your visit to ListPak and/or other websites.
-                </p>
-              </div>
             </div>
 
             <h2 className="text-xl font-bold text-slate-900 pt-4">3. Managing and Opting Out of Cookies</h2>
