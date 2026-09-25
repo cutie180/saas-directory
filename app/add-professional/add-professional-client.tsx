@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
-import { CITIES, CATEGORIES } from '@/lib/data'
+import { CITIES, CATEGORIES, STATE_CITIES, US_STATES } from '@/lib/data'
 import { saveProfessionalToDatabase, generateProfessionalSlug } from '@/lib/professional-service'
 import { toast } from 'sonner'
 import { auth } from '@/lib/firebase'
@@ -82,8 +82,6 @@ export default function AddProfessionalClient() {
   // Searchable City state
   const [citySearch, setCitySearch] = useState('')
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false)
-  const filteredCities = CITIES.filter(c => c.toLowerCase().includes(citySearch.toLowerCase().trim()))
-
   // Skills input state
   const [skillInput, setSkillInput] = useState('')
   const [customSocialName, setCustomSocialName] = useState('')
@@ -107,7 +105,7 @@ export default function AddProfessionalClient() {
     experienceYears: '3',
     availability: 'Open to Work (Full-time)',
     currentCompany: '',
-    hourlyRate: 'PKR 3,000 / hr',
+    hourlyRate: '',
     
     // Skills & Arrays
     skills: ['Communication', 'Problem Solving'] as string[],
@@ -120,9 +118,9 @@ export default function AddProfessionalClient() {
     previousExperience: [{ title: '', company: '', duration: '', description: '' }],
 
     // Location & Contact
-    city: 'Lahore',
-    province: 'Punjab',
-    country: 'Pakistan',
+    city: '',
+    province: '',
+    country: 'United States',
     address: '',
     googleMapUrl: '',
     phone: '',
@@ -155,9 +153,12 @@ export default function AddProfessionalClient() {
     customSocialLinks: [] as Array<{ name: string; url: string }>,
 
     // Dynamic fields depending on profession
-    dynamicFields: {} as Record<string, string>
+  dynamicFields: {} as Record<string, string>
   })
 
+  const availableCities = formData.province ? (STATE_CITIES[formData.province] || []) : []
+  const filteredCities = availableCities.filter(c => c.toLowerCase().includes(citySearch.toLowerCase().trim()))
+  
   // Avatar Link & Upload Handlers
   const handleAvatarLinkChange = (rawUrl: string) => {
     setAvatarLink(rawUrl)
@@ -466,7 +467,7 @@ export default function AddProfessionalClient() {
             Create Your Public Professional Profile & Portfolio
           </h1>
           <p className="text-slate-400 text-xs sm:text-sm max-w-2xl">
-            For individuals, freelancers, doctors, software engineers, teachers, skilled workers, and job seekers across Pakistan.
+            For individuals, freelancers, doctors, software engineers, teachers, skilled workers, and job seekers across the United States.
           </p>
 
           {/* Mode switch helper banner */}
@@ -494,7 +495,7 @@ export default function AddProfessionalClient() {
                 <span>Profile Auto-Approved &amp; Publicly Live!</span>
               </span>
               <h2 className="text-2xl font-extrabold text-slate-900">
-                Your professional profile is now live across Pakistan!
+                Your professional profile is now live across the United States!
               </h2>
               <p className="text-slate-600 text-sm max-w-lg mx-auto leading-relaxed">
                 Your profile has been automatically approved and published. Anyone can now view your public portfolio, credentials, and skills on ListPak.
@@ -634,7 +635,7 @@ export default function AddProfessionalClient() {
                         required
                         value={formData.fullName}
                         onChange={(e) => setFormData(p => ({ ...p, fullName: e.target.value }))}
-                        placeholder="e.g. Muhammad Ali"
+                        placeholder="e.g. Jordan Lee"
                         className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
                       />
                       {errors.fullName && <p className="text-red-500 text-[11px] mt-1">{errors.fullName}</p>}
@@ -843,7 +844,7 @@ export default function AddProfessionalClient() {
                     <div className="p-2.5 rounded-xl bg-blue-50/70 border border-blue-200/60 flex items-start gap-2 text-[11px] text-slate-600">
                       <Award className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                       <span>
-                        <strong>HR &amp; Client Hiring Tip:</strong> Profiles with clear, well-lit professional headshots receive <strong>4x more interview calls &amp; project inquiries</strong> from companies across Pakistan.
+                        <strong>HR &amp; Client Hiring Tip:</strong> Profiles with clear, well-lit professional headshots receive <strong>4x more interview calls &amp; project inquiries</strong> from companies across the United States.
                       </span>
                     </div>
                   </div>
@@ -1353,7 +1354,7 @@ export default function AddProfessionalClient() {
                 <div className="space-y-6 animate-in fade-in-50">
                   <div>
                     <h2 className="text-xl font-extrabold text-slate-900">Location & Direct Contact Info</h2>
-                    <p className="text-xs text-slate-500 mt-1">Clients and employers will use these details to contact you directly.</p>
+                    <p className="text-xs text-slate-500 mt-1">Clients and employers across the United States will use these details to contact you directly.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1369,12 +1370,13 @@ export default function AddProfessionalClient() {
                           setCitySearch(e.target.value)
                           setIsCityDropdownOpen(true)
                         }}
-                        placeholder="Search city in Pakistan..."
+                        placeholder={formData.province ? 'Search city in selected state...' : 'Select a state first'}
+                        disabled={!formData.province}
                         className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
                       />
                       {errors.city && <p className="text-red-500 text-[11px] mt-1">{errors.city}</p>}
 
-                      {isCityDropdownOpen && (
+                      {isCityDropdownOpen && formData.province && (
                         <div className="absolute z-30 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-xl max-h-48 overflow-y-auto">
                           {filteredCities.map(c => (
                             <div
@@ -1393,14 +1395,15 @@ export default function AddProfessionalClient() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Province</label>
-                      <input
-                        type="text"
+                      <label className="block text-xs font-bold text-slate-700 mb-1">State *</label>
+                      <select
                         value={formData.province}
-                        onChange={(e) => setFormData(p => ({ ...p, province: e.target.value }))}
-                        placeholder="Punjab, Sindh, KPK, Balochistan..."
+                        onChange={(e) => setFormData(p => ({ ...p, province: e.target.value, city: '' }))}
                         className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
-                      />
+                      >
+                        <option value="">Select a state</option>
+                        {US_STATES.map(state => <option key={state} value={state}>{state}</option>)}
+                      </select>
                     </div>
 
                     <div>
@@ -1408,7 +1411,7 @@ export default function AddProfessionalClient() {
                       <input
                         type="text"
                         disabled
-                        value="Pakistan"
+                        value="United States"
                         className="w-full px-4 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-500 font-bold"
                       />
                     </div>

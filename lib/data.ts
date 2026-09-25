@@ -485,7 +485,8 @@ export interface ProfessionalItem {
   faqs?: { question: string; answer: string }[]
 }
 
-export const MOCK_BUSINESSES: BusinessItem[] = [
+export const MOCK_BUSINESSES: BusinessItem[] = []; /* legacy seed data removed
+
   {
     "id": "biz-1788874377351",
     "slug": "crust-crave-karachi",
@@ -6004,11 +6005,12 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "reviews": [],
     "faqs": []
   }
-]
+  ] */
+  
+  export const MOCK_COMPANIES: CompanyItem[] = []
+  
+  export const MOCK_JOBS: JobItem[] = []; /* legacy seed data removed
 
-export const MOCK_COMPANIES: CompanyItem[] = []
-
-export const MOCK_JOBS: JobItem[] = [
   {
     "id": "job-remote-seo-internship",
     "slug": "remote-seo-internship",
@@ -7311,9 +7313,10 @@ export const MOCK_JOBS: JobItem[] = [
     "applicationWhatsapp": "+923000000000",
     "applicationWebsite": "https://listpak.com"
   }
-]
+  ] */
+  
+  export const MOCK_PROFESSIONALS: ProfessionalItem[] = []; /* legacy seed data removed
 
-export const MOCK_PROFESSIONALS: ProfessionalItem[] = [
   {
     "id": "pro-muhammad-imran",
     "username": "muhammad-imran-multan",
@@ -8068,6 +8071,6 @@ export const MOCK_PROFESSIONALS: ProfessionalItem[] = [
       }
     ]
   }
-]
-
-export const MOCK_VERIFICATION_REQUESTS: ProfessionalVerificationRequest[] = []
+  ] */
+  
+  export const MOCK_VERIFICATION_REQUESTS: ProfessionalVerificationRequest[] = []
