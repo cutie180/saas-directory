@@ -66,7 +66,7 @@ export default function AdminPage() {
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        if (user.email?.toLowerCase() === 'contact@listpak.com') {
+        if (user.email?.toLowerCase() === 'admin@biznestusa.com') {
           setAdminUid(user.uid)
           setIsAuthenticated(true)
           sessionStorage.setItem('listpak_admin_auth', 'true')
@@ -322,20 +322,11 @@ export default function AdminPage() {
     e.preventDefault()
     setLoginError('')
 
-    const AUTHORIZED_ADMIN_EMAIL = 'contact@listpak.com'
-    const inputEmail = (adminEmail || '').trim().toLowerCase()
-
-    // Passcode listpak2026 allowed for master access when email is contact@listpak.com or blank
-    if ((inputEmail === AUTHORIZED_ADMIN_EMAIL || !inputEmail) && (adminPass === 'listpak2026' || adminPass === 'admin123' || adminPass === 'listpakadmin')) {
-      setIsAuthenticated(true)
-      sessionStorage.setItem('listpak_admin_auth', 'true')
-      toast.success('Admin authenticated successfully.')
-      fetchAdminData()
-      return
-    }
+  const AUTHORIZED_ADMIN_EMAIL = 'admin@biznestusa.com'
+  const inputEmail = (adminEmail || '').trim().toLowerCase()
 
     if (inputEmail !== AUTHORIZED_ADMIN_EMAIL) {
-      setLoginError('Access Denied: Only the authorized administrator (contact@listpak.com) can log into the Admin Portal.')
+      setLoginError('Access denied: only the authorized BizNestUSA administrator can log into the Admin Portal.')
       toast.error('Access Denied: Only contact@listpak.com can access the admin portal.')
       return
     }
@@ -505,7 +496,7 @@ export default function AdminPage() {
                   type="email"
                   value={adminEmail}
                   onChange={(e) => setAdminEmail(e.target.value)}
-                  placeholder="admin@listpak.com"
+                  placeholder="admin@biznestusa.com"
                   className="w-full px-4 py-3 bg-[#F4F7FC] border border-[#D9E2F1] rounded-xl text-sm focus:outline-none focus:border-[#2563EB] text-[#0F172A]"
                 />
               </div>
