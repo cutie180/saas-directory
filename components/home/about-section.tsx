@@ -10,10 +10,10 @@ export default function AboutSection() {
             Pakistan Free Business Directory
           </span>
           <h2 id="what-is-listpak" className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
-            What is ListPak?
+            What is BizNestUSA?
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            ListPak is the leading Pakistan free business directory. Find verified <strong>local businesses by city</strong> and{' '}
+            BizNestUSA is a free American business directory built for finding trusted local services. Find verified <strong>local businesses by city</strong> and{' '}
             <a className="text-primary font-medium hover:underline" href="/categories/" title="Browse all business categories in Pakistan">
               business categories in Pakistan
             </a>

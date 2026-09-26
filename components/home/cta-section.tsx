@@ -19,7 +19,7 @@ export default function CTASection() {
           List Your Company <span className="text-[#60a5fa]">Free</span> Today
         </h2>
         <p className="mt-4 text-white/65 text-lg max-w-xl mx-auto text-pretty">
-          Join thousands of businesses and professionals already growing with ListPak, the premier Pakistan business directory.
+          Join local businesses and professionals growing with BizNestUSA, a modern directory built for American communities.
           It&apos;s completely free and takes less than 2 minutes.
         </p>
 

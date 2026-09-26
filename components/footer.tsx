@@ -13,10 +13,10 @@ export default function Footer() {
         {/* Top Branding & NAP Bar */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-12 border-b border-slate-800/80 gap-6">
           <div className="flex flex-col gap-3">
-            <Link href="/" aria-label="ListPak Home Page" className="inline-block group">
+            <Link href="/" aria-label="BizNestUSA Home Page" className="inline-block group">
               <Image
                 src="/logo.png"
-                alt="ListPak - United States Business Directory"
+                alt="BizNestUSA - United States Business Directory"
                 width={160}
                 height={48}
                 loading="lazy"
@@ -104,8 +104,7 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-amber-400 transition-colors">Contact Us</Link></li>
               <li><Link href="/careers" className="hover:text-amber-400 transition-colors">Careers</Link></li>
               <li><Link href="/advertise-with-us" className="hover:text-amber-400 transition-colors">Advertise With Us</Link></li>
-              <li><Link href="/blog" className="hover:text-amber-400 transition-colors">United States Business Blog</Link></li>
-              <li><Link href="/html-sitemap" className="hover:text-amber-400 transition-colors">HTML Sitemap</Link></li>
+                            <li><Link href="/html-sitemap" className="hover:text-amber-400 transition-colors">HTML Sitemap</Link></li>
             </ul>
           </div>
 
@@ -149,7 +148,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
           <p className="text-center md:text-left">
-            © 2026 ListPak. A USA directory for businesses, professionals, and jobs. All rights reserved.
+            © 2026 BizNestUSA. A USA directory for businesses, professionals, and jobs. All rights reserved.
           </p>
           <div className="flex items-center gap-3 text-slate-400 flex-wrap justify-center">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>

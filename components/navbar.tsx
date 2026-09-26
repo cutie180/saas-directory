@@ -18,15 +18,15 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0F172A] border-b border-slate-800/80 shadow-lg">
+    <header className="sticky top-0 z-50 bg-[#123047] border-b border-slate-800/80 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Brand Logo */}
-          <Link href="/" aria-label="ListPak Home Page" className="flex items-center group py-1">
+          <Link href="/" aria-label="BizNestUSA Home Page" className="flex items-center group py-1">
             <Image
               src="/logo.png"
-              alt="ListPak - USA Business Directory"
+              alt="BizNestUSA - USA Business Directory"
               width={160}
               height={48}
               priority
@@ -109,7 +109,7 @@ export default function Navbar() {
       {open && (
         <nav
           id="mobile-nav-menu"
-          className="lg:hidden bg-[#0F172A] border-t border-slate-800 px-4 py-5 flex flex-col gap-2 shadow-2xl animate-in slide-in-from-top-2"
+          className="lg:hidden bg-[#123047] border-t border-slate-800 px-4 py-5 flex flex-col gap-2 shadow-2xl animate-in slide-in-from-top-2"
           aria-label="Mobile navigation"
         >
           {navLinks.map((link) => {
