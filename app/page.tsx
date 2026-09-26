@@ -112,7 +112,6 @@ const BUSINESS_RESOURCES = [
 
 export default async function HomePage() {
   const allBiz = await getAllBusinesses()
-  const featuredBusinesses = allBiz.slice(0, 6)
   const recentlyAddedBusinesses = allBiz.slice(6, 12).length > 0 ? allBiz.slice(6, 12) : allBiz.slice(0, 6)
   const featuredJobs = MOCK_JOBS.slice(0, 2)
   const latestJobs = MOCK_JOBS.slice(2, 6)
@@ -326,67 +325,6 @@ export default async function HomePage() {
                   </div>
                   <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-white group-hover:translate-x-0.5 transition-transform" />
                 </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 6. FEATURED BUSINESSES */}
-        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 border-y border-slate-200/80">
-          <div className="max-w-7xl mx-auto space-y-8">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Verified Companies</span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  Featured Businesses
-                </h2>
-                <p className="text-slate-500 text-xs mt-1">Premier verified companies and institutions across United States.</p>
-              </div>
-              <Link href="/search" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                <span>Explore Directory</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredBusinesses.map((biz) => (
-                <div key={biz.id} className="bg-[#F8FAFC] rounded-2xl border border-slate-200/80 p-6 space-y-4 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
-                  <div className="space-y-3">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <Image src={biz.logo} alt={biz.name} width={56} height={56} loading="lazy" sizes="56px" className="w-14 h-14 rounded-2xl object-cover border border-slate-200 bg-white" />
-                        <div>
-                          <Link href={`/business/${biz.slug}`} className="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors flex items-center gap-1.5">
-                            <span>{biz.name}</span>
-                            {biz.verified && <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />}
-                          </Link>
-                          <p className="text-xs text-slate-500 font-medium">{biz.category}</p>
-                        </div>
-                      </div>
-                      
-                      <span className="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-1 rounded-lg shrink-0">
-                        ★ {biz.rating}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                      {biz.description}
-                    </p>
-
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{biz.city}, United States</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-emerald-600">Verified Listing</span>
-                    <Link href={`/business/${biz.slug}`} className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                      <span>View Profile</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
               ))}
             </div>
           </div>

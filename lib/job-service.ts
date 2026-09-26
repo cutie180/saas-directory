@@ -32,10 +32,10 @@ export const getAllJobs = cache(async function getAllJobs(includePending: boolea
           company: data.company || 'Hiring Employer',
           companySlug: data.companySlug || normalizeSlug(data.company || 'hiring-company'),
           companyLogo: data.companyLogo || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80',
-          city: data.city || 'Pakistan',
-          cities: data.cities && data.cities.length > 0 ? data.cities : (data.city ? [data.city] : ['Pakistan']),
-          province: data.province || 'Pakistan',
-          country: data.country || 'Pakistan',
+          city: data.city || 'New York',
+          cities: data.cities && data.cities.length > 0 ? data.cities : (data.city ? [data.city] : ['New York']),
+          province: data.province || 'New York',
+          country: data.country || 'United States',
           category: data.category || 'Technology & IT',
           department: data.department || 'Engineering',
           type: data.type || 'Full-time',
@@ -53,7 +53,7 @@ export const getAllJobs = cache(async function getAllJobs(includePending: boolea
           shiftType: data.shiftType || 'Day Shift',
           benefits: data.benefits || ['Health Insurance', 'Annual Bonus', 'Paid Leaves'],
           postedDate: data.postedDate || 'Just now',
-          description: data.description || 'Verified job vacancy on ListPak Pakistan.',
+          description: data.description || 'Verified job vacancy on BizNestUSA.',
           responsibilities: data.responsibilities || ['Fulfill daily role responsibilities with quality.'],
           requirements: data.requirements || ['Relevant experience and educational qualifications.'],
           preferredQualifications: data.preferredQualifications || [],
@@ -88,7 +88,7 @@ export const getAllJobs = cache(async function getAllJobs(includePending: boolea
 export function normalizeJobDoc(docId: string, data: any): JobItem {
   const title = data.title || 'Job Opportunity'
   const company = data.company || 'Company'
-  const itemSlug = data.slug || normalizeSlug(`${title} ${data.city || 'Pakistan'}`)
+  const itemSlug = data.slug || normalizeSlug(`${title} ${data.city || 'New York'}`)
 
   return {
     id: docId || data.id || 'job-' + Date.now(),
@@ -97,10 +97,10 @@ export function normalizeJobDoc(docId: string, data: any): JobItem {
     company,
     companySlug: data.companySlug || normalizeSlug(company),
     companyLogo: data.companyLogo || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80',
-    city: data.city || 'Pakistan',
-    cities: data.cities || [data.city || 'Pakistan'],
+    city: data.city || 'New York',
+    cities: data.cities || [data.city || 'New York'],
     province: data.province || 'Sindh',
-    country: data.country || 'Pakistan',
+    country: data.country || 'United States',
     category: data.category || 'Technology & IT',
     department: data.department || 'General',
     type: data.type || 'Full-time',
@@ -180,14 +180,14 @@ export async function saveJobToDatabase(jobData: Partial<JobItem>): Promise<JobI
   
   const rawCities = (jobData.cities && jobData.cities.length > 0)
     ? jobData.cities.map(c => sanitizeText(c, 60))
-    : [sanitizeText(jobData.city || 'Karachi', 60)]
+    : [sanitizeText(jobData.city || 'New York', 60)]
   const cities = Array.from(new Set(rawCities))
   
   const citySummary = cities.length === 1
     ? cities[0]
     : (cities.length <= 3 ? cities.join(', ') : `${cities.slice(0, 2).join(', ')} (+${cities.length - 2} cities)`)
 
-  const slug = normalizeSlug(`${title} ${cities[0] || 'Pakistan'}`) + '-' + Math.floor(Math.random() * 1000)
+  const slug = normalizeSlug(`${title} ${cities[0] || 'New York'}`) + '-' + Math.floor(Math.random() * 1000)
 
   const newJob: JobItem = {
     id: 'job-' + Date.now(),
@@ -198,8 +198,8 @@ export async function saveJobToDatabase(jobData: Partial<JobItem>): Promise<JobI
     companyLogo: sanitizeUrl(jobData.companyLogo || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80'),
     city: citySummary,
     cities: cities,
-    province: sanitizeText(jobData.province || 'Sindh', 60),
-    country: 'Pakistan',
+    province: sanitizeText(jobData.province || 'New York', 60),
+    country: 'United States',
     category: sanitizeText(jobData.category || 'Technology & IT', 80),
     department: sanitizeText(jobData.department || 'General', 80),
     type: sanitizeText(jobData.type || 'Full-time', 40),
