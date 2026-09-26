@@ -94,7 +94,7 @@ export const CATEGORIES = [
   { id: 'construction', name: 'Construction & Building', icon: 'construction', count: 0, color: '#f97316', desc: 'Architects, civil engineers, building contractors, and materials' },
   { id: 'automotive', name: 'Automotive & Vehicles', icon: 'automotive', count: 0, color: '#14b8a6', desc: 'Auto showrooms, workshops, car rental, and spare parts' },
   { id: 'finance', name: 'Finance & Banking', icon: 'finance', count: 0, color: '#6366f1', desc: 'Chartered accountants, tax consultants, and financial advisors' },
-  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 0, color: '#0ea5e9', desc: 'Travel agencies, Umrah tour operators, and visa consultants' },
+  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 0, color: '#0ea5e9', desc: 'Travel agencies, tour operators, airport shuttles, and travel consultants' },
   { id: 'beauty', name: 'Beauty & Wellness', icon: 'beauty', count: 0, color: '#d946ef', desc: 'Beauty salons, spas, fitness gyms, and skincare clinics' },
   { id: 'logistics', name: 'Logistics & Courier', icon: 'logistics', count: 1950, color: '#84cc16', desc: 'Goods transport, freight forwarders, and logistics services' },
   { id: 'home-services', name: 'Home Services & Repairs', icon: 'home-services', count: 0, color: '#0284c7', desc: 'Plumbers, electricians, AC technicians, painters, and handymen' },
@@ -485,7 +485,8 @@ export interface ProfessionalItem {
   faqs?: { question: string; answer: string }[]
 }
 
-export const MOCK_BUSINESSES: BusinessItem[] = [
+export const MOCK_BUSINESSES: BusinessItem[] = []; /* legacy seed data removed
+
   {
     "id": "biz-1788874377351",
     "slug": "crust-crave-karachi",
@@ -6004,11 +6005,12 @@ export const MOCK_BUSINESSES: BusinessItem[] = [
     "reviews": [],
     "faqs": []
   }
-]
+  ] */
+  
+  export const MOCK_COMPANIES: CompanyItem[] = []
+  
+  export const MOCK_JOBS: JobItem[] = []; /* legacy seed data removed
 
-export const MOCK_COMPANIES: CompanyItem[] = []
-
-export const MOCK_JOBS: JobItem[] = [
   {
     "id": "job-remote-seo-internship",
     "slug": "remote-seo-internship",
@@ -7311,9 +7313,10 @@ export const MOCK_JOBS: JobItem[] = [
     "applicationWhatsapp": "+923000000000",
     "applicationWebsite": "https://listpak.com"
   }
-]
+  ] */
+  
+  export const MOCK_PROFESSIONALS: ProfessionalItem[] = []; /* legacy seed data removed
 
-export const MOCK_PROFESSIONALS: ProfessionalItem[] = [
   {
     "id": "pro-muhammad-imran",
     "username": "muhammad-imran-multan",
@@ -8068,6 +8071,6 @@ export const MOCK_PROFESSIONALS: ProfessionalItem[] = [
       }
     ]
   }
-]
-
-export const MOCK_VERIFICATION_REQUESTS: ProfessionalVerificationRequest[] = []
+  ] */
+  
+  export const MOCK_VERIFICATION_REQUESTS: ProfessionalVerificationRequest[] = []

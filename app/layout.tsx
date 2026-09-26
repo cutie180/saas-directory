@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     'United States business directory',
     'free business listing United States',
     'jobs in United States',
-    'United Statesi professionals',
-    'verified companies Lahore Karachi Islamabad',
-    'ListPak enterprise ecosystem'
+    'USA professionals',
+    'verified companies across the United States',
+    'ListPak business and careers ecosystem'
   ],
   icons: {
     icon: [{ url: '/favicon.png', sizes: 'any' }],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
     url: 'https://listpak.com/',
     siteName: 'ListPak',
-    locale: 'en_PK',
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
@@ -74,21 +74,12 @@ export default function RootLayout({
     name: 'ListPak',
     url: 'https://listpak.com/',
     logo: 'https://listpak.com/logo.png',
-    telephone: '+92 334 5636230',
     email: 'admin@listpak.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Office 303, Evacuee Trust Complex, F-5/1',
-      addressLocality: 'Islamabad',
-      postalCode: '44000',
-      addressCountry: 'PK',
-    },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+92 334 5636230',
       contactType: 'customer service',
-      areaServed: 'PK',
-      availableLanguage: ['en', 'ur'],
+      areaServed: 'US',
+      availableLanguage: ['en'],
     },
   }
 
