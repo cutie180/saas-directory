@@ -8,7 +8,7 @@ const features = [
   },
   {
     title: "Nationwide Reach",
-    description: "Explore businesses, verified professionals, and job opportunities across 150+ Pakistani cities on ListPak.",
+    description: "Explore businesses, verified professionals, and job opportunities across neighborhoods and communities throughout the United States on BizNestUSA.",
     icon: <Users className="w-8 h-8 text-blue-500" />
   },
   {

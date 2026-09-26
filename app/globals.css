@@ -4,12 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --brand-navy: #0f172a;
-  --brand-blue: #2563eb;
-  --brand-sky: #3b82f6;
-  --brand-emerald: #10b981;
-  --brand-amber: #f59e0b;
-  --brand-orange: #f97316;
+  --brand-navy: #123047;
+  --brand-blue: #176b87;
+  --brand-sky: #2b9ab3;
+  --brand-emerald: #1f9d76;
+  --brand-amber: #f2a93b;
+  --brand-orange: #e47c3c;
 
   --background: #f8fafc;
   --foreground: #0f172a;
@@ -17,7 +17,7 @@
   --card: #ffffff;
   --card-foreground: #0f172a;
 
-  --primary: #2563eb;
+  --primary: #176b87;
   --primary-foreground: #ffffff;
 
   --secondary: #0f172a;
@@ -26,17 +26,17 @@
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
 
-  --accent: #3b82f6;
+  --accent: #2b9ab3;
   --accent-foreground: #ffffff;
 
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #3b82f6;
+  --ring: #2b9ab3;
 
   --radius: 0.75rem;
 
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 @theme inline {
@@ -75,7 +75,7 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--background);
     color: var(--foreground);
   }

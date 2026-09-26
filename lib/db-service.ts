@@ -123,7 +123,7 @@ export function normalizeBusinessDoc(docId: string, data: any): BusinessItem {
   
   const docLocations = data.locations && data.locations.length > 0
     ? data.locations
-    : [{ city: data.city || 'Pakistan', address: data.address || 'Commercial Center, Pakistan', isPrimary: true }]
+    : [{ city: data.city || '', address: data.address || '', isPrimary: true }]
   const docCities = data.cities && data.cities.length > 0
     ? data.cities
     : Array.from(new Set(docLocations.map((l: { city: string }) => l.city)))
@@ -136,9 +136,9 @@ export function normalizeBusinessDoc(docId: string, data: any): BusinessItem {
     name: bName,
     category: data.category || 'Services',
     categoryId: data.categoryId || data.category || 'services',
-    city: primaryLoc.city || data.city || 'Pakistan',
+    city: primaryLoc.city || data.city || '',
     cities: docCities,
-    province: data.province || 'Pakistan',
+    province: data.province || '',
     rating: Number.isFinite(data.rating) ? data.rating : 0,
     reviewCount: data.reviewCount || (data.reviews ? data.reviews.length : 0),
     verified: data.verified === true,
@@ -150,11 +150,11 @@ export function normalizeBusinessDoc(docId: string, data: any): BusinessItem {
     approvedBy: data.approvedBy,
     rejectionReason: data.rejectionReason,
     ownerName: data.ownerName || data.fullName || 'Business Representative',
-    phone: data.phone || '+92 300 0000000',
-    whatsapp: data.whatsapp || '923000000000',
-    email: data.email || 'contact@business.pk',
-    website: data.website || data.websiteUrl || 'https://listpak.com',
-    address: primaryLoc.address || data.address || 'Commercial Center, Pakistan',
+    phone: data.phone || '',
+    whatsapp: data.whatsapp || '',
+    email: data.email || '',
+    website: data.website || data.websiteUrl || '',
+    address: primaryLoc.address || data.address || '',
     locations: docLocations,
     coverImage: data.coverImage || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
     logo: (() => {

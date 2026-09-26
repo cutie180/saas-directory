@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import { DM_Sans, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import ClientProviders from '@/components/client-providers'
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
-  weight: ['400', '600', '700'],
+  variable: '--font-dm-sans',
+  weight: ['400', '500', '600', '700'],
 })
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -18,9 +18,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "USA Business Directory, Jobs & Professionals | ListPak",
-  description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
-  metadataBase: new URL('https://listpak.com'),
+  title: "BizNestUSA | Find Trusted Local Businesses Across America",
+  description: "Find trusted local businesses, home services, professionals, and jobs across the United States. Discover your neighborhood on BizNestUSA.",
+  metadataBase: new URL('https://biznestusa.com'),
   keywords: [
     'ListPak United States',
     'United States business directory',
@@ -35,17 +35,17 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
-    title: "USA Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
-    url: 'https://listpak.com/',
+    title: "BizNestUSA | Find Trusted Local Businesses Across America",
+    description: "Find trusted local businesses, home services, professionals, and jobs across the United States. Discover your neighborhood on BizNestUSA.",
+    url: 'https://biznestusa.com/',
     siteName: 'ListPak',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "USA Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
+    title: "BizNestUSA | Find Trusted Local Businesses Across America",
+    description: "Find trusted local businesses, home services, professionals, and jobs across the United States. Discover your neighborhood on BizNestUSA.",
   },
   robots: {
     index: true,
@@ -59,11 +59,11 @@ export default function RootLayout({
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'ListPak',
-    url: 'https://listpak.com/',
+    name: 'BizNestUSA',
+    url: 'https://biznestusa.com/',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://listpak.com/search?q={search_term_string}',
+      target: 'https://biznestusa.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   }
@@ -71,10 +71,10 @@ export default function RootLayout({
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ListPak',
-    url: 'https://listpak.com/',
-    logo: 'https://listpak.com/logo.png',
-    email: 'admin@listpak.com',
+    name: 'BizNestUSA',
+    url: 'https://biznestusa.com/',
+    logo: 'https://biznestusa.com/logo.png',
+    email: 'admin@biznestusa.com',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
@@ -84,7 +84,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${plusJakarta.variable}`}>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossOrigin="anonymous" />
