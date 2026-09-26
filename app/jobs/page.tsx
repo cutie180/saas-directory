@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
-import { JobItem } from '@/lib/data'
+import { JobItem, TOP_CITIES } from '@/lib/data'
 import { getAllJobs } from '@/lib/job-service'
 import Link from 'next/link'
 import { Briefcase, MapPin, Search, Filter, Plus } from 'lucide-react'
@@ -58,13 +58,13 @@ export default function JobsPage() {
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30 mb-3">
                 <Briefcase className="w-3.5 h-3.5" />
-                <span>Pakistan Employment Portal</span>
+                <span>USA Employment Portal</span>
               </span>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Find Your Next Career Opportunity
               </h1>
               <p className="text-slate-400 text-sm mt-2 max-w-2xl leading-relaxed">
-                Connect directly with verified Pakistani companies, tech hubs, and employers hiring across Karachi, Lahore, Islamabad, and nationwide.
+                Connect directly with verified American companies, local employers, and growing teams hiring across New York, Los Angeles, Chicago, and nationwide.
               </p>
             </div>
 
@@ -97,17 +97,10 @@ export default function JobsPage() {
                 onChange={(e) => setSelectedCity(e.target.value)}
                 className="w-full bg-transparent text-slate-900 text-xs focus:outline-none"
               >
-                <option value="">All Cities in Pakistan</option>
-                <option value="Islamabad">Islamabad</option>
-                <option value="Karachi">Karachi</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Rawalpindi">Rawalpindi</option>
-                <option value="Peshawar">Peshawar</option>
-                <option value="Quetta">Quetta</option>
-                <option value="Faisalabad">Faisalabad</option>
-                <option value="Multan">Multan</option>
-                <option value="Sialkot">Sialkot</option>
-                <option value="Hyderabad">Hyderabad</option>
+                <option value="">All Cities in the USA</option>
+                {TOP_CITIES.map((city) => (
+                  <option key={city} value={city}>{city}</option>
+                ))}
               </select>
             </div>
 

@@ -17,17 +17,17 @@ export default function PostJobPage() {
   // Form State
   const [title, setTitle] = useState('')
   const [company, setCompany] = useState('')
-  const [selectedCities, setSelectedCities] = useState<string[]>(['Karachi'])
+  const [selectedCities, setSelectedCities] = useState<string[]>(['New York'])
   const [citySelectInput, setCitySelectInput] = useState('')
   const [category, setCategory] = useState('Technology & IT')
   const [type, setType] = useState('Full-time')
-  const [salary, setSalary] = useState('PKR 150,000 - 250,000 / month')
+  const [salary, setSalary] = useState('$75,000 - $125,000 / year')
   const [experience, setExperience] = useState('2 - 4 Years')
   const [vacancies, setVacancies] = useState('1')
   const [description, setDescription] = useState('')
   
   // Popular cities quick list
-  const POPULAR_CITIES = ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi', 'Peshawar', 'Quetta', 'Faisalabad', 'Multan', 'Sialkot', 'Hyderabad']
+  const POPULAR_CITIES = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Dallas', 'Miami', 'Seattle', 'Denver', 'Atlanta']
 
   const toggleCity = (cityName: string) => {
     if (selectedCities.includes(cityName)) {
@@ -57,9 +57,9 @@ export default function PostJobPage() {
   }
 
   const selectAllMajorHubs = () => {
-    const hubs = ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi']
+    const hubs = ['New York', 'Los Angeles', 'Chicago', 'San Francisco']
     setSelectedCities(prev => Array.from(new Set([...prev, ...hubs])))
-    toast.success('Major Pakistan tech hubs added!')
+    toast.success('Major US tech hubs added!')
   }
 
   // Skills input
@@ -173,9 +173,9 @@ export default function PostJobPage() {
             <Briefcase className="w-3.5 h-3.5 text-emerald-600" />
             <span>Enterprise Hiring Portal</span>
           </span>
-          <h1 className="text-3xl font-extrabold text-slate-900">Post a Job Opening in Pakistan</h1>
+          <h1 className="text-3xl font-extrabold text-slate-900">Post a Job Opening in the USA</h1>
           <p className="text-slate-600 text-sm font-medium">
-            Reach qualified Pakistani professionals. Candidate matches will be automatically suggested from the Professional network.
+            Reach qualified American professionals. Candidate matches will be automatically suggested from the professional network.
           </p>
         </div>
       </section>
@@ -256,7 +256,7 @@ export default function PostJobPage() {
                     required
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    placeholder="e.g. Tech Solutions Pakistan"
+                    placeholder="e.g. Acme Home Services"
                     className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -330,7 +330,7 @@ export default function PostJobPage() {
                   </div>
                 </div>
 
-                {/* Dropdown to pick any Pakistani City */}
+                {/* Dropdown to pick any US city */}
                 <div className="pt-2 flex gap-2">
                   <select
                     value={citySelectInput}
@@ -339,7 +339,7 @@ export default function PostJobPage() {
                     }}
                     className="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 text-slate-800"
                   >
-                    <option value="">-- Add another city in Pakistan --</option>
+                    <option value="">-- Add another city in the USA --</option>
                     {CITIES.filter(c => !selectedCities.includes(c)).map(c => (
                       <option key={c} value={c}>{c}</option>
                     ))}
@@ -371,7 +371,7 @@ export default function PostJobPage() {
                     required
                     value={salary}
                     onChange={(e) => setSalary(e.target.value)}
-                    placeholder="e.g. PKR 150,000 - 250,000 / month"
+                    placeholder="e.g. $75,000 - $125,000 / year"
                     className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
