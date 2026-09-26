@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { CATEGORIES, CITIES, TOP_CITIES, BusinessItem, ProfessionalItem, CompanyItem, JobItem } from '@/lib/data'
+import { CATEGORIES, CITIES, BusinessItem, ProfessionalItem, CompanyItem, JobItem } from '@/lib/data'
 import { getAllBusinesses } from '@/lib/db-service'
 import { getAllProfessionals } from '@/lib/professional-service'
 import { getAllCompanies } from '@/lib/company-service'
@@ -36,7 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const corePages = [
     '/categories',
     '/cities',
-    '/prayer-times-pakistan',
     '/jobs',
     '/post-job',
     '/companies',
@@ -214,14 +213,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // 12. City Prayer Times Pages for Top Pakistani Cities
-  const prayerCityRoutes = TOP_CITIES.map((city) => ({
-    url: canonicalUrl(`/prayer-times-${city.toLowerCase().replace(/\s+/g, '-')}-today`),
-    lastModified: currentDate,
-    changeFrequency: 'daily' as const,
-    priority: 0.7,
-  }))
-
   // Combine all routes
   const allRoutes = [
     homepageRoute,
@@ -230,7 +221,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...categoryRoutes,
     ...cityRoutes,
     ...categoryCityRoutes,
-    ...prayerCityRoutes,
     ...businessRoutes,
     ...jobRoutes,
     ...companyRoutes,

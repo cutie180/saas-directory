@@ -69,7 +69,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">4. Cookies & Web Beacons</h2>
           <p>
-            ListPak uses essential session cookies, user preference cookies, and analytics tags (including Google Analytics and Microsoft Clarity). You can configure your web browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. For detailed technical information regarding the specific cookie categories utilized across our platform, please consult our dedicated <Link href="/cookie-policy" className="text-blue-600 underline">Cookie Policy</Link>.
+            ListPak uses essential session cookies and user preference cookies. You can configure your web browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. For detailed technical information regarding the specific cookie categories utilized across our platform, please consult our dedicated <Link href="/cookie-policy" className="text-blue-600 underline">Cookie Policy</Link>.
           </p>
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">5. European Economic Area (EEA), UK & Swiss User Rights</h2>
