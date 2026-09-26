@@ -94,7 +94,7 @@ export const CATEGORIES = [
   { id: 'construction', name: 'Construction & Building', icon: 'construction', count: 0, color: '#f97316', desc: 'Architects, civil engineers, building contractors, and materials' },
   { id: 'automotive', name: 'Automotive & Vehicles', icon: 'automotive', count: 0, color: '#14b8a6', desc: 'Auto showrooms, workshops, car rental, and spare parts' },
   { id: 'finance', name: 'Finance & Banking', icon: 'finance', count: 0, color: '#6366f1', desc: 'Chartered accountants, tax consultants, and financial advisors' },
-  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 0, color: '#0ea5e9', desc: 'Travel agencies, Umrah tour operators, and visa consultants' },
+  { id: 'travel', name: 'Travel & Tourism', icon: 'travel', count: 0, color: '#0ea5e9', desc: 'Travel agencies, tour operators, airport shuttles, and travel consultants' },
   { id: 'beauty', name: 'Beauty & Wellness', icon: 'beauty', count: 0, color: '#d946ef', desc: 'Beauty salons, spas, fitness gyms, and skincare clinics' },
   { id: 'logistics', name: 'Logistics & Courier', icon: 'logistics', count: 1950, color: '#84cc16', desc: 'Goods transport, freight forwarders, and logistics services' },
   { id: 'home-services', name: 'Home Services & Repairs', icon: 'home-services', count: 0, color: '#0284c7', desc: 'Plumbers, electricians, AC technicians, painters, and handymen' },

@@ -21,7 +21,7 @@ export function LocalBusinessSchema({ business }: { business: BusinessData }) {
     telephone: business.phone,
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'PK',
+      addressCountry: 'US',
       addressLocality: business.city,
       streetAddress: business.address
     },
@@ -29,7 +29,7 @@ export function LocalBusinessSchema({ business }: { business: BusinessData }) {
     serviceType: business.category,
     areaServed: {
       '@type': 'Country',
-      name: 'Pakistan'
+      name: 'United States'
     },
     logo: business.logo || 'https://listpak.com/logo.svg',
     contactPoint: {
@@ -53,16 +53,16 @@ export function DirectorySchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'ListPak',
-    description: 'Pakistan Free Business Directory - Find and list local businesses',
+    description: 'United States Business Directory - Find and list local businesses',
     url: 'https://listpak.com/',
     mainEntity: {
       '@type': 'Organization',
       name: 'ListPak',
       url: 'https://listpak.com/',
-      description: 'Pakistan Free Business Directory',
+      description: 'United States Business Directory',
       areaServed: {
         '@type': 'Country',
-        name: 'Pakistan'
+        name: 'United States'
       }
     },
     potentialAction: {

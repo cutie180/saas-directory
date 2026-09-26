@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
     url: 'https://listpak.com/',
     siteName: 'ListPak',
-    locale: 'en_PK',
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
@@ -85,7 +85,7 @@ const RESOURCE_HIGHLIGHTS = [
     title: 'How to improve local visibility for US businesses',
     metrics: 'Local SEO guidance',
     category: 'Local search',
-    slug: 'local-seo-pakistan-businesses-google-ranking'
+    slug: 'local-seo-us-businesses-google-ranking'
   }
 ]
 
@@ -100,13 +100,13 @@ const BUSINESS_RESOURCES = [
     title: 'Local SEO for US Businesses: Improve Visibility in Your City',
     date: 'July 28, 2026',
     category: 'Local SEO',
-    slug: 'local-seo-pakistan-businesses-google-ranking'
+    slug: 'local-seo-us-businesses-google-ranking'
   },
   {
     title: 'Free Job Posting in United States – How to Hire Employees Without Spending Money',
     date: 'July 25, 2026',
     category: 'Recruitment',
-    slug: 'free-job-posting-pakistan-hire-employees'
+    slug: 'free-job-posting-us-hire-employees'
   }
 ]
 
