@@ -15,41 +15,41 @@ import { getPublicJobPath } from '@/lib/job-url'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "USA Business Directory, Jobs & Professionals | ListPak",
-  description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
+  title: "USA Business Directory, Jobs & Professionals | BizNestUSA",
+  description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on BizNestUSA.",
   alternates: {
     canonical: 'https://listpak.com/',
   },
   openGraph: {
-    title: "USA Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | BizNestUSA",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on BizNestUSA.",
     url: 'https://listpak.com/',
-    siteName: 'ListPak',
+    siteName: 'BizNestUSA',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "USA Business Directory, Jobs & Professionals | ListPak",
-    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on ListPak.",
+    title: "USA Business Directory, Jobs & Professionals | BizNestUSA",
+    description: "Find businesses, companies, jobs, services and professionals across the United States. Search by city and category or add your free business listing on BizNestUSA.",
   },
 }
 
 const FAQS = [
   {
-    question: 'What is ListPak Ecosystem?',
-    answer: 'ListPak is a United States-focused discovery platform connecting businesses, employers, job seekers, and professionals through category and city-based pages.'
+    question: 'What is BizNestUSA Ecosystem?',
+    answer: 'BizNestUSA is a United States-focused discovery platform connecting businesses, employers, job seekers, and professionals through category and city-based pages.'
   },
   {
-    question: 'Is listing a business on ListPak free?',
-    answer: 'Businesses can submit a listing through ListPak. Owners should provide accurate contact information, services, operating hours, and other details required during submission.'
+    question: 'Is listing a business on BizNestUSA free?',
+    answer: 'Businesses can submit a listing through BizNestUSA. Owners should provide accurate contact information, services, operating hours, and other details required during submission.'
   },
   {
-    question: 'How do employers post jobs on ListPak?',
+    question: 'How do employers post jobs on BizNestUSA?',
     answer: 'Employers can use the Post a Job flow to provide position details, experience requirements, location, and application information. Publication depends on the site’s current workflow and review requirements.'
   },
   {
-    question: 'How does business verification work on ListPak?',
+    question: 'How does business verification work on BizNestUSA?',
     answer: 'Business owners can use the available claim or verification workflow when it is offered for their listing and should submit only accurate supporting information.'
   }
 ]
@@ -76,7 +76,7 @@ const USE_CASES = [
 ]
 const RESOURCE_HIGHLIGHTS = [
   {
-    title: 'How to list a business on ListPak',
+    title: 'How to list a business on BizNestUSA',
     metrics: 'Listing guidance',
     category: 'Business listings',
     slug: 'how-to-list-business-free-listpak-guide'
@@ -91,7 +91,7 @@ const RESOURCE_HIGHLIGHTS = [
 
 const BUSINESS_RESOURCES = [
   {
-    title: 'How to List Your Business Free on ListPak – Step-by-Step Guide 2026',
+    title: 'How to List Your Business Free on BizNestUSA – Step-by-Step Guide 2026',
     date: 'August 1, 2026',
     category: 'Listing Guide',
     slug: 'how-to-list-business-free-listpak-guide'
@@ -119,7 +119,7 @@ export default async function HomePage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'ListPak',
+    name: 'BizNestUSA',
     url: 'https://listpak.com/',
     potentialAction: {
       '@type': 'SearchAction',
@@ -210,7 +210,7 @@ export default async function HomePage() {
                 <div className="md:col-span-2">
                   <button
                     type="submit"
-                    aria-label="Search ListPak Directory"
+                    aria-label="Search BizNestUSA Directory"
                     className="w-full h-full py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-sm rounded-2xl shadow-lg shadow-blue-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Search className="w-4 h-4" />
@@ -464,7 +464,7 @@ export default async function HomePage() {
             <div className="text-center max-w-3xl mx-auto space-y-2">
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Enterprise Value</span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Why Choose ListPak Ecosystem?
+                Why Choose BizNestUSA Ecosystem?
               </h2>
               <p className="text-slate-500 text-xs sm:text-sm">Built to empower United Statesi companies, job seekers, and local customers.</p>
             </div>
@@ -502,7 +502,7 @@ export default async function HomePage() {
           <div className="text-center max-w-3xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">3-Step Process</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              How ListPak Works
+              How BizNestUSA Works
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm">Connect, verify, and expand your market presence seamlessly.</p>
           </div>
@@ -586,7 +586,7 @@ export default async function HomePage() {
             <div className="text-center max-w-3xl mx-auto space-y-2">
               <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Platform use cases</span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Ways People Use ListPak
+                Ways People Use BizNestUSA
               </h2>
             </div>
 
@@ -669,7 +669,7 @@ export default async function HomePage() {
               Frequently Asked Questions (FAQ)
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm">
-              Answers to common queries about ListPak business directory.
+              Answers to common queries about BizNestUSA business directory.
             </p>
           </div>
 
@@ -688,7 +688,7 @@ export default async function HomePage() {
           <div className="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white text-center max-w-4xl mx-auto space-y-6">
             <Mail className="w-10 h-10 text-blue-400 mx-auto" />
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Subscribe to ListPak Business Insights
+              Subscribe to BizNestUSA Business Insights
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
               Get weekly local SEO strategies, hiring guides, and market updates delivered directly to your inbox.

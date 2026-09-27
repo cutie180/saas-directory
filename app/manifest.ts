@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ListPak — United States's Digital Business & Enterprise Ecosystem",
-    short_name: 'ListPak',
+    name: "BizNestUSA — United States's Digital Business & Enterprise Ecosystem",
+    short_name: 'BizNestUSA',
     description: "Discover, connect, and grow with United States's largest digital business platform. Verified businesses, job portal, and professional talent.",
     start_url: '/',
     display: 'standalone',

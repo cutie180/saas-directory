@@ -215,7 +215,7 @@ export default function AboutPage() {
           '@type': 'ContactPoint',
           telephone: '+923019316123',
           contactType: 'customer support',
-          email: 'contact@listpak.com',
+          email: 'admin@biznestusa.com',
           areaServed: 'PK',
           availableLanguage: ['English', 'Urdu']
         },

@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   description: "Find trusted local businesses, home services, professionals, and jobs across the United States. Discover your neighborhood on BizNestUSA.",
   metadataBase: new URL('https://biznestusa.com'),
   keywords: [
-    'ListPak United States',
+    'BizNestUSA United States',
     'United States business directory',
     'free business listing United States',
     'jobs in United States',
     'USA professionals',
     'verified companies across the United States',
-    'ListPak business and careers ecosystem'
+    'BizNestUSA business and careers ecosystem'
   ],
   icons: {
     icon: [{ url: '/favicon.png', sizes: 'any' }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "BizNestUSA | Find Trusted Local Businesses Across America",
     description: "Find trusted local businesses, home services, professionals, and jobs across the United States. Discover your neighborhood on BizNestUSA.",
     url: 'https://biznestusa.com/',
-    siteName: 'ListPak',
+    siteName: 'BizNestUSA',
     locale: 'en_US',
     type: 'website',
   },

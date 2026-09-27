@@ -5,8 +5,8 @@ import Link from 'next/link'
 import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | ListPak Pakistan Business Directory',
-  description: 'Read the ListPak privacy policy. Learn how we collect, store, and protect your data, including Google AdSense advertising cookie disclosures and GDPR compliance.',
+  title: 'Privacy Policy | BizNestUSA Pakistan Business Directory',
+  description: 'Read the BizNestUSA privacy policy. Learn how we collect, store, and protect your data, including Google AdSense advertising cookie disclosures and GDPR compliance.',
   alternates: {
     canonical: 'https://listpak.com/privacy/',
   },
@@ -20,12 +20,12 @@ export default function PrivacyPage() {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0f2b3d] mb-4">Privacy Policy</h1>
         <p className="text-sm text-slate-500 mb-8 border-b border-slate-200 pb-4">
-          Last Updated: September 2026 • ListPak Digital Directory Platform
+          Last Updated: September 2026 • BizNestUSA Digital Directory Platform
         </p>
 
         <div className="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-6">
           <p>
-            At <strong>ListPak</strong> (accessible via <a href="https://listpak.com/" className="text-blue-600 hover:underline">https://listpak.com/</a>), the privacy and protection of our users, business owners, professionals, and visitors is of paramount importance. This Privacy Policy describes the types of personal and business information collected, recorded, and utilized by ListPak, as well as the safeguards and rights available to you.
+            At <strong>BizNestUSA</strong> (accessible via <a href="https://listpak.com/" className="text-blue-600 hover:underline">https://listpak.com/</a>), the privacy and protection of our users, business owners, professionals, and visitors is of paramount importance. This Privacy Policy describes the types of personal and business information collected, recorded, and utilized by BizNestUSA, as well as the safeguards and rights available to you.
           </p>
           <p>
             If you have questions or require more information about our Privacy Policy, please contact our administrative team at <a href="mailto:admin@listpak.com" className="text-blue-600 hover:underline">admin@listpak.com</a>.
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">2. Use of Information</h2>
           <p>
-            ListPak utilizes the collected information for transparent, legitimate operational purposes:
+            BizNestUSA utilizes the collected information for transparent, legitimate operational purposes:
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
             <li>To publish, index, and organize public business listings, professional profiles, and job opportunities across Pakistani cities.</li>
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">3. Google AdSense & Third-Party Advertising Policy</h2>
           <p>
-            ListPak may partner with third-party advertising companies, including <strong>Google AdSense</strong>, to serve advertisements when you visit our website. These advertising networks may use cookies, web beacons, and related tracking technologies to collect non-personally identifiable information regarding your visits to this and other websites in order to provide relevant advertisements about goods and services of interest to you.
+            BizNestUSA may partner with third-party advertising companies, including <strong>Google AdSense</strong>, to serve advertisements when you visit our website. These advertising networks may use cookies, web beacons, and related tracking technologies to collect non-personally identifiable information regarding your visits to this and other websites in order to provide relevant advertisements about goods and services of interest to you.
           </p>
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-3 text-sm text-slate-700">
             <h3 className="font-bold text-slate-900">Mandatory Google Advertising Disclosures:</h3>
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">4. Cookies & Web Beacons</h2>
           <p>
-            ListPak uses essential session cookies and user preference cookies. You can configure your web browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. For detailed technical information regarding the specific cookie categories utilized across our platform, please consult our dedicated <Link href="/cookie-policy" className="text-blue-600 underline">Cookie Policy</Link>.
+            BizNestUSA uses essential session cookies and user preference cookies. You can configure your web browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. For detailed technical information regarding the specific cookie categories utilized across our platform, please consult our dedicated <Link href="/cookie-policy" className="text-blue-600 underline">Cookie Policy</Link>.
           </p>
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">5. European Economic Area (EEA), UK & Swiss User Rights</h2>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
             In compliance with the General Data Protection Regulation (GDPR), the UK Data Protection Act, and the Swiss Federal Act on Data Protection (FADP), users residing in the EEA, UK, or Switzerland possess defined legal rights regarding their personal information:
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-            <li><strong>Right of Access:</strong> You may request copies of your personal data held by ListPak.</li>
+            <li><strong>Right of Access:</strong> You may request copies of your personal data held by BizNestUSA.</li>
             <li><strong>Right to Rectification:</strong> You may request correction of inaccurate or incomplete listing details.</li>
             <li><strong>Right to Erasure (&quot;Right to be Forgotten&quot;):</strong> You may request deletion of your account or personal information under certain circumstances.</li>
             <li><strong>Right to Restrict or Object to Processing:</strong> You may restrict or object to our processing of your personal data.</li>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">6. Public Directory Listings & Content Removal</h2>
           <p>
-            Business listings, professional profiles, and job announcements on ListPak are published for public business discovery. If you are the authorized owner of a business listed on ListPak and wish to update, claim, or permanently remove your listing, you may:
+            Business listings, professional profiles, and job announcements on BizNestUSA are published for public business discovery. If you are the authorized owner of a business listed on BizNestUSA and wish to update, claim, or permanently remove your listing, you may:
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
             <li>Click the &quot;Claim Business&quot; button on your business profile to verify ownership.</li>
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">8. Policy for Children</h2>
           <p>
-            ListPak does not knowingly collect or solicit personal identifiable information from children under the age of 13. If you believe your child has submitted personal information on our website, please notify us immediately at <a href="mailto:admin@listpak.com" className="text-blue-600 underline">admin@listpak.com</a> and we will swiftly remove such data.
+            BizNestUSA does not knowingly collect or solicit personal identifiable information from children under the age of 13. If you believe your child has submitted personal information on our website, please notify us immediately at <a href="mailto:admin@listpak.com" className="text-blue-600 underline">admin@listpak.com</a> and we will swiftly remove such data.
           </p>
 
           <h2 className="text-xl font-bold text-[#0f2b3d] pt-4">9. Contact Information</h2>
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
             For questions, data access requests, or policy inquiries, contact our data administration desk:
           </p>
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm space-y-1 text-slate-800">
-            <p className="font-bold text-slate-900">ListPak Administration &amp; Data Compliance</p>
+            <p className="font-bold text-slate-900">BizNestUSA Administration &amp; Data Compliance</p>
             <p>Office 303, Evacuee Trust Complex, F-5/1, Islamabad, Pakistan</p>
             <p>Email: <a href="mailto:admin@listpak.com" className="text-blue-600 underline">admin@listpak.com</a></p>
             <p>Direct Inquiries / Support: +92 334 563 6230</p>

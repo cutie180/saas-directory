@@ -58,22 +58,16 @@ export default function AdminPage() {
   const [proVerifyFilter, setProVerifyFilter] = useState<'all' | 'verified' | 'unverified'>('all')
 
   useEffect(() => {
-    const authSession = sessionStorage.getItem('listpak_admin_auth')
-    if (authSession === 'true') {
-      setIsAuthenticated(true)
-      fetchAdminData()
-    }
-
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         if (user.email?.toLowerCase() === 'admin@biznestusa.com') {
           setAdminUid(user.uid)
           setIsAuthenticated(true)
-          sessionStorage.setItem('listpak_admin_auth', 'true')
+          sessionStorage.setItem('biznestusa_admin_auth', 'true')
           fetchAdminData()
         } else {
           // If a non-admin regular user is logged in, do not grant admin access
-          sessionStorage.removeItem('listpak_admin_auth')
+          sessionStorage.removeItem('biznestusa_admin_auth')
           setIsAuthenticated(false)
         }
       }
@@ -327,7 +321,7 @@ export default function AdminPage() {
 
     if (inputEmail !== AUTHORIZED_ADMIN_EMAIL) {
       setLoginError('Access denied: only the authorized BizNestUSA administrator can log into the Admin Portal.')
-      toast.error('Access Denied: Only contact@listpak.com can access the admin portal.')
+      toast.error('Access denied: only admin@biznestusa.com can access the admin portal.')
       return
     }
 
@@ -336,20 +330,20 @@ export default function AdminPage() {
         const userCredential = await signInWithEmailAndPassword(auth, adminEmail.trim(), adminPass)
         if (userCredential.user.email?.toLowerCase() !== AUTHORIZED_ADMIN_EMAIL) {
           await signOut(auth)
-          setLoginError('Access Denied: Only contact@listpak.com is authorized to access the Admin Portal.')
+          setLoginError('Access Denied: Only admin@biznestusa.com is authorized to access the Admin Portal.')
           toast.error('Access Denied: Unauthorized admin user.')
           return
         }
         setAdminUid(userCredential.user.uid)
         setIsAuthenticated(true)
-        sessionStorage.setItem('listpak_admin_auth', 'true')
+        sessionStorage.setItem('biznestusa_admin_auth', 'true')
         toast.success('Firebase Admin authenticated successfully.')
         fetchAdminData()
       } catch (err: any) {
-        setLoginError('Authentication failed: Invalid credentials for contact@listpak.com.')
+        setLoginError('Authentication failed: invalid credentials for admin@biznestusa.com.')
       }
     } else {
-      setLoginError('Please enter admin email (contact@listpak.com) and password.')
+      setLoginError('Please enter admin@biznestusa.com and your Firebase Auth password.')
     }
   }
 
@@ -358,7 +352,7 @@ export default function AdminPage() {
       await signOut(auth)
     } catch (e) {}
     setIsAuthenticated(false)
-    sessionStorage.removeItem('listpak_admin_auth')
+    sessionStorage.removeItem('biznestusa_admin_auth')
     toast.info('Logged out of Admin Panel.')
   }
 
@@ -508,7 +502,7 @@ export default function AdminPage() {
                     type={showAdminPass ? 'text' : 'password'}
                     value={adminPass}
                     onChange={(e) => setAdminPass(e.target.value)}
-                    placeholder="Enter password or listpak2026"
+                    placeholder="Enter your Firebase Auth password"
                     className="w-full pl-4 pr-11 py-3 bg-[#F4F7FC] border border-[#D9E2F1] rounded-xl text-sm focus:outline-none focus:border-[#2563EB] font-mono text-[#0F172A]"
                     required
                   />
@@ -537,7 +531,7 @@ export default function AdminPage() {
               </button>
 
               <p className="text-[11px] text-slate-400 text-center pt-2">
-                Passcode shortcut for review: <code className="text-blue-600 font-bold">listpak2026</code>
+                Sign in with the authorized BizNestUSA Firebase account.
               </p>
             </form>
           </div>

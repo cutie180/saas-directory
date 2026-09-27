@@ -2,39 +2,45 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Shield, Lock } from 'lucide-react'
+import { Shield, Lock, Mail } from 'lucide-react'
+import { auth } from '@/lib/firebase'
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 export default function AdminAuthGuard({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [email, setEmail] = useState('admin@biznestusa.com')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
 
   useEffect(() => {
-    // Check if already authenticated
-    const auth = localStorage.getItem('admin_auth')
-    if (auth === 'authenticated') {
-      setIsAuthenticated(true)
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(user?.email?.toLowerCase() === 'admin@biznestusa.com')
+    })
+    return () => unsubscribe()
   }, [])
 
-  function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setIsLoading(true)
     setError('')
-
-    if (password === 'PakBiz@2026!Admin') {
-      localStorage.setItem('admin_auth', 'authenticated')
+    try {
+      const credential = await signInWithEmailAndPassword(auth, email.trim(), password)
+      if (credential.user.email?.toLowerCase() !== 'admin@biznestusa.com') {
+        await signOut(auth)
+        throw new Error('Unauthorized administrator')
+      }
       setIsAuthenticated(true)
-    } else {
-      setError('Invalid password')
+    } catch {
+      setError('Invalid BizNestUSA administrator credentials')
+    } finally {
       setIsLoading(false)
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem('admin_auth')
+  async function handleLogout() {
+    await signOut(auth)
     setIsAuthenticated(false)
     setPassword('')
     router.push('/')
@@ -56,6 +62,13 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
             
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Admin Email
+                </label>
+                <div className="relative mb-3">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg" required />
+                </div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                   Admin Password
                 </label>
