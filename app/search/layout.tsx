@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Search the ListPak Directory',
+  title: 'Search the BizNestUSA Directory',
   description: 'Search Pakistani businesses, jobs, and professionals by keyword, category, and city.',
   robots: { index: false, follow: true },
   alternates: { canonical: 'https://listpak.com/search/' },

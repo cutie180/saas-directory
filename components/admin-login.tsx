@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { auth } from '@/lib/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { Shield, Mail, Lock, AlertCircle, Loader2 } from 'lucide-react'
 
 interface FailedAttempt {
@@ -97,26 +99,13 @@ export default function AdminLogin({ onLoginSuccess }: { onLoginSuccess: () => v
     setError('')
 
     try {
-      // Admin credentials
-      const validAdminEmails = ['contact@listpak.com', 'pakbizbrances@gmail.com']
-      const validAdminPassword = 'Imran@6230$%'
-      
-      // Check if credentials match
-      if (validAdminEmails.includes(email.trim().toLowerCase()) && (password === validAdminPassword || password === 'listpak2026' || password === 'admin123')) {
-        // Clear failed attempts on successful login
-        clearFailedAttempts(email)
-        localStorage.setItem('admin_authenticated', 'true')
-        localStorage.setItem('admin_email', email)
-        onLoginSuccess()
-      } else {
-        setError('Invalid email or password')
-        
-        // Record failed attempt
-        const shouldBlock = recordFailedAttempt(email)
-        if (shouldBlock) {
-          setError('Account blocked for 1 hour due to multiple failed attempts')
-        }
+      if (email.trim().toLowerCase() !== 'admin@biznestusa.com') {
+        setError('Only the BizNestUSA administrator can sign in')
+        return
       }
+      await signInWithEmailAndPassword(auth, email.trim(), password)
+      clearFailedAttempts(email)
+      onLoginSuccess()
     } catch (error: any) {
       console.error('Login error:', error)
       setError('Login failed. Please try again')
